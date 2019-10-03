@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="core_main" target="1.8" />
+      <module name="core_test" target="1.8" />
+      <module name="efrsb-web.core.main" target="1.8" />
+      <module name="efrsb-web.core.test" target="1.8" />
+      <module name="efrsb-web.main" target="1.8" />
+      <module name="efrsb-web.remote.main" target="1.8" />
+      <module name="efrsb-web.remote.test" target="1.8" />
+      <module name="efrsb-web.test" target="1.8" />
+      <module name="efrsb-web.testng.main" target="1.8" />
+      <module name="efrsb-web.testng.test" target="1.8" />
+      <module name="efrsb_main" target="1.8" />
+      <module name="efrsb_test" target="1.8" />
+      <module name="efrsb_web.core.main" target="1.8" />
+      <module name="efrsb_web.core.test" target="1.8" />
+      <module name="efrsb_web.main" target="1.8" />
+      <module name="efrsb_web.remote.main" target="1.8" />
+      <module name="efrsb_web.remote.test" target="1.8" />
+      <module name="efrsb_web.test" target="1.8" />
+      <module name="efrsb_web.testng.main" target="1.8" />
+      <module name="efrsb_web.testng.test" target="1.8" />
+      <module name="efrsbvideoLocalMin.core.main" target="1.8" />
+      <module name="efrsbvideoLocalMin.core.test" target="1.8" />
+      <module name="efrsbvideoLocalMin.main" target="1.8" />
+      <module name="efrsbvideoLocalMin.remote.main" target="1.8" />
+      <module name="efrsbvideoLocalMin.remote.test" target="1.8" />
+      <module name="efrsbvideoLocalMin.test" target="1.8" />
+      <module name="efrsbvideoLocalMin.testng.main" target="1.8" />
+      <module name="efrsbvideoLocalMin.testng.test" target="1.8" />
+      <module name="efrsbvideoLocalMin_main" target="1.8" />
+      <module name="efrsbvideoLocalMin_test" target="1.8" />
+      <module name="junit5_main" target="1.8" />
+      <module name="junit5_test" target="1.8" />
+      <module name="junit_main" target="1.8" />
+      <module name="junit_test" target="1.8" />
+      <module name="remote_main" target="1.8" />
+      <module name="remote_test" target="1.8" />
+      <module name="testng_main" target="1.8" />
+      <module name="testng_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

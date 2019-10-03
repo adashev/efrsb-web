@@ -1,0 +1,16 @@
+dependencies {
+    compile project(':core')
+    compile 'org.apache.httpcomponents:httpclient:4.5.7'
+    compile 'org.testng:testng:6.9.9'
+    compile group: 'org.json', name: 'json', version: '20180813'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.25.1', transitive: false
+    testCompile project(':remote')
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.codeborne:selenide:4.14.2'
+    testCompile group: 'com.google.inject', name: 'guice', version: '4.2.2'
+    testCompile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.3.0'
+}
+
+test{
+    useTestNG()
+}

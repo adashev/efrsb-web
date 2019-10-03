@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/efrsb-web.iml" filepath="$PROJECT_DIR$/.idea/modules/efrsb-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/efrsb-web.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/efrsb-web.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/efrsb-web.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/efrsb-web.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/efrsb-web.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/efrsb-web.core.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/efrsb-web.main.iml" filepath="$PROJECT_DIR$/.idea/modules/efrsb-web.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/remote/efrsb-web.remote.iml" filepath="$PROJECT_DIR$/.idea/modules/remote/efrsb-web.remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/remote/efrsb-web.remote.main.iml" filepath="$PROJECT_DIR$/.idea/modules/remote/efrsb-web.remote.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/remote/efrsb-web.remote.test.iml" filepath="$PROJECT_DIR$/.idea/modules/remote/efrsb-web.remote.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/efrsb-web.test.iml" filepath="$PROJECT_DIR$/.idea/modules/efrsb-web.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/testng/efrsb-web.testng.iml" filepath="$PROJECT_DIR$/.idea/modules/testng/efrsb-web.testng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/testng/efrsb-web.testng.main.iml" filepath="$PROJECT_DIR$/.idea/modules/testng/efrsb-web.testng.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/testng/efrsb-web.testng.test.iml" filepath="$PROJECT_DIR$/.idea/modules/testng/efrsb-web.testng.test.iml" />
+    </modules>
+  </component>
+</project>
