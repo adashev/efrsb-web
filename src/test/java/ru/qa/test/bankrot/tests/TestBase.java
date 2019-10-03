@@ -14,7 +14,7 @@ import static ru.qa.test.bankrot.appmanager.ApplicationManager.wd;
 @Listeners({MyTestListener.class, VideoListener.class}) //
 public class TestBase {
   protected final ApplicationManager app = new ApplicationManager(System
-          .getProperty("browser", BrowserType.FIREFOX));
+          .getProperty("browser", BrowserType.CHROME));
                           // CHROME  FIREFOX
   //(alwaysRun = true)
   @BeforeTest(description = "Инициализация браузера и авторизация в АРМ АУ")
