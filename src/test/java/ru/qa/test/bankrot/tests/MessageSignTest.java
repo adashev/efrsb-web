@@ -22,7 +22,8 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
-  @Video public void testReceivingCreditorDemand() throws InterruptedException {
+  @Video
+  public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
     app.getCreateMessage()
@@ -33,7 +34,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 3)
   @Description("Тест создания и подписания Иного сообщения")
-  @Video public void testMessageOther() throws InterruptedException {
+  public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(2);
     app.getCreateMessage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
@@ -43,7 +44,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 4)
   @Description("Тест создания и подписания cообщения 'Аннулирование ранее опубликованного сообщения'")
-  @Video public void testMessageAnnul() throws InterruptedException {
+  public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(3);
     app.getCreateMessage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
@@ -54,7 +55,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 5)
   @Description("Тест создания и подписания cообщения 'Опровержение по решению суда опубликованных ранее сведений'")
-  @Video public void testRebuttalMessage() throws InterruptedException {
+  public void testRebuttalMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(4, 0);
     app.getCreateMessage()
@@ -66,7 +67,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 6)
   @Description("Тест создания и подписания Сообщения о дисквалификации арбитражного управляющего")
-  @Video public void testDisqualificArbitManager() throws InterruptedException {
+  public void testDisqualificArbitManager() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(4, 1);
     app.getCreateMessage()

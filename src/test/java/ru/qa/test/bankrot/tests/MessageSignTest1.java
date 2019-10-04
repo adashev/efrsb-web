@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 public class MessageSignTest1 extends TestBase {
   @Test(priority = 7)
   @Description("Тест создания и подписания Сообщения о собрании кредиторов")
-  @Video
   public void testMeetingMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(5, 0);
@@ -22,8 +21,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 8)
   @Description("Тест создания и подписания Сообщение о результатах проведения собрания кредиторов")
-  @Video public void testMeetingResult() throws InterruptedException {
-
+  public void testMeetingResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(5, 1);
     app.getCreateMessage()
@@ -34,8 +32,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 9)
   @Description("Тест создания и подписания Уведомления о проведении комитета кредиторов")
-  @Video public void testCommitteeMessage() throws InterruptedException {
-
+  public void testCommitteeMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(5, 2);
     app.getCreateMessage()
@@ -47,7 +44,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 10)
   @Description("Тест создания и подписания Сообщения о результатах проведения комитета кредиторов")
-  @Video public void testCommitteeResult() throws InterruptedException {
+  public void testCommitteeResult() throws InterruptedException {
 
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(5, 3);
@@ -59,8 +56,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 11)
   @Description("Тест создания и подписания Сведений о принятии заявления о признании должника банкротом")
-  @Video public void testCourtAcceptanceStatement() throws InterruptedException {
-
+  public void testCourtAcceptanceStatement() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(6, 0);
     app.getCreateMessage()
@@ -71,8 +67,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 12)
   @Description("Тест создания и подписания Уведомления о проведении собрания участников строительства")
-  @Video public void testMeetingParticipantsBuilding() throws InterruptedException {
-
+  public void testMeetingParticipantsBuilding() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(6, 1);
     app.getCreateMessage()
@@ -84,8 +79,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 13)
   @Description("Тест создания и подписания Сообщения о результатах проведения собрания участников строительства")
-  @Video public void testMeetingPartBuildResult() throws InterruptedException {
-
+  public void testMeetingPartBuildResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(6, 2);
     app.getCreateMessage().fillBasicData("Сообщение о результатах проведения собрания участников строительства", "none");
@@ -95,8 +89,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 14)
   @Description("Тест создания и подписания Извещения участникам строительства о возможности предъявления денежного требования")
-  @Video public void testPartBuildMonetaryClaim() throws InterruptedException {
-
+  public void testPartBuildMonetaryClaim() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(6, 3);
     app.getCreateMessage()
@@ -107,8 +100,7 @@ public class MessageSignTest1 extends TestBase {
 
   @Test(priority = 15)
   @Description("Тест создания и подписания Сообщения о переходе права собственности на объект незавершенного строительства и прав на земельный участок")
-  @Video public void testTransferOwnershipRealEstate() throws InterruptedException {
-
+  public void testTransferOwnershipRealEstate() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(6, 4);
     app.getCreateMessage()

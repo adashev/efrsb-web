@@ -8,7 +8,7 @@ public class MessageDeletionTest extends TestBase {
 
   @Test(priority = 999)
   @Description("Тест удаления созданных сообщений в АРМ АУ")
-  @Video public void testMessageDeletion() throws Exception {
+  public void testMessageDeletion() throws Exception {
     for (int i = 0; i < 30; i++){
       app.getMessagesListPage().clickDeleteMessage();
     }
