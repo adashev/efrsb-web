@@ -60,9 +60,12 @@ public class ApplicationManager {
     } else {
       if ("local".equals(properties.getProperty("server.type"))) {
         if (browser.equals(BrowserType.FIREFOX)) {
-          optionsFirefox.setProfile(new ProfilesIni().getProfile("test"));//Webdriver
-          wd = new FirefoxDriver(optionsFirefox);
-          wd.manage().deleteAllCookies();
+          final FirefoxProfile profile1 = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
+          profile1.addExtension(new File("src/test/resources/blitz_smart_card_plugin-1.1.14-an+fx.xpi"));
+          wd = new FirefoxDriver(optionsFirefox.setProfile(profile1));
+          /*optionsFirefox.setProfile(new ProfilesIni().getProfile("test"));//Webdriver
+          wd = new FirefoxDriver(optionsFirefox);*/
+//        wd.manage().deleteAllCookies();
         } else if (browser.equals(BrowserType.CHROME)) {
           optionsChrome.addArguments("user-data-dir=C:/Users/adashev/AppData/Local/Google/Chrome/User Data/Default");
           wd = new ChromeDriver(optionsChrome);
@@ -72,7 +75,7 @@ public class ApplicationManager {
 
       } else if ("remote".equals(properties.getProperty("server.type"))) {
         if(browser.equals(BrowserType.FIREFOX)){
-          final FirefoxProfile profile = new FirefoxProfile(new File("src/test/resources/lwxxrqde.default"));
+          final FirefoxProfile profile = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
           capabilities = DesiredCapabilities.firefox();
           capabilities.setCapability(FirefoxDriver.PROFILE, profile);
           wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);

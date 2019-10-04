@@ -1,5 +1,0 @@
-library=
-name=NSS Internal PKCS #11 Module
-parameters=configdir='sql:C:\\Users\\adashev\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\LWXXRQ~1.DEF' certPrefix='' keyPrefix='' secmod='secmod.db' flags=optimizeSpace updatedir='' updateCertPrefix='' updateKeyPrefix='' updateid='' updateTokenDescription=''  manufacturerID='Mozilla.org' libraryDescription='Внутрен. крипто PSM' cryptoTokenDescription='Общ. криптослужбы' dbTokenDescription='Модуль защиты' cryptoSlotDescription='Внутренние криптослужбы PSM' dbSlotDescription='Закрытые ключи PSM' FIPSSlotDescription='FIPS 140 Службы крипто, ключей, сертиф.' FIPSTokenDescription='Модуль защиты (FIPS)' minPS=0
-NSS=trustOrder=75 cipherOrder=100 slotParams={0x00000001=[slotFlags=RSA,RC4,RC2,DES,DH,SHA1,MD5,MD2,SSL,TLS,AES,SHA256,SHA512,Camellia,SEED,RANDOM askpw=any timeout=30 ] }  Flags=internal,critical
-

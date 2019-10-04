@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -176,10 +177,9 @@ public class CreateMessage extends HelperBase {
     click(By.id(baseName +"btnToSign"));
   }
 
-  public void fillInformationAboutAuction() throws InterruptedException {
-    fillLocation();
-//    fillAuctionLot();
-  }
+  /*public void fillInformationAboutAuction() throws InterruptedException {
+    fillAuctionLot();
+  }*/
 
   @Step("ввести данные о месте проведения торгов")
   public void fillLocation(){
@@ -220,7 +220,7 @@ public class CreateMessage extends HelperBase {
     wd.switchTo().defaultContent();
   }
 
-  public void copyLot() {
+  public void copyLot() throws InterruptedException {
     wd.findElement(By.linkText("Скопировать лоты из сообщения")).click();
     wd.switchTo().frame(0);
     wd.findElement(By.cssSelector(".TextCenter:nth-child(2) > .CursorHand:nth-child(1)")).click();
@@ -229,6 +229,7 @@ public class CreateMessage extends HelperBase {
     wd.findElement(By.cssSelector(".TextCenter > input")).click();
     wd.findElement(By.cssSelector("#ctl00_cplhContent_divPublishedMessageSelect > input")).click();
     wd.switchTo().defaultContent();
+    Thread.sleep(300);
   }
 
   @Step("ввести данные о лоте (номер, описание)")
@@ -289,9 +290,10 @@ public class CreateMessage extends HelperBase {
     + "$get(\"ctl00_cplhContent_AuctionLot1_tbCodes\").value = res[1];"
     + "$get('ctl00_cplhContent_AuctionLot1_stbClassifierName').value = unescape(res[0]);"
     + "});";
-    Thread.sleep(1000);
-    ((JavascriptExecutor)wd).executeScript(code);//executeScript("SelectClassifier()")
-    Thread.sleep(2000);
+    Thread.sleep(3000);
+    WebElement element = wd.findElement(By.cssSelector("img[onclick='SelectClassifier();']"));
+    ((JavascriptExecutor)wd).executeScript(code, element);//executeScript("SelectClassifier()")
+    Thread.sleep(3000);
     switchFrame(1);
     click(By.xpath(".//*[@id='ctl00_cplhContent_radTreeView']/ul/li[1]/ul/li[2]//input"));
     click(By.id("ctl00_cplhContent_imgbtnSelect"));

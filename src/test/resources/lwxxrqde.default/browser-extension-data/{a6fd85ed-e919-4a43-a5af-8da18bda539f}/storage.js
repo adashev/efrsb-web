@@ -1,1 +1,0 @@
-{"updated":true,"size":{"height":859,"width":1224},"origin":{"top":135,"left":190}}

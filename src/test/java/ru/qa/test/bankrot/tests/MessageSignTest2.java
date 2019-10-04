@@ -61,8 +61,12 @@ public class MessageSignTest2 extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 0);
     app.getCreateMessage().fillBasicData("Объявление о проведении торгов", app.getHelperBase().formCurDate);
-    app.getCreateMessage().copyLot();
-    app.getCreateMessage().fillInformationAboutAuction();
+    if(app.browser.equals(BrowserType.FIREFOX)){
+      app.getCreateMessage().copyLot();
+    } else {
+      app.getCreateMessage().fillAuctionLot();
+    }
+    app.getCreateMessage().fillLocation();
     app.getCreateMessage().clickSignMessage();
     app.getHelperBase().closeAlert(app.getHelperBase().auctionNotif);
     app.getSignMessage().signMessage();
