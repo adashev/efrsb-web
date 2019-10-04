@@ -5,43 +5,6 @@ configurations {
     agent
 }
 
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile 'org.testng:testng:7.0.0'
-    compile project(':testng')
-    compile 'org.seleniumhq.selenium:selenium-java:3.9.1'
-    compile "log4j:log4j:1.2.17"
-    agent "org.aspectj:aspectjweaver:1.8.10"
-    implementation 'io.qameta.allure:allure-testng:2.12.1'
-}
-
-task testMessages(type: Test) {
-    useTestNG(){
-        suites 'src/test/resources/testng-messageCreateAndSign.xml'
-    }
-    if (project.hasProperty('browser')){
-        systemProperty 'browser', "${browser}"
-    }
-    if (project.hasProperty('target')){
-        systemProperty 'target', "${target}"
-    }
-    systemProperty 'allure.results.directory', 'build/allure-results'
-}
-
-testMessages.doFirst {
-    jvmArgs "-javaagent:${configurations.agent.singleFile}"
-}
-
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-
 buildscript {
     repositories {
         jcenter()
@@ -124,6 +87,44 @@ subprojects {
         }
     }
 }
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.testng:testng:6.9.9'
+    compile project(':testng')
+    compile 'org.seleniumhq.selenium:selenium-java:3.9.1'
+    agent "org.aspectj:aspectjweaver:1.8.10"
+    implementation 'io.qameta.allure:allure-testng:2.12.1'
+}
+
+task testMessages(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng-messageCreateAndSign.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
+    systemProperty 'allure.results.directory', 'build/allure-results'
+}
+
+testMessages.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+
+
 
 
 

@@ -17,3 +17,4 @@ gradle-app.setting
 /core/build/
 /remote/build/
 /testng/build/
+/allure-report/
