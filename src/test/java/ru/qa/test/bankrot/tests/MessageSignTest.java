@@ -26,7 +26,7 @@ public class MessageSignTest extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
     app.getCreateMessage()
-       .fillBasicData("Уведомление99 о получении требований кредитора", app.getHelperBase().formCurDate);
+       .fillBasicData("Уведомление о получении требований кредитора", app.getHelperBase().formCurDate);
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
