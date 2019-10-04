@@ -11,7 +11,7 @@ import static ru.qa.test.bankrot.appmanager.ApplicationManager.wd;
 
 //http://internetka.in.ua/selenium-screen-recordering/
 
-@Listeners({MyTestListener.class, VideoListener.class}) //
+@Listeners({MyTestListener.class}) // , VideoListener.class
 public class TestBase {
   protected final ApplicationManager app = new ApplicationManager(System
           .getProperty("browser", BrowserType.CHROME));

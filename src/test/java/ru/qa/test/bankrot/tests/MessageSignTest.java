@@ -22,7 +22,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
-  public void testReceivingCreditorDemand() throws InterruptedException {
+  @Video public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
     app.getCreateMessage()
@@ -33,7 +33,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 3)
   @Description("Тест создания и подписания Иного сообщения")
-  public void testMessageOther() throws InterruptedException {
+  @Video public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(2);
     app.getCreateMessage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
@@ -43,7 +43,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 4)
   @Description("Тест создания и подписания cообщения 'Аннулирование ранее опубликованного сообщения'")
-  public void testMessageAnnul() throws InterruptedException {
+  @Video public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(3);
     app.getCreateMessage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);

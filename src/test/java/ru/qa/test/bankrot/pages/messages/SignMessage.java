@@ -53,7 +53,7 @@ public class SignMessage extends HelperBase {
 
   @Step("выбрать сертификат")
   public void selectCertificate() throws InterruptedException {
-    Thread.sleep(1600);
+    Thread.sleep(3000);
     click(certificateLocator);
   }
 
