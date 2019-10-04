@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "expected [Сообщение сохранено!] but found [- Необходимо выбрать \"Скрыть текст аннулируемого сообщения\"\n]",
+      "children" : [ {
+        "name" : "Тест создания сообщений всех типов в АРМ АУ",
+        "uid" : "6a0ad389e9feb2c6",
+        "parentUid" : "5f70450fff651ce10b35a7bb84f94307",
+        "status" : "failed",
+        "time" : {
+          "start" : 1564405731238,
+          "stop" : 1564405737215,
+          "duration" : 5977
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "Аннулирование ранее опубликованного сообщения", "3", "0", "false" ]
+      } ],
+      "uid" : "5f70450fff651ce10b35a7bb84f94307"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

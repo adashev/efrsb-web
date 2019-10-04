@@ -1,0 +1,222 @@
+{
+  "uid" : "257b54b557c2883b",
+  "name" : "Тест создания сообщений всех типов в АРМ АУ",
+  "fullName" : "ru.qa.test.bankrot.tests.MessageCreationParamTest.testMessageCreation",
+  "historyId" : "cc1cac81b354caabad704ec7ef43d330",
+  "time" : {
+    "start" : 1564405717666,
+    "stop" : 1564405724452,
+    "duration" : 6786
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "refreshPageObject",
+    "time" : {
+      "start" : 1564405705554,
+      "stop" : 1564405705605,
+      "duration" : 51
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  }, {
+    "name" : "setUp",
+    "time" : {
+      "start" : 1564405691427,
+      "stop" : 1564405705524,
+      "duration" : 14097
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "нажать кнопку \"добавить сообщение\"",
+      "time" : {
+        "start" : 1564405718331,
+        "stop" : 1564405718771,
+        "duration" : 440
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "проверить открытие страницы создания сообщения",
+      "time" : {
+        "start" : 1564405718771,
+        "stop" : 1564405718830,
+        "duration" : 59
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "открыть справочник должников",
+      "time" : {
+        "start" : 1564405718830,
+        "stop" : 1564405719290,
+        "duration" : 460
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "выбрать должника",
+      "time" : {
+        "start" : 1564405719290,
+        "stop" : 1564405719565,
+        "duration" : 275
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "выбрать судебное дело",
+      "time" : {
+        "start" : 1564405719566,
+        "stop" : 1564405720220,
+        "duration" : 654
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "перейти в окно выбора типа сообщения",
+      "time" : {
+        "start" : 1564405720220,
+        "stop" : 1564405720746,
+        "duration" : 526
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 6,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "tearDown",
+    "time" : {
+      "start" : 1564405747534,
+      "stop" : 1564405748597,
+      "duration" : 1063
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 0,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "ru.qa.test.bankrot.tests.MessageCreationParamTest"
+  }, {
+    "name" : "testClass",
+    "value" : "ru.qa.test.bankrot.tests.MessageCreationParamTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testMessageCreation"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Suite1"
+  }, {
+    "name" : "suite",
+    "value" : "CreateMessagesTests"
+  }, {
+    "name" : "subSuite",
+    "value" : "ru.qa.test.bankrot.tests.MessageCreationParamTest"
+  }, {
+    "name" : "host",
+    "value" : "cpr-adashev2"
+  }, {
+    "name" : "thread",
+    "value" : "5528@cpr-adashev2.Test worker(10)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "Сообщение1"
+  }, {
+    "name" : "arg1",
+    "value" : "1"
+  }, {
+    "name" : "arg2",
+    "value" : "0"
+  }, {
+    "name" : "arg3",
+    "value" : "false"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "257b54b557c2883b.json",
+  "parameterValues" : [ "Сообщение1", "1", "0", "false" ]
+}

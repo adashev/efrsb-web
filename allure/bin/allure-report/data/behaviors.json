@@ -1,0 +1,83 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "testBeginAddMessage",
+    "uid" : "df88d98df13a789f",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1564405705744,
+      "stop" : 1564405706236,
+      "duration" : 492
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Тест создания сообщений всех типов в АРМ АУ",
+    "uid" : "ff2d4507404e40",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1564405706486,
+      "stop" : 1564405717466,
+      "duration" : 10980
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "Сообщение о судебном акте", "0", "0", "false" ]
+  }, {
+    "name" : "Тест создания сообщений всех типов в АРМ АУ",
+    "uid" : "257b54b557c2883b",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1564405717666,
+      "stop" : 1564405724452,
+      "duration" : 6786
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "Сообщение1", "1", "0", "false" ]
+  }, {
+    "name" : "Тест создания сообщений всех типов в АРМ АУ",
+    "uid" : "9bc8fbbac95ab0b",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1564405724484,
+      "stop" : 1564405731224,
+      "duration" : 6740
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "Сообщение2", "2", "0", "false" ]
+  }, {
+    "name" : "Тест создания сообщений всех типов в АРМ АУ",
+    "uid" : "6a0ad389e9feb2c6",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "failed",
+    "time" : {
+      "start" : 1564405731238,
+      "stop" : 1564405737215,
+      "duration" : 5977
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "Аннулирование ранее опубликованного сообщения", "3", "0", "false" ]
+  }, {
+    "name" : "Тест создания сообщений всех типов в АРМ АУ",
+    "uid" : "9c78c74b70db74c5",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1564405737267,
+      "stop" : 1564405747524,
+      "duration" : 10257
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "Сообщение4", "4", "0", "false" ]
+  } ]
+}

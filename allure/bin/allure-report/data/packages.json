@@ -1,0 +1,87 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "ru.qa.test.bankrot.tests.MessageCreationParamTest",
+    "children" : [ {
+      "name" : "testBeginAddMessage",
+      "uid" : "df88d98df13a789f",
+      "parentUid" : "a1fce32f53ee912d4667a9d5d761682a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405705744,
+        "stop" : 1564405706236,
+        "duration" : 492
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testMessageCreation",
+      "uid" : "ff2d4507404e40",
+      "parentUid" : "a1fce32f53ee912d4667a9d5d761682a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405706486,
+        "stop" : 1564405717466,
+        "duration" : 10980
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "Сообщение о судебном акте", "0", "0", "false" ]
+    }, {
+      "name" : "testMessageCreation",
+      "uid" : "257b54b557c2883b",
+      "parentUid" : "a1fce32f53ee912d4667a9d5d761682a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405717666,
+        "stop" : 1564405724452,
+        "duration" : 6786
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "Сообщение1", "1", "0", "false" ]
+    }, {
+      "name" : "testMessageCreation",
+      "uid" : "9bc8fbbac95ab0b",
+      "parentUid" : "a1fce32f53ee912d4667a9d5d761682a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405724484,
+        "stop" : 1564405731224,
+        "duration" : 6740
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "Сообщение2", "2", "0", "false" ]
+    }, {
+      "name" : "testMessageCreation",
+      "uid" : "6a0ad389e9feb2c6",
+      "parentUid" : "a1fce32f53ee912d4667a9d5d761682a",
+      "status" : "failed",
+      "time" : {
+        "start" : 1564405731238,
+        "stop" : 1564405737215,
+        "duration" : 5977
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "Аннулирование ранее опубликованного сообщения", "3", "0", "false" ]
+    }, {
+      "name" : "testMessageCreation",
+      "uid" : "9c78c74b70db74c5",
+      "parentUid" : "a1fce32f53ee912d4667a9d5d761682a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405737267,
+        "stop" : 1564405747524,
+        "duration" : 10257
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "Сообщение4", "4", "0", "false" ]
+    } ],
+    "uid" : "ru.qa.test.bankrot.tests.MessageCreationParamTest"
+  } ]
+}

@@ -1,0 +1,117 @@
+{
+  "1ea0dccffdaaa900ce5e55604bb900ea" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9bc8fbbac95ab0b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405724484,
+        "stop" : 1564405731224,
+        "duration" : 6740
+      }
+    } ]
+  },
+  "3e9ab48945d8cb8b99241b2b885b063d" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "df88d98df13a789f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405705744,
+        "stop" : 1564405706236,
+        "duration" : 492
+      }
+    } ]
+  },
+  "5ac8f5f873aaaa4e2c74f182c1ee3b94" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9c78c74b70db74c5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405737267,
+        "stop" : 1564405747524,
+        "duration" : 10257
+      }
+    } ]
+  },
+  "cc1cac81b354caabad704ec7ef43d330" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "257b54b557c2883b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405717666,
+        "stop" : 1564405724452,
+        "duration" : 6786
+      }
+    } ]
+  },
+  "fe579b405201457e7d256d972a16719f" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6a0ad389e9feb2c6",
+      "status" : "failed",
+      "statusDetails" : "expected [Сообщение сохранено!] but found [- Необходимо выбрать \"Скрыть текст аннулируемого сообщения\"\n]",
+      "time" : {
+        "start" : 1564405731238,
+        "stop" : 1564405737215,
+        "duration" : 5977
+      }
+    } ]
+  },
+  "1968ede1a5703dc900e24538fc8e8249" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ff2d4507404e40",
+      "status" : "passed",
+      "time" : {
+        "start" : 1564405706486,
+        "stop" : 1564405717466,
+        "duration" : 10980
+      }
+    } ]
+  }
+}

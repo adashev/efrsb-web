@@ -1,0 +1,61 @@
+[ {
+  "uid" : "ff2d4507404e40",
+  "name" : "Тест создания сообщений всех типов в АРМ АУ",
+  "time" : {
+    "start" : 1564405706486,
+    "stop" : 1564405717466,
+    "duration" : 10980
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9c78c74b70db74c5",
+  "name" : "Тест создания сообщений всех типов в АРМ АУ",
+  "time" : {
+    "start" : 1564405737267,
+    "stop" : 1564405747524,
+    "duration" : 10257
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "257b54b557c2883b",
+  "name" : "Тест создания сообщений всех типов в АРМ АУ",
+  "time" : {
+    "start" : 1564405717666,
+    "stop" : 1564405724452,
+    "duration" : 6786
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6a0ad389e9feb2c6",
+  "name" : "Тест создания сообщений всех типов в АРМ АУ",
+  "time" : {
+    "start" : 1564405731238,
+    "stop" : 1564405737215,
+    "duration" : 5977
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "9bc8fbbac95ab0b",
+  "name" : "Тест создания сообщений всех типов в АРМ АУ",
+  "time" : {
+    "start" : 1564405724484,
+    "stop" : 1564405731224,
+    "duration" : 6740
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "df88d98df13a789f",
+  "name" : "testBeginAddMessage",
+  "time" : {
+    "start" : 1564405705744,
+    "stop" : 1564405706236,
+    "duration" : 492
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
