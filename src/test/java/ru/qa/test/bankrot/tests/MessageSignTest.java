@@ -22,7 +22,6 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
-  @Video
   public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
