@@ -50,7 +50,7 @@ public class NewMessagePage extends HelperBase {
   }
 
   public void startCreateMessage() {
-//    gotoDirectoryDebtors(); // вызываем справочник должников
+//  gotoDirectoryDebtors(); // вызываем справочник должников
     selectLastDebtor(); // выбираем должника
     selectCourtCase(); // выбор Номера дела
     gotoDirectoryTypeMessage();// вызываем справочник типов сообщений. В справочнике мы сможем подсчитать группы сообщений и сообщений

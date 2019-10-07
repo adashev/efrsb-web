@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
 import java.util.HashSet;
@@ -190,7 +191,8 @@ public class CreateMessage extends HelperBase {
   @Step("ввести данные по лоту")
   public void fillAuctionLot() throws InterruptedException{
     click(By.xpath(String.format(".//*[@id='%supContent']/table/tbody/tr[2]//fieldset/input", baseName)));
-    wd.switchTo().frame(0);
+      wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+//    wd.switchTo().frame(0);
     type(By.id("ctl00_cplhContent_AuctionLot1_OrderTextBox"), "1");
     type(By.id("ctl00_cplhContent_AuctionLot1_TextTextBox"), "Описание");
     if(browser.equals(BrowserType.FIREFOX)){
@@ -222,10 +224,12 @@ public class CreateMessage extends HelperBase {
 
   public void copyLot() throws InterruptedException {
     wd.findElement(By.linkText("Скопировать лоты из сообщения")).click();
-    wd.switchTo().frame(0);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+//    wd.switchTo().frame(0);
     wd.findElement(By.cssSelector(".TextCenter:nth-child(2) > .CursorHand:nth-child(1)")).click();
     wd.switchTo().defaultContent();
-    wd.switchTo().frame(0);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+//    wd.switchTo().frame(0);
     wd.findElement(By.cssSelector(".TextCenter > input")).click();
     wd.findElement(By.cssSelector("#ctl00_cplhContent_divPublishedMessageSelect > input")).click();
     wd.switchTo().defaultContent();
@@ -234,7 +238,8 @@ public class CreateMessage extends HelperBase {
 
   @Step("ввести данные о лоте (номер, описание)")
   public void fillInfoAboutLot() {
-    wd.switchTo().frame(0);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+//    wd.switchTo().frame(0);
     type(By.id(tradeRes +"OrderTextBox"), "1");
     type(By.id(tradeRes +"DescriptionTextBox"), "Описан.");
   }
@@ -256,7 +261,8 @@ public class CreateMessage extends HelperBase {
 
   public void fillSaleOrderPledgedProperty() throws InterruptedException {
     click(By.cssSelector("td:nth-child(1) > .blockStyle > input"));
-    wd.switchTo().frame(0);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+//    wd.switchTo().frame(0);
     type(By.id("ctl00_cplhContent_ucLot_OrderTextBox"), "1");
     type(By.id("ctl00_cplhContent_ucLot_TextTextBox"), "описан лота");
     selectPropertyClassifier();

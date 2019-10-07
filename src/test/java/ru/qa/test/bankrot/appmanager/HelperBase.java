@@ -158,8 +158,9 @@ public class HelperBase {
   @Step("выбрать сообщение {target}")
   public void selectMessageFromTheList(String target) throws InterruptedException {
     click(By.cssSelector("img[title='Обзор']"));
-    wd.switchTo().frame(0);
-    Thread.sleep(200);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+    /*wd.switchTo().frame(0);
+    Thread.sleep(200);*/
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0){
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
       Thread.sleep(200);
@@ -178,8 +179,9 @@ public class HelperBase {
   @Step("выбрать сообщение {target}")
   public void selectMessageFromListWithConfirm(String target) throws InterruptedException {
     click(By.cssSelector("img[title='Обзор']"));
-    wd.switchTo().frame(0);
-    Thread.sleep(300);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+    /*wd.switchTo().frame(0);
+    Thread.sleep(300);*/
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0) {
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
     } else {
