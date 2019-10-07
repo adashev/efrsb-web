@@ -3,10 +3,10 @@
 <suite name="Suite1" verbose="1" >
     <test name="CreateAndSignMessagesTests" >
         <classes>
-            <class name="ru.qa.test.bankrot.tests.MessageSignTest"/>
+            <!--<class name="ru.qa.test.bankrot.tests.MessageSignTest"/>
             <class name="ru.qa.test.bankrot.tests.MessageSignTest1"/>
             <class name="ru.qa.test.bankrot.tests.MessageSignTest2"/>
-             <class name="ru.qa.test.bankrot.tests.MessageSignTest3"/>
+            <class name="ru.qa.test.bankrot.tests.MessageSignTest3"/>-->
             <class name="ru.qa.test.bankrot.tests.MessageDeletionTest"/>
         </classes>
     </test>

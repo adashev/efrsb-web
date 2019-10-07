@@ -31,7 +31,7 @@ public class MessagesListPage extends HelperBase {
   @Step("щелкнуть на ссылке 'Удалить'")
   public void clickDeleteMessage() throws InterruptedException {
     By locatorLink = By.xpath(String.format(delMess +"tr[%s]/td[9]/a[contains(., 'Удалить')]", Integer.toString(trDel)));
-    Thread.sleep(1700);
+    Thread.sleep(1900);
     if(wd.findElements(locatorLink).size() > 0) {
       String publisher = wd.findElement(By.xpath(String.format(delMess +"tr[%s]/td[7]", Integer.toString(trDel)))).getText();
       try {
