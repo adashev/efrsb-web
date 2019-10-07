@@ -40,7 +40,7 @@ public class MessageSignTest3 extends TestBase {
   }
 
   @Test(priority = 31)
-  @Description("Тест создания и подписания Судебного акта по результатам рассмотрения заявления об оспаривании сделки должника")
+  @Description("Тест создания и подписания Судебного акта по результатам рассм. заявления об оспаривании сделки должника")
   public void testActDealInvalid2() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(10, 1);
@@ -51,7 +51,7 @@ public class MessageSignTest3 extends TestBase {
   }
 
   @Test(priority = 32)
-  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассмотр. заявления об оспаривании сделки должника")
+  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассм. заявления об оспаривании сделки должника")
   public void testActReviewDealInvalid2() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(10, 2);
@@ -74,7 +74,7 @@ public class MessageSignTest3 extends TestBase {
   }
 
   @Test(priority = 34)
-  @Description("Тест создания и подписания ")
+  @Description("Тест создания и подписания Судебного акта по результатам рассм. заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков")
   public void testActPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 1);
@@ -86,7 +86,7 @@ public class MessageSignTest3 extends TestBase {
   }
 
   @Test(priority = 35)
-  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков")
+  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассм. заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков")
   public void testActReviewPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 2);

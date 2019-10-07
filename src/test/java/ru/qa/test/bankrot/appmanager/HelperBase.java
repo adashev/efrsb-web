@@ -178,14 +178,15 @@ public class HelperBase {
   public void selectMessageFromListWithConfirm(String target) throws InterruptedException {
     click(By.cssSelector("img[title='Обзор']"));
     wd.switchTo().frame(0);
-    if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0){
+    Thread.sleep(300);
+    if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0) {
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
-
     } else {
       listIsEmpty(target);
     }
-    click(By.cssSelector("input[data-element-type='btn-confirm-select']"));
-    Thread.sleep(100);
+    click(By.cssSelector("#ctl00_cplhContent_divPublishedMessageSelect>input"));
+    Thread.sleep(200);
     wd.switchTo().defaultContent();
+    Thread.sleep(200);
   }
 }
