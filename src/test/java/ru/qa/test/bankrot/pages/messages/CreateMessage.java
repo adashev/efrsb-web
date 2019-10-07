@@ -27,7 +27,7 @@ public class CreateMessage extends HelperBase {
   private String tradeRes = "ctl00_cplhContent_TradeResultLot1_";
   private String saleC = "_ctrl0_SaleContractResultMessage_SaleContractList_";
   private String obj ="_ObjectProxy_ctrl0_ObjectMessageProxy";
-  private String superv = "View1_ctrl0_BankruptSupervisoryPersonList_txt";
+  private String sprv = "View1_ctrl0_BankruptSupervisoryPersonList_txt";
   private String browser;
 
 
@@ -345,14 +345,14 @@ public class CreateMessage extends HelperBase {
     click(By.id(uMess+"DealInvalidMessage"+objP+"_ctrl0_DealParticipants_btnAddDealParticipant"));
   }
 
-  public void fillDataForDeclarationPersonDamages() {
-    type(By.id(uMess+"DeclarationPersonDamagesMessage"+objP+superv+"RussianCitizenCode"), "5904645570");
-    type(By.id(uMess+"DeclarationPersonDamagesMessage"+objP+superv+"Name"), "Наим. контролир. должника лица");
-    type(By.id(uMess+"DeclarationPersonDamagesMessage"+objP+superv+"ResponsibilityAmount"), "9500");
+  public void addDeclarationPerson(String type) {
+    type(By.id(uMess+"DeclarationPerson"+type+"Message"+objP+sprv+"RussianCitizenCode"), "5904645570");
+    type(By.id(uMess+"DeclarationPerson"+type+"Message"+objP+sprv+"Name"), "Наим. кон-лир. должника лица");
+    type(By.id(uMess+"DeclarationPerson"+type+"Message"+objP+sprv+"ResponsibilityAmount"), "9500");
     click(By.className("btnAddBankruptSupervisoryPerson"));
-
-    //View1_ctrl0_BankruptSupervisoryPersonList_txtName
   }
+
+
 }
 
 

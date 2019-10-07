@@ -159,9 +159,10 @@ public class HelperBase {
   public void selectMessageFromTheList(String target) throws InterruptedException {
     click(By.cssSelector("img[title='Обзор']"));
     wd.switchTo().frame(0);
+    Thread.sleep(200);
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0){
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
-      Thread.sleep(300);
+      Thread.sleep(200);
       wd.switchTo().defaultContent();
     } else {
       listIsEmpty(target);

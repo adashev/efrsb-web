@@ -1,6 +1,5 @@
 package ru.qa.test.bankrot.tests;
 
-import com.automation.remarks.video.annotations.Video;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
@@ -67,8 +66,8 @@ public class MessageSignTest3 extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 0);
     app.getCreateMessage()
-            .fillBasicData("Заявление о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForDeclarationPersonDamages();
+       .fillBasicData("Заявление о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", app.getHelperBase().formCurDate);
+    app.getCreateMessage().addDeclarationPerson("Damages");
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
@@ -79,7 +78,7 @@ public class MessageSignTest3 extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 1);
     app.getCreateMessage()
-            .fillBasicData("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", app.getHelperBase().formCurDate);
+       .fillBasicData("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", "none");
     app.getCreateMessage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
@@ -91,11 +90,49 @@ public class MessageSignTest3 extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 2);
     app.getCreateMessage()
-     .fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", app.getHelperBase().formCurDate);
+    .fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", "none");
     app.getCreateMessage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
+
+  @Test(priority = 36)
+  @Description("Тест создания и подписания Заявления о привлечении контролирующих должника лиц к субсидиарной ответственности")
+  public void testDeclarationPersonSubsidiary() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(11, 3);
+    app.getCreateMessage()
+    .fillBasicData("Заявление о привлечении контролирующих должника лиц к субсидиарной ответственности", "none");
+    app.getCreateMessage().addDeclarationPerson("Subsidiary");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 37)
+  @Description("Тест создания и подписания Судебного акта по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности")
+  public void testActPersonSubsidiary() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(11, 4);
+    app.getCreateMessage()
+    .fillBasicData("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности", "none");
+    app.getCreateMessage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 38)
+  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности")
+  public void testActReviewPersonSubsidiary() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(11, 5);
+    app.getCreateMessage()
+    .fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности", "none");
+    app.getCreateMessage().selectMessageFromTheList("для ссылки на судебный акт по результатам пересмотра рассмотрения");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+
 
 }
 

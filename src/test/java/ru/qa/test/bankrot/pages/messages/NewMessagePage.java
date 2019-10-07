@@ -50,13 +50,12 @@ public class NewMessagePage extends HelperBase {
   }
 
   public void startCreateMessage() {
-    gotoDirectoryDebtors(); // вызываем справочник должников
-    selectDebtor(); // выбираем должника
+//    gotoDirectoryDebtors(); // вызываем справочник должников
+    selectLastDebtor(); // выбираем должника
     selectCourtCase(); // выбор Номера дела
     gotoDirectoryTypeMessage();// вызываем справочник типов сообщений. В справочнике мы сможем подсчитать группы сообщений и сообщений
     createListGroups();
   }
-
 
   @Step("открыть справочник должников")
   public void gotoDirectoryDebtors() {
@@ -71,6 +70,12 @@ public class NewMessagePage extends HelperBase {
     wait.until((d) -> !wd.findElement(By.xpath("//table[2]/tbody/tr[3]/td[1]")).getText().equals(""));//ждем загрузки данных в таблицу
     click(By.xpath("//table[2]/tbody/tr[3]/td[1]"));
     wait.until((d) -> wd.switchTo().defaultContent());
+  }
+
+  @Step("выбрать должника из списка 'Последние должники'")
+  public void selectLastDebtor() {
+    click(By.xpath(contentPlace+"InsolventPicker_LastInsolventsList']"));
+    click(By.xpath(contentPlace+"InsolventPicker_LastInsolventsList']/option[2]"));
   }
 
   @Step("выбрать судебное дело")
