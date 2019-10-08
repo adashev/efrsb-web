@@ -40,11 +40,11 @@ public class MessagesListPage extends HelperBase {
         wait.until((d) -> publisher.equals("Анисимов П. И."));
         click(locatorLink);
       } catch (NullPointerException e){
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
         wait.until((d) -> publisher.equals("Анисимов П. И."));
         click(locatorLink);
       } try {
-        closeAlertWithPause("Вы действительно хотите удалить сообщение?");
+        closeAlert("Вы действительно хотите удалить сообщение?");
       } catch (WebDriverException e1) {
         System.out.println("не удалось закрыть алерт");
       }

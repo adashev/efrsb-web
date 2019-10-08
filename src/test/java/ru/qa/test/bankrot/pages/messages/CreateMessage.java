@@ -26,7 +26,7 @@ public class CreateMessage extends HelperBase {
   private By periodDisqualif = By
        .id(uMess +"DisqualificationArbitrationManager2Message"+ objP +"_ctrl0_Duration_ObjectProxy_ctrl0_tbYear");
   private String tradeRes = "ctl00_cplhContent_TradeResultLot1_";
-  private String saleC = "_ctrl0_SaleContractResultMessage_SaleContractList_";
+  private String slC = "_ctrl0_SaleContractResultMessage_SaleContractList_";
   private String obj ="_ObjectProxy_ctrl0_ObjectMessageProxy";
   private String sprv = "View1_ctrl0_BankruptSupervisoryPersonList_txt";
   private String browser;
@@ -319,12 +319,14 @@ public class CreateMessage extends HelperBase {
   }
 
   @Step("ввести сведения о заключении договора" )
-  public void fillDataForSaleContractResult() throws InterruptedException {
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+saleC+"txtLotNumber"), "4");
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+saleC+"txtContractNumber"),"5");
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+saleC+"txtPropertyPurchasePrice"),"9500");
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+saleC+"txtPurchaserName"), "Наим. покупат.");
-    click(By.id(uMess+"SaleContractResultMessageNew"+obj+saleC+"btnAddSaleContract"));
+  public void fillDataForSaleContractResult() {
+    wait
+  .until(ExpectedConditions.visibilityOfElementLocated(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"btnAddSaleContract")));
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtLotNumber"), "4");
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtContractNumber"),"5");
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtPropertyPurchasePrice"),"9500");
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtPurchaserName"), "Наим. покупат.");
+    click(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"btnAddSaleContract"));
   }
 
   @Step("задать срок направления заявлений о согласии")
