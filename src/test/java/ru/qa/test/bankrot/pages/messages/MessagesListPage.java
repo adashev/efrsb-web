@@ -2,6 +2,7 @@ package ru.qa.test.bankrot.pages.messages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
 import io.qameta.allure.Step;
@@ -31,14 +32,15 @@ public class MessagesListPage extends HelperBase {
   @Step("щелкнуть на ссылке 'Удалить'")
   public void clickDeleteMessage() throws InterruptedException {
     By locatorLink = By.xpath(String.format(delMess +"tr[%s]/td[9]/a[contains(., 'Удалить')]", Integer.toString(trDel)));
-    Thread.sleep(1900);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(addMessButton));
+//    Thread.sleep(1900);
     if(wd.findElements(locatorLink).size() > 0) {
       String publisher = wd.findElement(By.xpath(String.format(delMess +"tr[%s]/td[7]", Integer.toString(trDel)))).getText();
       try {
         wait.until((d) -> publisher.equals("Анисимов П. И."));
         click(locatorLink);
       } catch (NullPointerException e){
-        Thread.sleep(1300);
+        Thread.sleep(1000);
         wait.until((d) -> publisher.equals("Анисимов П. И."));
         click(locatorLink);
       } try {

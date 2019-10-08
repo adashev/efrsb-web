@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
 
@@ -53,7 +54,8 @@ public class SignMessage extends HelperBase {
 
   @Step("выбрать сертификат")
   public void selectCertificate() throws InterruptedException {
-    Thread.sleep(3000);
+//    Thread.sleep(3000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(certificateLocator));
     click(certificateLocator);
   }
 
