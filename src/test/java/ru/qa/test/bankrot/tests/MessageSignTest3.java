@@ -132,6 +132,43 @@ public class MessageSignTest3 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
+  @Test(priority = 39)
+  @Description("Тест создания и подписания Сообщения о праве кредитора выбрать способ распоряжения правом требования о привлечении к субсидиарной ответственности")
+  public void testCreditorChoiceRightSubsidiary() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(11, 6);
+    app.getCreateMessage()
+    .fillBasicData("Сообщение о праве кредитора выбрать способ распоряжения правом требования о привлечении к субсидиарной ответственности", app.getHelperBase().formCurDate);
+    app.getCreateMessage().selectMessageFromTheList("для ссылки на сообщение о субсидиарной ответственности");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 40)
+  @Description("Тест создания и подписания Предложения о присоединении к заявлению о привлечении контролирующих лиц должника к субсидиарной ответственности")
+  public void testAccessionDeclarationSubsidiary() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(11, 7);
+    app.getCreateMessage()
+    .fillBasicData("Предложение о присоединении к заявлению о привлечении контролирующих лиц должника к субсидиарной ответственности", "none");
+    app.getCreateMessage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 41)
+  @Description("Тест создания и подписания Предложения о присоединении к заявлению о привлечении контролирующих лиц должника к субсидиарной ответственности")
+  public void test() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(11, 7);
+    app.getCreateMessage()
+            .fillBasicData("Предложение о присоединении к заявлению о привлечении контролирующих лиц должника к субсидиарной ответственности", "none");
+    app.getCreateMessage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+
 
 
 }

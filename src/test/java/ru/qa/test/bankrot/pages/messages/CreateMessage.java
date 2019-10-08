@@ -191,8 +191,7 @@ public class CreateMessage extends HelperBase {
   @Step("ввести данные по лоту")
   public void fillAuctionLot() throws InterruptedException{
     click(By.xpath(String.format(".//*[@id='%supContent']/table/tbody/tr[2]//fieldset/input", baseName)));
-      wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
-//    wd.switchTo().frame(0);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
     type(By.id("ctl00_cplhContent_AuctionLot1_OrderTextBox"), "1");
     type(By.id("ctl00_cplhContent_AuctionLot1_TextTextBox"), "Описание");
     if(browser.equals(BrowserType.FIREFOX)){
@@ -207,12 +206,11 @@ public class CreateMessage extends HelperBase {
     wd.switchTo().defaultContent();
   }
 
-
-
   public void fillDataForTradeResult() throws InterruptedException {
     copyLot();
     click(By.xpath(".//*[@id='LotsClientTable']/tr[2]/td[1]"));
-    wd.switchTo().frame(0);
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+//    wd.switchTo().frame(0);
     /*click(By.cssSelector("td:nth-child(1) > .blockStyle > input"));
     fillInfoAboutLot();
     selectPropertyClassifier();*/
@@ -322,11 +320,11 @@ public class CreateMessage extends HelperBase {
   public void fillDataForSaleContractResult() {
     wait
   .until(ExpectedConditions.visibilityOfElementLocated(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"btnAddSaleContract")));
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtLotNumber"), "4");
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtContractNumber"),"5");
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtPropertyPurchasePrice"),"9500");
-    type(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"txtPurchaserName"), "Наим. покупат.");
-    click(By.id(uMess+"SaleContractResultMessageNew"+obj+ slC +"btnAddSaleContract"));
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtLotNumber"), "4");
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtContractNumber"),"5");
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtPropertyPurchasePrice"),"9500");
+    type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtPurchaserName"), "Наим. покупат.");
+    click(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"btnAddSaleContract"));
   }
 
   @Step("задать срок направления заявлений о согласии")
@@ -361,6 +359,13 @@ public class CreateMessage extends HelperBase {
   }
 
 
+  public void fillDataForAppointAdministration() {
+    type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbActName"), "Акт о назначении");
+    type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbDecisionNumber"), "8");
+//
+
+
+  }
 }
 
 
