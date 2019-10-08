@@ -22,7 +22,27 @@ public class MessageSignTest4 extends TestBase {
   public void testIntentionCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 1);
-    app.getCreateMessage().fillBasicData("Сообщение о намерении исполнить обязательства кредитной организации", app.getHelperBase().formCurDate);
+    app.getCreateMessage().fillBasicData("Сообщение о намерении исполнить обязательства кредитной организации", "none");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 44)
+  @Description("Тест создания и подписания Сообщения о признании исполнения заявителем обязательств кредитной организации несостоявшимся")
+  public void testLiabilitiesCreditOrg() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(12, 2);
+    app.getCreateMessage().fillBasicData("Сообщение о признании исполнения заявителем обязательств кредитной организации несостоявшимся", "none");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 45)
+  @Description("Тест создания и подписания Сообщения об исполнении обязательств кредитной организации")
+  public void testPerformanceCreditOrg() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(12, 3);
+    app.getCreateMessage().fillBasicData("Сообщение об исполнении обязательств кредитной организации", "none");
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
