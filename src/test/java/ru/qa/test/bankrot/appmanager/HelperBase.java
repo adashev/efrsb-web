@@ -161,7 +161,7 @@ public class HelperBase {
     wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0){
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
-      Thread.sleep(200);
+      Thread.sleep(500);
       wd.switchTo().defaultContent();
     } else {
       listIsEmpty(target);

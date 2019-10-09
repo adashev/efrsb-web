@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class MessageSignTest4 extends TestBase {
 
-  @Test(priority = 42)
+  @Test(priority = 41)
   @Description("Тест создания и подписания Решения о назначении временной администрации")
   public void testAppointAdministration() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -17,7 +17,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 43)
+  @Test(priority = 42)
   @Description("Тест создания и подписания Сообщения о намерении исполнить обязательства кредитной организации")
   public void testIntentionCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -27,7 +27,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 44)
+  @Test(priority = 43)
   @Description("Тест создания и подписания Сообщения о признании исполнения заявителем обязательств кредитной организации несостоявшимся")
   public void testLiabilitiesCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -37,7 +37,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 45)
+  @Test(priority = 44)
   @Description("Тест создания и подписания Сообщения об исполнении обязательств кредитной организации")
   public void testPerformanceCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -47,7 +47,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 46)
+  @Test(priority = 45)
   @Description("Тест создания и подписания Сведений о смете текущих расходов кредитной организации или иной финансовой организации")
   public void testEstimatesCurrentExpenses() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -57,7 +57,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 47)
+  @Test(priority = 46)
   @Description("Тест создания и подписания Сведений о скорректированной смете текущих расходов кредитной организации или иной финансовой организации")
   public void testChangeEstimatesCurrentExpenses() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -68,7 +68,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 48)
+  @Test(priority = 47)
   @Description("Тест создания и подписания Сведений о порядке и сроках расчетов с кредиторами")
   public void testOrderAndTimingCalculations() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -78,7 +78,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 49)
+  @Test(priority = 48)
   @Description("Тест создания и подписания Информации о ходе конкурсного производства")
   public void testInformationAboutBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -88,7 +88,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 50)
+  @Test(priority = 49)
   @Description("Тест создания и подписания Сведений об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации")
   public void testEstimatesAndUnsoldAssets() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -98,7 +98,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 51)
+  @Test(priority = 50)
   @Description("Тест создания и подписания Сообщения о начале расчетов")
   public void testStartSettlement() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -108,7 +108,7 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 52)
+  @Test(priority = 51)
   @Description("Тест создания и подписания Сведений о ходе инвентаризации имущества должника")
   public void testProcessInventoryDebtor() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
