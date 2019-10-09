@@ -108,6 +108,15 @@ public class MessageSignTest4 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
+  @Test(priority = 52)
+  @Description("Тест создания и подписания Сведений о ходе инвентаризации имущества должника")
+  public void testProcessInventoryDebtor() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(12, 10);
+    app.getCreateMessage().fillBasicData("Сведения о ходе инвентаризации имущества должника", "none");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
 
 
 }

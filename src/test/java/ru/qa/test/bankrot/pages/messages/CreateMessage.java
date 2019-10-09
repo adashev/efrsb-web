@@ -358,13 +358,13 @@ public class CreateMessage extends HelperBase {
     click(By.className("btnAddBankruptSupervisoryPerson"));
   }
 
-
   public void fillDataForAppointAdministration() {
     type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbActName"), "Акт о назначении");
     type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbDecisionNumber"), "8");
-//
+  }
 
-
+  public void fillDataForViewDraftRestructuringPlan() {
+    type(By.id(uMess+"ViewDraftRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
   }
 }
 
