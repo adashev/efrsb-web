@@ -72,9 +72,11 @@ public class CreateMessage extends HelperBase {
 
   @Step("заполнить поле 'Адрес для корреспонденции'")
   public void setCorrAddress() {
-    click(corrAddress);
-    wd.findElement(corrAddress).clear();
-    wd.findElement(corrAddress).sendKeys("А.к1");
+    if(wd.findElements(corrAddress).size() > 0){
+      click(corrAddress);
+      wd.findElement(corrAddress).clear();
+      wd.findElement(corrAddress).sendKeys("А.к1");
+    }
   }
 
   @Step("выставить признак 'Скрыть текст аннулируемого сообщения'")

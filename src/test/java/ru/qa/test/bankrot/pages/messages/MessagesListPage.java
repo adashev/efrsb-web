@@ -34,12 +34,12 @@ public class MessagesListPage extends HelperBase {
     By locatorLink = By.xpath(String.format(delMess +"tr[%s]/td[9]/a[contains(., 'Удалить')]", Integer.toString(trDel)));
     wait.until(ExpectedConditions.visibilityOfElementLocated(addMessButton));
     if(wd.findElements(locatorLink).size() > 0) {
-      String publisher = wd.findElement(By.xpath(String.format(delMess +"tr[%s]/td[7]", Integer.toString(trDel)))).getText();
+//   String publisher = wd.findElement(By.xpath(String.format(delMess +"tr[%s]/td[7]", Integer.toString(trDel)))).getText();
       try {
-        wait.until((d) -> publisher.equals("Анисимов П. И."));
+//        wait.until((d) -> publisher.equals("Анисимов П. И."));
         click(locatorLink);
       } catch (NullPointerException e){
-        wait.until((d) -> publisher.equals("Анисимов П. И."));
+//        wait.until((d) -> publisher.equals("Анисимов П. И."));
         click(locatorLink);
       } try {
         closeAlert("Вы действительно хотите удалить сообщение?");

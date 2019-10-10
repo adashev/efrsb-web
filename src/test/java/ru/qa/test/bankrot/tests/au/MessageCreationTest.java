@@ -1,7 +1,8 @@
-package ru.qa.test.bankrot.tests;
+package ru.qa.test.bankrot.tests.au;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
+import ru.qa.test.bankrot.tests.TestBase;
 
 import java.util.ArrayList;
 import java.util.Iterator;

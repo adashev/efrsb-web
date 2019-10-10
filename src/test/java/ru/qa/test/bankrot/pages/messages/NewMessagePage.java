@@ -44,9 +44,9 @@ public class NewMessagePage extends HelperBase {
   public void startCreateMessAndSelectGroup(int numbGroup) throws InterruptedException {
     startCreateMessage();
     selectGroup(numbGroup);
-    if(numbGroup == 2) {
+    /*if(numbGroup == 2) {
       closeAlert("Данный тип сообщения предназначен только для публикации не типизированных ЕФРСБ сведений, и для него невозможно будет указать связь с последующими сообщениями или опубликовать связанную информацию.");
-    }
+    }*/
   }
 
   public void startCreateMessage() {
@@ -99,7 +99,17 @@ public class NewMessagePage extends HelperBase {
     Thread.sleep(250);
     createListMessages(numberGroup);//создали/воссоздали список сообщений текущей группы
     wait.until(ExpectedConditions.elementToBeClickable(listGroups.get(numberGroup)));
+    boolean b = "Иное сообщение".equals(listGroups.get(numberGroup).getText());
     listGroups.get(numberGroup).click();
+    Thread.sleep(150);
+    if(b){
+      Alert alert = wd.switchTo().alert();
+      String text = alert.getText();
+      assertEquals(text, "Данный тип сообщения предназначен только для публикации не типизированных ЕФРСБ сведений, и для него невозможно будет указать связь с последующими сообщениями или опубликовать связанную информацию.");
+      alert.accept();
+      wait.until((d) -> wd.switchTo().defaultContent());
+//      closeAlert("");
+    }
   }
 
   public void selectMessageAndGoNext(int numGroup, int numMessage) throws InterruptedException {

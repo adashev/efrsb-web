@@ -104,9 +104,9 @@ dependencies {
 
 }
 
-task testMessages(type: Test) {
+task testMessagesAU(type: Test) {
     useTestNG(){
-        suites 'src/test/resources/testng-messageCreateAndSign.xml'
+        suites 'src/test/resources/testng-messageSign-AU.xml'
     }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"
@@ -114,12 +114,38 @@ task testMessages(type: Test) {
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
     }
+    if (project.hasProperty('publisher')){
+        systemProperty 'publisher', "${publisher}"
+    }
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-testMessages.doFirst {
+testMessagesAU.doFirst {
     jvmArgs "-javaagent:${configurations.agent.singleFile}"
 }
+
+task testMessages_OT_UR(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng-messageSign-OT-UR.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('publisher')){
+        systemProperty 'publisher', "${publisher}"
+    }
+    systemProperty 'allure.results.directory', 'build/allure-results'
+}
+
+testMessages_OT_UR.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+
+
 
 
 tasks.withType(JavaCompile) {

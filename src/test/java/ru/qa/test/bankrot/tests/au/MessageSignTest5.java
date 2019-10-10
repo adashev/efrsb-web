@@ -1,7 +1,8 @@
-package ru.qa.test.bankrot.tests;
+package ru.qa.test.bankrot.tests.au;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
+import ru.qa.test.bankrot.tests.TestBase;
 
 public class MessageSignTest5 extends TestBase {
 

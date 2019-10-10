@@ -1,8 +1,9 @@
-package ru.qa.test.bankrot.tests;
+package ru.qa.test.bankrot.tests.au;
 
 import com.automation.remarks.video.annotations.Video;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
+import ru.qa.test.bankrot.tests.TestBase;
 
 public class MessageSignTest1 extends TestBase {
   @Test(priority = 7)

@@ -1,8 +1,9 @@
-package ru.qa.test.bankrot.tests;
+package ru.qa.test.bankrot.tests.au;
 
 import io.qameta.allure.Description;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.Test;
+import ru.qa.test.bankrot.tests.TestBase;
 
 public class MessageSignTest4 extends TestBase {
 

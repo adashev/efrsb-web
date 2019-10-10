@@ -1,10 +1,11 @@
-package ru.qa.test.bankrot.tests;
+package ru.qa.test.bankrot.tests.au;
 
 import com.automation.remarks.testng.VideoListener;
 import com.automation.remarks.video.annotations.Video;
 import io.qameta.allure.Description;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import ru.qa.test.bankrot.tests.TestBase;
 
 
 public class MessageSignTest extends TestBase {
@@ -15,6 +16,7 @@ public class MessageSignTest extends TestBase {
     app.getNewMessagePage().selectMessageOptionsAndGoNext(0);
     app.getCreateMessage().fillBasicData("Сообщение о судебном акте", app.getHelperBase().formCurDate);
     app.getCreateMessage().selectTypeArbitralDecree();
+//  app.getCreateMessage().clickSaveMessAndCloseAlert();
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
@@ -34,7 +36,7 @@ public class MessageSignTest extends TestBase {
   @Description("Тест создания и подписания Иного сообщения")
   public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageOptionsAndGoNext(2);//для ОТ - 0,  для АУ - 2
+    app.getNewMessagePage().selectMessageOptionsAndGoNext(2); // для ОТ - 0,  для АУ - 2
     app.getCreateMessage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
