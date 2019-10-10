@@ -91,7 +91,7 @@ public class NewMessagePage extends HelperBase {
   }
 
   public void createListGroups()  {
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathMessageTypeTree+"/ul/li[12]/div/span[2]")));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathMessageTypeTree+"/ul/li[3]/div/span[2]")));
     listGroups = wd.findElements(By.xpath(xpathMessageTypeTree+"/ul/li/div/span[2]"));// создаем список типов сообщений
   }
 
@@ -119,7 +119,7 @@ public class NewMessagePage extends HelperBase {
     listMessage = wd.findElements(By.xpath(xpathMessageTypeTree+"/ul/li["+(i+1)+"]/ul/li/div/span[2]"));
   }
 
-  @Step("нажать на кнопку 'Далее'" ) //нажать кнопку "Далее"
+  @Step("нажать на кнопку 'Далее'") //нажать кнопку "Далее"
   public void nextButton() throws InterruptedException {
     Thread.sleep(60);
     wait.until((d) -> wd.switchTo().defaultContent());

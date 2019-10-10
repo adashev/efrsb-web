@@ -15,14 +15,13 @@ public class MessageSignTest extends TestBase {
     app.getNewMessagePage().selectMessageOptionsAndGoNext(0);
     app.getCreateMessage().fillBasicData("Сообщение о судебном акте", app.getHelperBase().formCurDate);
     app.getCreateMessage().selectTypeArbitralDecree();
-//    app.getCreateMessage().clickSaveMessAndCloseAlert();
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
 
   @Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
-  @Video public void testReceivingCreditorDemand() throws InterruptedException {
+  public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
     app.getCreateMessage()
@@ -33,9 +32,9 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 3)
   @Description("Тест создания и подписания Иного сообщения")
-  @Video public void testMessageOther() throws InterruptedException {
+  public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageOptionsAndGoNext(2);
+    app.getNewMessagePage().selectMessageOptionsAndGoNext(2);//для ОТ - 0,  для АУ - 2
     app.getCreateMessage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
@@ -43,7 +42,7 @@ public class MessageSignTest extends TestBase {
 
   @Test(priority = 4)
   @Description("Тест создания и подписания cообщения 'Аннулирование ранее опубликованного сообщения'")
-  @Video public void testMessageAnnul() throws InterruptedException {
+  public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(3);
     app.getCreateMessage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
