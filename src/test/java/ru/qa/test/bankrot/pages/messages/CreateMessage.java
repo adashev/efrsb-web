@@ -366,6 +366,11 @@ public class CreateMessage extends HelperBase {
   public void fillDataForViewDraftRestructuringPlan() {
     type(By.id(uMess+"ViewDraftRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
   }
+
+  public void fillDataForViewExecRestructuringPlan() {
+    type(By.id(uMess+"ViewExecRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
+//_ctrl0_txtPlaceOfAcquaintance
+  }
 }
 
 

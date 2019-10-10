@@ -16,16 +16,51 @@ public class MessageSignTest5 extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  /*@Test(priority = 53)
-  @Description("Тест создания и подписания ")
-  public void test---() throws InterruptedException {
+  @Test(priority = 53)
+  @Description("Тест создания и подписания Сведений о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации")
+  public void testViewExecRestructuringPlan() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(13, 1);
-    app.getCreateMessage().fillBasicData("и", "none");
-
+    app.getCreateMessage().fillBasicData("Сведения о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации",
+         app.getHelperBase().formCurDate);
+    app.getCreateMessage().fillDataForViewExecRestructuringPlan();
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
-  }*/
+  }
+
+  @Test(priority = 54)
+  @Description("Тест создания и подписания Сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
+  public void testDeliberateBankruptcy() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(14, 0);
+    app.getCreateMessage().fillBasicData("Сообщение о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 55)
+  @Description("Тест создания и подписания Сообщения об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
+  public void testCancelDeliberateBankruptcy() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(14, 1);
+    app.getCreateMessage().fillBasicData("Сообщение об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
+    app.getCreateMessage().selectMessageFromTheList("для отмены");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+  @Test(priority = 56)
+  @Description("Тест создания и подписания Сообщения об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
+  public void testChangeDeliberateBankruptcy() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageAndGoNext(14, 2);
+    app.getCreateMessage().fillBasicData("Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
+    app.getCreateMessage().selectMessageFromTheList("для изменения");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
+
+
 
 
 }

@@ -117,8 +117,6 @@ public class MessageSignTest4 extends TestBase {
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
-
-
 }
 
 
