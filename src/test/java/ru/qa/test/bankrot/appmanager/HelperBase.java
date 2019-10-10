@@ -71,16 +71,6 @@ public class HelperBase {
     }
   }
 
-  @Step("закрыть алерт \"{textAlertArg}\"")
-  public void closeAlertWithPause(String textAlertArg) throws InterruptedException {
-    Thread.sleep(250);
-    Alert alert = wait.until((d) -> wd.switchTo().alert());
-    String text = alert.getText();
-    assertEquals(text, textAlertArg);
-    alert.accept();
-    wait.until((d) -> wd.switchTo().defaultContent());
-  }
-
   @Step("закрыть алерт \"{textAlert}\"")
   public void closeAlert(String textAlert) throws InterruptedException {
     Thread.sleep(70);

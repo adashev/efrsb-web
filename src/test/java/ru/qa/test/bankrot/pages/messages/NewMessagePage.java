@@ -43,7 +43,7 @@ public class NewMessagePage extends HelperBase {
 
   public void startCreateMessAndSelectGroup(int numbGroup) throws InterruptedException {
     startCreateMessage();
-    selectGroup(numbGroup) ;
+    selectGroup(numbGroup);
     if(numbGroup == 2) {
       closeAlert("Данный тип сообщения предназначен только для публикации не типизированных ЕФРСБ сведений, и для него невозможно будет указать связь с последующими сообщениями или опубликовать связанную информацию.");
     }
@@ -95,7 +95,8 @@ public class NewMessagePage extends HelperBase {
     listGroups = wd.findElements(By.xpath(xpathMessageTypeTree+"/ul/li/div/span[2]"));// создаем список типов сообщений
   }
 
-  public void selectGroup(int numberGroup) {
+  public void selectGroup(int numberGroup) throws InterruptedException {
+    Thread.sleep(250);
     createListMessages(numberGroup);//создали/воссоздали список сообщений текущей группы
     wait.until(ExpectedConditions.elementToBeClickable(listGroups.get(numberGroup)));
     listGroups.get(numberGroup).click();
@@ -125,10 +126,10 @@ public class NewMessagePage extends HelperBase {
     try {
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contentPlace + "SelectImageButton']")));
       actions.moveToElement(wd.findElement(By.xpath(contentPlace + "SelectImageButton']"))).build().perform();
-      click(By.xpath(contentPlace + "SelectImageButton']"));
+      click(By.xpath(contentPlace+"SelectImageButton']"));
     } catch (WebDriverException e) {
       Thread.sleep(500);
-      click(By.xpath(contentPlace + "SelectImageButton']"));
+      click(By.xpath(contentPlace+"SelectImageButton']"));
     }
   }
 }
