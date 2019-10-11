@@ -15,8 +15,9 @@ import static ru.qa.test.bankrot.appmanager.ApplicationManager.wd;
 public class TestBase {
   protected final ApplicationManager app = new ApplicationManager(System
           .getProperty("browser", BrowserType.CHROME));
-                          // CHROME  FIREFOX
-  //(alwaysRun = true)
+                      // CHROME  FIREFOX
+
+
   @BeforeTest(description = "Инициализация браузера и авторизация в АРМ")
   @Parameters("browserParal")
   public void setUp(ITestContext context, @Optional("chrome") String browserParal) throws Exception {
@@ -26,15 +27,14 @@ public class TestBase {
 
   @BeforeClass
   public void setClass() {
-    app.refreshPageObjects();   }
-
-
-  @AfterMethod
-  public void returnMessagesList() { //вернуться на страницу со списком сообщений
-    wd.get(String
-      .format("http://bankruptcytest.devel.ifx/BackOffice/%s/MessagesList.aspx", app.propertiesRole.getProperty("url.section")));
+    app.refreshPageObjects();
   }
 
+  @AfterMethod
+  public void returnMessagesList() throws InterruptedException { //вернуться на страницу со списком сообщений
+    Thread.sleep(200);
+    wd.get(String.format("http://bankruptcytest.devel.ifx/BackOffice/%s/MessagesList.aspx", app.urlSection));
+  }
 
   @AfterTest(description = "Закрыть браузер")
   public void tearDown() {

@@ -21,7 +21,7 @@ public class MessageSignTest extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 2)
+  /*@Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
   public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -32,7 +32,7 @@ public class MessageSignTest extends TestBase {
     app.getSignMessage().signMessage();
   }
 
-  @Test(priority = 3)
+  /*@Test(priority = 3)
   @Description("Тест создания и подписания Иного сообщения")
   public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -75,7 +75,7 @@ public class MessageSignTest extends TestBase {
     app.getCreateMessage().setPeriodOfDisqualification();
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
-  }
+  }*/
 }
 
 

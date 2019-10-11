@@ -38,6 +38,7 @@ public class ApplicationManager {
   public CreateMessage createMessage;
   public SignMessage signMessage;
   public String certificateName;
+  public static String urlSection;
 
 
   public ApplicationManager(String browser) {
@@ -53,10 +54,11 @@ public class ApplicationManager {
 
     String contur = System.getProperty("contur", "test");
     propertiesContour.load(new FileReader(new File(String.format("config/conturs/%s.properties", contur))));
+    certificateName = propertiesContour.getProperty("certificate");
 
     String role = System.getProperty("role", "AU");
     propertiesRole.load(new FileReader(new File(String.format("config/roles/%s.properties", role))));
-    certificateName = propertiesContour.getProperty("certificate");
+    urlSection = propertiesRole.getProperty("url.section");
 
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("unexpectedAlertBehaviour", "accept");
