@@ -25,7 +25,7 @@ public class MessagesListPage extends HelperBase {
     if (wd.findElements(By.className("TelerikModalOverlay")).size() > 0) {
       actions.moveToElement(wd.findElement(By.className("TelerikModalOverlay"))).click().perform();
     }
-//  actions.moveToElement(wd.findElement(addMessButton)).build().perform();
+    actions.moveToElement(wd.findElement(addMessButton)).build().perform();
     click(addMessButton);
   }
 

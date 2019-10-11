@@ -31,8 +31,8 @@ public class TestBase {
 
   @AfterMethod
   public void returnMessagesList() { //вернуться на страницу со списком сообщений
-//  wd.get(app.properties.getProperty("web.baseUrl")+"BackOffice/ArbitrManager/MessagesList.aspx");
-    wd.get("http://bankruptcytest.devel.ifx/BackOffice/ArbitrManager/MessagesList.aspx");
+    wd.get(String
+      .format("http://bankruptcytest.devel.ifx/BackOffice/%s/MessagesList.aspx", app.propertiesRole.getProperty("url.section")));
   }
 
 

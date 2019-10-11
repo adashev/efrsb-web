@@ -26,6 +26,7 @@ import java.util.Properties;
 public class ApplicationManager {
   public final Properties propertiesTarget;
   public final Properties propertiesRole;
+  public final Properties propertiesContour;
   public static WebDriver wd; //static
   public static WebDriverWait wait;
   public static Actions actions;
@@ -43,15 +44,19 @@ public class ApplicationManager {
     this.browser = browser;
     propertiesTarget = new Properties(); //6.10
     propertiesRole = new Properties();
+    propertiesContour = new Properties();
   }
 
   public void init(String browserParal) throws IOException {
     String target = System.getProperty("target", "local"); //6.10
-    propertiesTarget.load(new FileReader(new File(String.format("src/test/resources/target_config/%s.properties", target))));
-    certificateName = propertiesTarget.getProperty("certificate.name");
+    propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));
+
+    String contur = System.getProperty("contur", "test");
+    propertiesContour.load(new FileReader(new File(String.format("config/conturs/%s.properties", contur))));
 
     String role = System.getProperty("role", "AU");
-    propertiesRole.load(new FileReader(new File(String.format("src/test/resources/roles_config/%s.properties", role))));
+    propertiesRole.load(new FileReader(new File(String.format("config/roles/%s.properties", role))));
+    certificateName = propertiesContour.getProperty("certificate");
 
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("unexpectedAlertBehaviour", "accept");
@@ -103,8 +108,8 @@ public class ApplicationManager {
     actions = new Actions(wd);
     wd.manage().window().maximize();
     sessionHelper = new SessionHelper(wd, wait, actions);
-    sessionHelper.openBaseUrl(propertiesTarget.getProperty("web.baseUrl"));//baseUrl в IE должен быть вкл. в "Надежные сайты"
-    sessionHelper.login(propertiesRole.getProperty("web.login"), propertiesRole.getProperty("web.password"));
+    sessionHelper.openBaseUrl(propertiesContour.getProperty("baseUrl"));//baseUrl в IE должен быть вкл. в "Надежные сайты"
+    sessionHelper.login(propertiesRole.getProperty("login"), propertiesRole.getProperty("password"));
     sessionHelper.closeStartNotification();
   }
 

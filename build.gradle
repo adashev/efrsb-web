@@ -100,6 +100,7 @@ dependencies {
     implementation 'io.qameta.allure:allure-testng:2.12.1'
     implementation 'org.slf4j:jcl-over-slf4j:1.7.28'
     implementation 'org.slf4j:slf4j-api:1.7.28'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 task testMessagesAU(type: Test) {
@@ -111,6 +112,9 @@ task testMessagesAU(type: Test) {
     }
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('contur')){
+        systemProperty 'contur', "${contur}"
     }
     if (project.hasProperty('role')){
         systemProperty 'role', "${role}"
@@ -129,6 +133,9 @@ task testMessages_OTUR(type: Test) {
     }
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('contur')){
+        systemProperty 'contur', "${contur}"
     }
     if (project.hasProperty('role')){
         systemProperty 'role', "${role}"
