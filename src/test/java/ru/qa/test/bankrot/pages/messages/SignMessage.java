@@ -54,7 +54,7 @@ public class SignMessage extends HelperBase {
 
   @Step("выбрать сертификат")
   public void selectCertificate() throws InterruptedException {
-//    Thread.sleep(3000);
+    Thread.sleep(2000);
     wait.until(ExpectedConditions.visibilityOfElementLocated(certificateLocator));
     click(certificateLocator);
   }
@@ -71,6 +71,7 @@ public class SignMessage extends HelperBase {
 
   @Step("щелкнуть на ссылке 'Перейти в список сообщений'")
   public void gotoMessagesListPage() throws InterruptedException {
+    Thread.sleep(200);
     click(gotoMessagesList);
   }
 

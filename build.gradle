@@ -93,7 +93,6 @@ repositories {
 }
 
 dependencies {
-//    compile 'org.testng:testng:6.9.9'
     compile project(':testng')
     compile 'org.seleniumhq.selenium:selenium-java:3.9.1'
     agent "org.aspectj:aspectjweaver:1.8.10"
@@ -101,7 +100,6 @@ dependencies {
     implementation 'io.qameta.allure:allure-testng:2.12.1'
     implementation 'org.slf4j:jcl-over-slf4j:1.7.28'
     implementation 'org.slf4j:slf4j-api:1.7.28'
-
 }
 
 task testMessagesAU(type: Test) {
@@ -114,19 +112,17 @@ task testMessagesAU(type: Test) {
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
     }
-    if (project.hasProperty('publisher')){
-        systemProperty 'publisher', "${publisher}"
+    if (project.hasProperty('role')){
+        systemProperty 'role', "${role}"
     }
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-testMessagesAU.doFirst {
-    jvmArgs "-javaagent:${configurations.agent.singleFile}"
-}
+testMessagesAU.doFirst {  jvmArgs "-javaagent:${configurations.agent.singleFile}" }
 
-task testMessages_OT_UR(type: Test) {
+task testMessages_OTUR(type: Test) {
     useTestNG(){
-        suites 'src/test/resources/testng-messageSign-OT-UR.xml'
+        suites 'src/test/resources/testng-messageSign-OTUR.xml'
     }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"
@@ -134,19 +130,13 @@ task testMessages_OT_UR(type: Test) {
     if (project.hasProperty('target')){
         systemProperty 'target', "${target}"
     }
-    if (project.hasProperty('publisher')){
-        systemProperty 'publisher', "${publisher}"
+    if (project.hasProperty('role')){
+        systemProperty 'role', "${role}"
     }
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-testMessages_OT_UR.doFirst {
-    jvmArgs "-javaagent:${configurations.agent.singleFile}"
-}
-
-
-
-
+testMessages_OTUR.doFirst {  jvmArgs "-javaagent:${configurations.agent.singleFile}" }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'

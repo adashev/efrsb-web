@@ -15,6 +15,17 @@ public class MessageSignTest extends TestBase {
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
   }
+
+  @Test(priority = 2)
+  @Description("Тест создания и подписания cообщения 'Аннулирование ранее опубликованного сообщения'")
+  public void testMessageAnnul() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
+    app.getCreateMessage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
+    app.getCreateMessage().selectMessageFromTheList("для аннулирования");
+    app.getCreateMessage().clickSignMessage();
+    app.getSignMessage().signMessage();
+  }
 }
 
 

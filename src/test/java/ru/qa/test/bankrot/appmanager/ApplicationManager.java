@@ -25,7 +25,7 @@ import java.util.Properties;
 
 public class ApplicationManager {
   public final Properties propertiesTarget;
-  public final Properties propertiesPublisher;
+  public final Properties propertiesRole;
   public static WebDriver wd; //static
   public static WebDriverWait wait;
   public static Actions actions;
@@ -42,16 +42,16 @@ public class ApplicationManager {
   public ApplicationManager(String browser) {
     this.browser = browser;
     propertiesTarget = new Properties(); //6.10
-    propertiesPublisher = new Properties();
+    propertiesRole = new Properties();
   }
 
   public void init(String browserParal) throws IOException {
     String target = System.getProperty("target", "local"); //6.10
-    propertiesTarget.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    propertiesTarget.load(new FileReader(new File(String.format("src/test/resources/target_config/%s.properties", target))));
     certificateName = propertiesTarget.getProperty("certificate.name");
 
-    String publisher = System.getProperty("publisher", "AU");
-    propertiesPublisher.load(new FileReader(new File(String.format("src/test/resources/%s.properties", publisher))));
+    String role = System.getProperty("role", "AU");
+    propertiesRole.load(new FileReader(new File(String.format("src/test/resources/roles_config/%s.properties", role))));
 
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("unexpectedAlertBehaviour", "accept");
@@ -68,16 +68,12 @@ public class ApplicationManager {
           final FirefoxProfile profile1 = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
           profile1.addExtension(new File("src/test/resources/blitz_smart_card_plugin-1.1.14-an+fx.xpi"));
           wd = new FirefoxDriver(optionsFirefox.setProfile(profile1));
-          /*optionsFirefox.setProfile(new ProfilesIni().getProfile("test"));//Webdriver
-          wd = new FirefoxDriver(optionsFirefox);*/
-//        wd.manage().deleteAllCookies();
         } else if (browser.equals(BrowserType.CHROME)) {
           optionsChrome.addArguments("user-data-dir=C:/Users/adashev/AppData/Local/Google/Chrome/User Data/Default");
           wd = new ChromeDriver(optionsChrome);
         } else if (browser.equals(BrowserType.IE)) {
           wd = new InternetExplorerDriver();
         }
-
       } else if ("remote".equals(propertiesTarget.getProperty("server.type"))) {
         if(browser.equals(BrowserType.FIREFOX)){
           final FirefoxProfile profile = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
@@ -108,13 +104,8 @@ public class ApplicationManager {
     wd.manage().window().maximize();
     sessionHelper = new SessionHelper(wd, wait, actions);
     sessionHelper.openBaseUrl(propertiesTarget.getProperty("web.baseUrl"));//baseUrl в IE должен быть вкл. в "Надежные сайты"
-    sessionHelper.login(propertiesPublisher.getProperty("web.login"), propertiesPublisher.getProperty("web.password"));
+    sessionHelper.login(propertiesRole.getProperty("web.login"), propertiesRole.getProperty("web.password"));
     sessionHelper.closeStartNotification();
-   /* helperBase = new HelperBase(wd, wait, actions);
-    messagesListPage = new MessagesListPage(wd, wait, actions);
-    newMessagePage = new NewMessagePage(wd, wait, actions);
-    createMessage = new CreateMessage(wd, wait, actions);
-    signMessage = new SignMessage(wd, wait, actions, certificateName);*/
   }
 
   public void refreshPageObjects(){

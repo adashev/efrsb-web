@@ -17,7 +17,7 @@ public class TestBase {
           .getProperty("browser", BrowserType.CHROME));
                           // CHROME  FIREFOX
   //(alwaysRun = true)
-  @BeforeTest(description = "Инициализация браузера и авторизация в АРМ АУ")
+  @BeforeTest(description = "Инициализация браузера и авторизация в АРМ")
   @Parameters("browserParal")
   public void setUp(ITestContext context, @Optional("chrome") String browserParal) throws Exception {
     app.init(browserParal);
