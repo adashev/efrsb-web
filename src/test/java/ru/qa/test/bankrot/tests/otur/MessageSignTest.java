@@ -11,9 +11,9 @@ public class MessageSignTest extends TestBase {
   public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(0);
-    app.getCreateMessage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 2)
@@ -21,10 +21,10 @@ public class MessageSignTest extends TestBase {
   public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
-    app.getCreateMessage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromTheList("для аннулирования");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectMessageFromTheList("для аннулирования");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 }
 

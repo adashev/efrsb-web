@@ -12,10 +12,13 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.qa.test.bankrot.pages.messages.CreateMessage;
+import ru.qa.test.bankrot.pages.messages.CreateMessagePage;
 import ru.qa.test.bankrot.pages.messages.MessagesListPage;
 import ru.qa.test.bankrot.pages.messages.NewMessagePage;
-import ru.qa.test.bankrot.pages.messages.SignMessage;
+import ru.qa.test.bankrot.pages.messages.SignMessagePage;
+import ru.qa.test.bankrot.pages.report.NewReportPage;
+import ru.qa.test.bankrot.pages.report.ReportListPage;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,8 +38,10 @@ public class ApplicationManager {
   public HelperBase helperBase;
   public MessagesListPage messagesListPage;
   public NewMessagePage newMessagePage;
-  public CreateMessage createMessage;
-  public SignMessage signMessage;
+  public CreateMessagePage createMessagePage;
+  public SignMessagePage signMessagePage;
+  public ReportListPage reportListPage;
+  public NewReportPage newReportPage;
   public String certificateName;
   public static String urlSection;
 
@@ -49,6 +54,8 @@ public class ApplicationManager {
   }
 
   public void init(String browserParal) throws IOException {
+//    String login = System.getProperty("login"); //6.10
+
     String target = System.getProperty("target", "local"); //6.10
     propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));
 
@@ -119,15 +126,19 @@ public class ApplicationManager {
     helperBase = new HelperBase(wd, wait, actions);
     messagesListPage = new MessagesListPage(wd, wait, actions);
     newMessagePage = new NewMessagePage(wd, wait, actions);
-    createMessage = new CreateMessage(wd, wait, actions, browser);
-    signMessage = new SignMessage(wd, wait, actions, certificateName);
+    createMessagePage = new CreateMessagePage(wd, wait, actions, browser);
+    signMessagePage = new SignMessagePage(wd, wait, actions, certificateName);
+    reportListPage = new ReportListPage(wd, wait, actions);
+    newReportPage = new NewReportPage(wd, wait, actions);
   }
 
   public HelperBase getHelperBase() {return helperBase;}
   public MessagesListPage getMessagesListPage() {  return messagesListPage;  }
   public NewMessagePage getNewMessagePage() {  return newMessagePage; }
-  public CreateMessage getCreateMessage() {return createMessage;}
-  public SignMessage getSignMessage() {return signMessage;}
+  public CreateMessagePage getCreateMessagePage() {return createMessagePage;}
+  public SignMessagePage getSignMessagePage() {return signMessagePage;}
+  public ReportListPage getReportListPage() {return reportListPage;}
+  public NewReportPage getNewReportPage() {return newReportPage;}
 
   public byte[] takeScreenshot() {
     try {

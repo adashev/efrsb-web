@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
 
-public class SignMessage extends HelperBase {
+public class SignMessagePage extends HelperBase {
 
   private String baseName = "ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_ucSignMessage_";
   private By signButton = By.id(baseName+"DigitalSignature1_SignImageButtonInput");
@@ -18,7 +18,7 @@ public class SignMessage extends HelperBase {
   private By certificateLocator;
 
 
-  public SignMessage(WebDriver wd, WebDriverWait wait, Actions actions, String certificateName) {
+  public SignMessagePage(WebDriver wd, WebDriverWait wait, Actions actions, String certificateName) {
     super(wd, wait, actions);
     this.certificateLocator = By.xpath("//h4[contains(., "+certificateName+")]");
   }

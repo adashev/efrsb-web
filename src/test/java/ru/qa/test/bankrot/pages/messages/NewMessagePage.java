@@ -12,11 +12,8 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 public class NewMessagePage extends HelperBase {
-  private String contentPlace = "//*[@id='ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_MessageTypeSelector_";
   private String xpathMessageTypeTree = ".//*[@id='ctl00_cplhContent_MessageTypeTree']";
   private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick=\"ChooseInsolvent();\"]");
-  private By heading = By.xpath("//legend[contains(., 'Должник')]");
-  private By numberCourtCase = By.xpath(contentPlace + "InsolventPicker_LegalCasesDropDownList']/option[2]");
   private By typeMessageButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick=\"SelectMessageType();\"]");
   public List<WebElement> listGroups; // список групп сообщений
   public List<WebElement> listMessage; // список сообщений
@@ -25,19 +22,14 @@ public class NewMessagePage extends HelperBase {
     super(wd, wait, actions);
   }
 
-  @Step("проверить открытие страницы для выбора параметров сообщения")
-  public void isNewMessagePage(){
-    assertEquals(getElementsText(heading), "Должник");
-  }
-
   public void selectMessageOptionsAndGoNext(int numGroup) throws InterruptedException {
-    isNewMessagePage();
+    isOptionsPage();
     startCreateMessAndSelectGroup(numGroup);//задание параметров сообщения и выбор группы
-    nextButton();
+    clickNextButton();
   }
 
   public void selectMessageOptions(int numGroup) throws InterruptedException {
-    isNewMessagePage();
+    isOptionsPage();
     startCreateMessAndSelectGroup(numGroup);//задание параметров сообщения и выбор группы
   }
 
@@ -51,8 +43,8 @@ public class NewMessagePage extends HelperBase {
 
   public void startCreateMessage() {
 //  gotoDirectoryDebtors(); // вызываем справочник должников
-    selectLastDebtor(); // выбираем должника
-    selectCourtCase(); // выбор Номера дела
+    selectLastDebtor("message"); // выбираем должника
+    selectCourtCase("message"); // выбор Номера дела
     gotoDirectoryTypeMessage();// вызываем справочник типов сообщений. В справочнике мы сможем подсчитать группы сообщений и сообщений
     createListGroups();
   }
@@ -70,17 +62,6 @@ public class NewMessagePage extends HelperBase {
     wait.until((d) -> !wd.findElement(By.xpath("//table[2]/tbody/tr[3]/td[1]")).getText().equals(""));//ждем загрузки данных в таблицу
     click(By.xpath("//table[2]/tbody/tr[3]/td[1]"));
     wait.until((d) -> wd.switchTo().defaultContent());
-  }
-
-  @Step("выбрать должника из списка 'Последние должники'")
-  public void selectLastDebtor() {
-    click(By.xpath(contentPlace+"InsolventPicker_LastInsolventsList']"));
-    click(By.xpath(contentPlace+"InsolventPicker_LastInsolventsList']/option[2]"));
-  }
-
-  @Step("выбрать судебное дело")
-  public void selectCourtCase() {
-    click(numberCourtCase);
   }
 
   @Step("в окне выбора типа сообщения выбрать требуемый тип")
@@ -108,14 +89,13 @@ public class NewMessagePage extends HelperBase {
       assertEquals(text, "Данный тип сообщения предназначен только для публикации не типизированных ЕФРСБ сведений, и для него невозможно будет указать связь с последующими сообщениями или опубликовать связанную информацию.");
       alert.accept();
       wait.until((d) -> wd.switchTo().defaultContent());
-//      closeAlert("");
     }
   }
 
   public void selectMessageAndGoNext(int numGroup, int numMessage) throws InterruptedException {
     selectMessageOptions(numGroup);
     selectMessage(numGroup, numMessage);
-    nextButton();
+    clickNextButton();
   }
 
   public void selectMessage(int numberGroup, int numberMessage){
@@ -129,17 +109,4 @@ public class NewMessagePage extends HelperBase {
     listMessage = wd.findElements(By.xpath(xpathMessageTypeTree+"/ul/li["+(i+1)+"]/ul/li/div/span[2]"));
   }
 
-  @Step("нажать на кнопку 'Далее'") //нажать кнопку "Далее"
-  public void nextButton() throws InterruptedException {
-    Thread.sleep(60);
-    wait.until((d) -> wd.switchTo().defaultContent());
-    try {
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contentPlace + "SelectImageButton']")));
-      actions.moveToElement(wd.findElement(By.xpath(contentPlace + "SelectImageButton']"))).build().perform();
-      click(By.xpath(contentPlace+"SelectImageButton']"));
-    } catch (WebDriverException e) {
-      Thread.sleep(500);
-      click(By.xpath(contentPlace+"SelectImageButton']"));
-    }
-  }
 }

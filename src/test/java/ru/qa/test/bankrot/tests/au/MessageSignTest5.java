@@ -11,10 +11,10 @@ public class MessageSignTest5 extends TestBase {
   public void testViewDraftRestructuringPlan() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(13, 0);
-    app.getCreateMessage().fillBasicData("Сведения о порядке и месте ознакомления с проектом плана реструктуризации", "none");
-    app.getCreateMessage().fillDataForViewDraftRestructuringPlan();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о порядке и месте ознакомления с проектом плана реструктуризации", "none");
+    app.getCreateMessagePage().fillDataForViewDraftRestructuringPlan();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 53)
@@ -22,11 +22,11 @@ public class MessageSignTest5 extends TestBase {
   public void testViewExecRestructuringPlan() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(13, 1);
-    app.getCreateMessage().fillBasicData("Сведения о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации",
+    app.getCreateMessagePage().fillBasicData("Сведения о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации",
          app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForViewExecRestructuringPlan();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillDataForViewExecRestructuringPlan();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 54)
@@ -34,9 +34,9 @@ public class MessageSignTest5 extends TestBase {
   public void testDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(14, 0);
-    app.getCreateMessage().fillBasicData("Сообщение о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 55)
@@ -44,10 +44,10 @@ public class MessageSignTest5 extends TestBase {
   public void testCancelDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(14, 1);
-    app.getCreateMessage().fillBasicData("Сообщение об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
-    app.getCreateMessage().selectMessageFromTheList("для отмены");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
+    app.getCreateMessagePage().selectMessageFromTheList("для отмены");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 56)
@@ -55,10 +55,10 @@ public class MessageSignTest5 extends TestBase {
   public void testChangeDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(14, 2);
-    app.getCreateMessage().fillBasicData("Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
-    app.getCreateMessage().selectMessageFromTheList("для изменения");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
+    app.getCreateMessagePage().selectMessageFromTheList("для изменения");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
 

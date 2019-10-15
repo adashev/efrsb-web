@@ -1,9 +1,6 @@
 package ru.qa.test.bankrot.tests.au;
 
-import com.automation.remarks.testng.VideoListener;
-import com.automation.remarks.video.annotations.Video;
 import io.qameta.allure.Description;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.qa.test.bankrot.tests.TestBase;
 
@@ -14,14 +11,14 @@ public class MessageSignTest extends TestBase {
  public void testMessageArbitralDecree() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptionsAndGoNext(0);
-    app.getCreateMessage().fillBasicData("Сообщение о судебном акте", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectTypeArbitralDecree();
+    app.getCreateMessagePage().fillBasicData("Сообщение о судебном акте", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectTypeArbitralDecree();
 //  app.getCreateMessage().clickSaveMessAndCloseAlert();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
-  @Test(priority = 2)
+  /*@Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
   public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -75,7 +72,7 @@ public class MessageSignTest extends TestBase {
     app.getCreateMessage().setPeriodOfDisqualification();
     app.getCreateMessage().clickSignMessage();
     app.getSignMessage().signMessage();
-  }
+  }*/
 }
 
 

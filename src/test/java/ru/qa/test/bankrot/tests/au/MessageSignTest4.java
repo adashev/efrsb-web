@@ -1,7 +1,6 @@
 package ru.qa.test.bankrot.tests.au;
 
 import io.qameta.allure.Description;
-import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.Test;
 import ru.qa.test.bankrot.tests.TestBase;
 
@@ -12,10 +11,10 @@ public class MessageSignTest4 extends TestBase {
   public void testAppointAdministration() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 0);
-    app.getCreateMessage().fillBasicData("Решение о назначении временной администрации", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForAppointAdministration();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Решение о назначении временной администрации", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillDataForAppointAdministration();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 42)
@@ -23,9 +22,9 @@ public class MessageSignTest4 extends TestBase {
   public void testIntentionCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 1);
-    app.getCreateMessage().fillBasicData("Сообщение о намерении исполнить обязательства кредитной организации", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение о намерении исполнить обязательства кредитной организации", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 43)
@@ -33,9 +32,9 @@ public class MessageSignTest4 extends TestBase {
   public void testLiabilitiesCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 2);
-    app.getCreateMessage().fillBasicData("Сообщение о признании исполнения заявителем обязательств кредитной организации несостоявшимся", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение о признании исполнения заявителем обязательств кредитной организации несостоявшимся", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 44)
@@ -43,9 +42,9 @@ public class MessageSignTest4 extends TestBase {
   public void testPerformanceCreditOrg() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 3);
-    app.getCreateMessage().fillBasicData("Сообщение об исполнении обязательств кредитной организации", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение об исполнении обязательств кредитной организации", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 45)
@@ -53,9 +52,9 @@ public class MessageSignTest4 extends TestBase {
   public void testEstimatesCurrentExpenses() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 4);
-    app.getCreateMessage().fillBasicData("Сведения о смете текущих расходов кредитной организации или иной финансовой организации", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о смете текущих расходов кредитной организации или иной финансовой организации", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 46)
@@ -63,10 +62,10 @@ public class MessageSignTest4 extends TestBase {
   public void testChangeEstimatesCurrentExpenses() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 5);
-    app.getCreateMessage().fillBasicData("Сведения о скорректированной смете текущих расходов кредитной организации или иной финансовой организации", "none");
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на сведения о корректируемой смете");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о скорректированной смете текущих расходов кредитной организации или иной финансовой организации", "none");
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на сведения о корректируемой смете");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 47)
@@ -74,9 +73,9 @@ public class MessageSignTest4 extends TestBase {
   public void testOrderAndTimingCalculations() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 6);
-    app.getCreateMessage().fillBasicData("Сведения о порядке и сроках расчетов с кредиторами", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о порядке и сроках расчетов с кредиторами", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 48)
@@ -84,9 +83,9 @@ public class MessageSignTest4 extends TestBase {
   public void testInformationAboutBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 7);
-    app.getCreateMessage().fillBasicData("Информация о ходе конкурсного производства", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Информация о ходе конкурсного производства", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 49)
@@ -94,9 +93,9 @@ public class MessageSignTest4 extends TestBase {
   public void testEstimatesAndUnsoldAssets() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 8);
-    app.getCreateMessage().fillBasicData("Сведения об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 50)
@@ -104,9 +103,9 @@ public class MessageSignTest4 extends TestBase {
   public void testStartSettlement() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 9);
-    app.getCreateMessage().fillBasicData("Сообщения о начале расчетов", app.getHelperBase().formCurDate);
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщения о начале расчетов", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 51)
@@ -114,9 +113,9 @@ public class MessageSignTest4 extends TestBase {
   public void testProcessInventoryDebtor() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(12, 10);
-    app.getCreateMessage().fillBasicData("Сведения о ходе инвентаризации имущества должника", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о ходе инвентаризации имущества должника", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 }
 

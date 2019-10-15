@@ -77,11 +77,11 @@ public class MessageCreationTest extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageOptions(numGroup);
     if (app.getNewMessagePage().listMessage.size() == 0) {// если мы имеем дело с отдель. типом сообщений
-      app.getNewMessagePage().nextButton();
-      app.getCreateMessage().createAndSaveMessage(typeMess);
+      app.getNewMessagePage().clickNextButton();
+      app.getCreateMessagePage().createAndSaveMessage(typeMess);
     } else {  //если мы имеем дело с группой типов сообщений, то проходим по всей группе в цикле
       app.getNewMessagePage().selectMessageAndGoNext(numGroup, numMessage);
-      app.getCreateMessage().createAndSaveMessage(typeMess);
+      app.getCreateMessagePage().createAndSaveMessage(typeMess);
     }
   }
 }

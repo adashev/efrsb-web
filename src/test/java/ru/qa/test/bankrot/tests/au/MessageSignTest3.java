@@ -11,10 +11,10 @@ public class MessageSignTest3 extends TestBase {
   public void testMeetingWorker() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(9, 0);
-    app.getCreateMessage().fillBasicData("Уведомление о проведении собрания работников, бывших работников должника", app.getHelperBase().addDays(1));
-    app.getCreateMessage().fillDataForMeetingWorker();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Уведомление о проведении собрания работников, бывших работников должника", app.getHelperBase().addDays(1));
+    app.getCreateMessagePage().fillDataForMeetingWorker();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 29)
@@ -22,10 +22,10 @@ public class MessageSignTest3 extends TestBase {
   public void testMeetingWorkerResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(9, 1);
-    app.getCreateMessage().fillBasicData("Сведения о решениях, принятых собранием работников, бывших работников должника", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForMeetingWorkerResult();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о решениях, принятых собранием работников, бывших работников должника", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillDataForMeetingWorkerResult();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 30)
@@ -33,10 +33,10 @@ public class MessageSignTest3 extends TestBase {
   public void testDealInvalidMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(10, 0);
-    app.getCreateMessage().fillBasicData("Заявление о признании сделки должника недействительной", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForDealInvalid();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Заявление о признании сделки должника недействительной", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillDataForDealInvalid();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 31)
@@ -44,10 +44,10 @@ public class MessageSignTest3 extends TestBase {
   public void testActDealInvalid2() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(10, 1);
-    app.getCreateMessage().fillBasicData("Судебный акт по результатам рассмотрения заявления об оспаривании сделки должника", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromListWithConfirm("для ссылки на заявление о признании сделки недействительной");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Судебный акт по результатам рассмотрения заявления об оспаривании сделки должника", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectMessageFromListWithConfirm("для ссылки на заявление о признании сделки недействительной");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 32)
@@ -55,10 +55,10 @@ public class MessageSignTest3 extends TestBase {
   public void testActReviewDealInvalid2() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(10, 2);
-    app.getCreateMessage().fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления об оспаривании сделки должника", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromListWithConfirm("для ссылки на cудебный акт по результатам рассмотрения заявления");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления об оспаривании сделки должника", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectMessageFromListWithConfirm("для ссылки на cудебный акт по результатам рассмотрения заявления");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 33)
@@ -66,11 +66,11 @@ public class MessageSignTest3 extends TestBase {
   public void testDeclarationPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 0);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
        .fillBasicData("Заявление о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", app.getHelperBase().formCurDate);
-    app.getCreateMessage().addDeclarationPerson("Damages");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().addDeclarationPerson("Damages");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 34)
@@ -78,11 +78,11 @@ public class MessageSignTest3 extends TestBase {
   public void testActPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 1);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
        .fillBasicData("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", "none");
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 35)
@@ -90,11 +90,11 @@ public class MessageSignTest3 extends TestBase {
   public void testActReviewPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 2);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", "none");
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 36)
@@ -102,11 +102,11 @@ public class MessageSignTest3 extends TestBase {
   public void testDeclarationPersonSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 3);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Заявление о привлечении контролирующих должника лиц к субсидиарной ответственности", "none");
-    app.getCreateMessage().addDeclarationPerson("Subsidiary");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().addDeclarationPerson("Subsidiary");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 37)
@@ -114,11 +114,11 @@ public class MessageSignTest3 extends TestBase {
   public void testActPersonSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 4);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности", "none");
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 38)
@@ -126,11 +126,11 @@ public class MessageSignTest3 extends TestBase {
   public void testActReviewPersonSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 5);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности", "none");
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на судебный акт по результатам пересмотра рассмотрения");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на судебный акт по результатам пересмотра рассмотрения");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 39)
@@ -138,11 +138,11 @@ public class MessageSignTest3 extends TestBase {
   public void testCreditorChoiceRightSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 6);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Сообщение о праве кредитора выбрать способ распоряжения правом требования о привлечении к субсидиарной ответственности", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на сообщение о субсидиарной ответственности");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на сообщение о субсидиарной ответственности");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 40)
@@ -150,11 +150,11 @@ public class MessageSignTest3 extends TestBase {
   public void testAccessionDeclarationSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(11, 7);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Предложение о присоединении к заявлению о привлечении контролирующих лиц должника к субсидиарной ответственности", "none");
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
 }

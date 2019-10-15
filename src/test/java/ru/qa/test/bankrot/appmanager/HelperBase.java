@@ -6,7 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,6 +17,7 @@ public class HelperBase {
   public WebDriverWait wait;
   public WebDriver wd;
   public Actions actions;
+  protected String contentPlace = ".//*[@id='ctl00_ctl00_ctplhMain_CentralContentPlaceHolder";
   private Date currentDate;
   private Date requiredDate;
   private SimpleDateFormat formatForDate;
@@ -27,10 +27,13 @@ public class HelperBase {
   public WebElement el;
   public List<WebElement> listElements;
   public int listSize;
+  private String typeSelector;
   private By textArea = By.tagName("textarea");
   private By inputDate = By.cssSelector("[data-item='dateInput']");
   public String auctionNotif = "Возможно, в сообщении указана не вся необходимая по Закону информация или указанная информация не точна:\n" + "Сообщение о проведении торгов должно быть опубликовано минимум за 30 дней до даты начала торгов.\n" + "Если Вы уверены, что вся необходимая информация в сообщении указана, сообщение может быть сохранено и опубликовано в текущем виде.";
-
+  private By heading = By.xpath("//legend[contains(., 'Должник')]");
+  private By numberCourtCase = By.xpath(contentPlace + "InsolventPicker_LegalCasesDropDownList']/option[2]");
+                                      //_MessageTypeSelector_
 
   public HelperBase(WebDriver wd, WebDriverWait wait, Actions actions) {
     this.wd = wd;
@@ -179,5 +182,59 @@ public class HelperBase {
     Thread.sleep(200);
     wd.switchTo().defaultContent();
     Thread.sleep(200);
+  }
+
+  @Step("перейти в раздел 'Отчеты'")
+  public void gotoReportList() {
+    click(By.id("ctl00_ctl00_ctplhMenu_HyperLink12"));
+
+  }
+
+  @Step("проверить открытие страницы для выбора параметров сообщения/отчета")
+  public void isOptionsPage(){
+    assertEquals(getElementsText(heading), "Должник");
+  }
+
+  @Step("выбрать должника из списка 'Последние должники'")
+  public void selectLastDebtor(String entity) {
+    if("message".equals(entity)){
+      typeSelector = "_MessageTypeSelector_";
+    } else if("report".equals(entity)){
+      typeSelector = "_ucNewAuReport_uc";
+    }
+    click(By.xpath(contentPlace+typeSelector+"InsolventPicker_LastInsolventsList']"));
+    click(By.xpath(contentPlace+typeSelector+"InsolventPicker_LastInsolventsList']/option[2]"));
+  }
+
+  @Step("выбрать судебное дело")
+  public void selectCourtCase(String entity) {
+    if("message".equals(entity)){
+      typeSelector = "_MessageTypeSelector_";
+    } else if("report".equals(entity)){
+      typeSelector = "_ucNewAuReport_uc";
+    }
+    click(By.xpath(contentPlace+typeSelector+"InsolventPicker_LegalCasesDropDownList']/option[2]"));
+  }
+
+  @Step("нажать на кнопку 'Далее'")
+  public void clickNextButton() throws InterruptedException {
+    Thread.sleep(60);
+    wait.until((d) -> wd.switchTo().defaultContent());
+ //contentPlace = ".//*[@id='ctl00_ctl00_ctplhMain_CentralContentPlaceHolder";
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
+    click(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"));
+    /*if("message".equals(entity)){
+      typeSelector = "_MessageTypeSelector_";
+    } else if("report".equals(entity)){
+      typeSelector = "_ucNewAuReport_uc";
+    }
+    try {
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contentPlace+typeSelector+"SelectImageButton']")));
+      actions.moveToElement(wd.findElement(By.xpath(contentPlace+typeSelector+"SelectImageButton']"))).build().perform();
+      click(By.xpath(contentPlace+typeSelector+"SelectImageButton']"));
+    } catch (WebDriverException e) {
+      Thread.sleep(500);
+      click(By.xpath(contentPlace+typeSelector+"SelectImageButton']"));
+    }*/
   }
 }

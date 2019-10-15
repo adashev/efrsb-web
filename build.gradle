@@ -1,5 +1,7 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'application'
+
 
 configurations {
     agent
@@ -101,7 +103,38 @@ dependencies {
     implementation 'org.slf4j:jcl-over-slf4j:1.7.28'
     implementation 'org.slf4j:slf4j-api:1.7.28'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.10'
+
 }
+
+/*run {
+    systemProperties['login']
+    systemProperties['password']
+}*/
+
+
+/*task test1(type: Test) {
+    run
+    String login
+    String password
+    useTestNG() {
+        suites 'src/test/resources/testng-messageSign-AU.xml'
+    }
+    if (project.hasProperty('role')){
+        systemProperty 'role', "${role}"
+    }
+    if("AU".equals(System.getProperty("role"))) {
+        doLast {
+            def jsonFile = file('config/config.json')
+            def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+            login = parsedJson.test.AU.login
+            password = parsedJson.test.AU.password
+            systemProperty 'login', login
+            systemProperty 'password', password
+        }
+    }
+}*/
+
 
 task testMessagesAU(type: Test) {
     useTestNG(){

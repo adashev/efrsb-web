@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
 import io.qameta.allure.Step;
-
 import static org.testng.Assert.assertEquals;
 
 public class MessagesListPage extends HelperBase {

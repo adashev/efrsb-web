@@ -13,7 +13,7 @@ import ru.qa.test.bankrot.appmanager.HelperBase;
 import java.util.HashSet;
 import static org.testng.Assert.assertEquals;
 
-public class CreateMessage extends HelperBase {
+public class CreateMessagePage extends HelperBase {
   private String baseName = "ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_ucCreateMessage_";
   private String objP = "_ObjectProxy_ctrl0_ObjectProxy";
   private String uMess = baseName+"messageListView_ctrl0_ObjectProxy_ctrl0_";
@@ -32,7 +32,7 @@ public class CreateMessage extends HelperBase {
   private String browser;
 
 
-  public CreateMessage(WebDriver wd, WebDriverWait wait, Actions actions, String browser) {
+  public CreateMessagePage(WebDriver wd, WebDriverWait wait, Actions actions, String browser) {
     super(wd, wait, actions);
     this.browser = browser;
     missingText = new HashSet();

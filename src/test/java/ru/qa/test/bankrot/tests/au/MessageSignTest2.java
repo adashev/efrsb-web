@@ -1,6 +1,5 @@
 package ru.qa.test.bankrot.tests.au;
 
-import com.automation.remarks.video.annotations.Video;
 import io.qameta.allure.Description;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.Test;
@@ -17,9 +16,9 @@ public class MessageSignTest2 extends TestBase {
   public void testPropertyInventoryResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(7, 0);
-    app.getCreateMessage().fillBasicData("Сведения о результатах инвентаризации имущества должника", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о результатах инвентаризации имущества должника", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 17)
@@ -27,9 +26,9 @@ public class MessageSignTest2 extends TestBase {
   public void testPropertyEvaluationReport() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(7, 1);
-    app.getCreateMessage().fillBasicData("Отчет оценщика об оценке имущества должника", "none");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Отчет оценщика об оценке имущества должника", "none");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 18)
@@ -37,11 +36,11 @@ public class MessageSignTest2 extends TestBase {
   public void testTransferInsurancePortfolio() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(7, 2);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
        .fillBasicData("Уведомление о передаче страхового портфеля страховой организации", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillManagingInsuranceOrgData();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillManagingInsuranceOrgData();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 19)
@@ -49,11 +48,11 @@ public class MessageSignTest2 extends TestBase {
   public void testBankOpenAccountDebtor() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(7, 3);
-    app.getCreateMessage()
+    app.getCreateMessagePage()
     .fillBasicData("Сведения о кредитной организации, в которой открыт специальный банковский счет должника", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForCreditOrg();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillDataForCreditOrg();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 20)
@@ -61,16 +60,16 @@ public class MessageSignTest2 extends TestBase {
   public void testAuctionMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 0);
-    app.getCreateMessage().fillBasicData("Объявление о проведении торгов", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillBasicData("Объявление о проведении торгов", app.getHelperBase().formCurDate);
     if(app.browser.equals(BrowserType.FIREFOX)){
-      app.getCreateMessage().copyLot();
+      app.getCreateMessagePage().copyLot();
     } else {
-      app.getCreateMessage().fillAuctionLot();
+      app.getCreateMessagePage().fillAuctionLot();
     }
-    app.getCreateMessage().fillLocation();
-    app.getCreateMessage().clickSignMessage();
+    app.getCreateMessagePage().fillLocation();
+    app.getCreateMessagePage().clickSignMessage();
     app.getHelperBase().closeAlert(app.getHelperBase().auctionNotif);
-    app.getSignMessage().signMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 21)
@@ -78,10 +77,10 @@ public class MessageSignTest2 extends TestBase {
   public void testTradeResultMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 1);
-    app.getCreateMessage().fillBasicData("Сообщение о результатах торгов", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForTradeResult();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение о результатах торгов", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillDataForTradeResult();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
 //  app.getSignMessage().signAndPayMessage();
   }
 
@@ -90,13 +89,13 @@ public class MessageSignTest2 extends TestBase {
   public void testSaleOrderPledgedProperty() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 2);
-    app.getCreateMessage().fillBasicData(nameForSaleOrderPledgedProperty, app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillBasicData(nameForSaleOrderPledgedProperty, app.getHelperBase().formCurDate);
     if(app.browser.equals(BrowserType.CHROME)){
-      app.getCreateMessage().fillSaleOrderPledgedProperty();
-      app.getCreateMessage().clickSignMessage();
-      app.getSignMessage().signMessage();
+      app.getCreateMessagePage().fillSaleOrderPledgedProperty();
+      app.getCreateMessagePage().clickSignMessage();
+      app.getSignMessagePage().signMessage();
     } else {
-      app.getCreateMessage().clickSaveMessAndCloseAlert();
+      app.getCreateMessagePage().clickSaveMessAndCloseAlert();
     }
   }
 
@@ -105,10 +104,10 @@ public class MessageSignTest2 extends TestBase {
   public void testCancelAuctionTradeResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 3);
-    app.getCreateMessage().fillBasicData("Сообщение об отмене сообщения об объявлении торгов или сообщения о результатах торгов", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromTheList("для отмены");
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение об отмене сообщения об объявлении торгов или сообщения о результатах торгов", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectMessageFromTheList("для отмены");
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 24) //, dependsOnMethods = {"testAuctionMessage"}
@@ -116,11 +115,11 @@ public class MessageSignTest2 extends TestBase {
   public void testChangeAuction() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 4);
-    app.getCreateMessage().fillBasicData("Сообщение об изменении объявления о проведении торгов", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromTheList("для изменения");
-    app.getCreateMessage().fillDataForChangeAuction();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сообщение об изменении объявления о проведении торгов", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectMessageFromTheList("для изменения");
+    app.getCreateMessagePage().fillDataForChangeAuction();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 25)
@@ -128,11 +127,11 @@ public class MessageSignTest2 extends TestBase {
   public void testSaleContractResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 5);
-    app.getCreateMessage().fillBasicData("Сведения о заключении договора купли-продажи", app.getHelperBase().formCurDate);
-    app.getCreateMessage().selectMessageFromTheList("для ссылки на объявление о проведении торгов");
-    app.getCreateMessage().fillDataForSaleContractResult();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Сведения о заключении договора купли-продажи", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на объявление о проведении торгов");
+    app.getCreateMessagePage().fillDataForSaleContractResult();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 26)
@@ -140,9 +139,9 @@ public class MessageSignTest2 extends TestBase {
   public void testRightUnsoldAsset() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 6);
-    app.getCreateMessage().fillBasicData(nameForRightUnsoldAsset, app.getHelperBase().formCurDate);
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData(nameForRightUnsoldAsset, app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 
   @Test(priority = 27)
@@ -150,10 +149,10 @@ public class MessageSignTest2 extends TestBase {
   public void testProcedureGrantingIndemnity() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectMessageAndGoNext(8, 7);
-    app.getCreateMessage().fillBasicData("Предложение о погашении требований кредиторов путем предоставления отступного", app.getHelperBase().formCurDate);
-    app.getCreateMessage().fillDataForProcedureGrantingIndemn();
-    app.getCreateMessage().clickSignMessage();
-    app.getSignMessage().signMessage();
+    app.getCreateMessagePage().fillBasicData("Предложение о погашении требований кредиторов путем предоставления отступного", app.getHelperBase().formCurDate);
+    app.getCreateMessagePage().fillDataForProcedureGrantingIndemn();
+    app.getCreateMessagePage().clickSignMessage();
+    app.getSignMessagePage().signMessage();
   }
 }
 

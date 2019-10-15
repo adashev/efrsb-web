@@ -31,4 +31,9 @@ public class SessionHelper extends HelperBase {
   public void closeStartNotification() {//закрыть увемл-е о прекращении поддержки старых браузеров
     click(closeNotification);
   }
+
+  public void gotoReportList() {
+    click(By.id("ctl00_ctl00_ctplhMenu_HyperLink12"));
+
+  }
 }
