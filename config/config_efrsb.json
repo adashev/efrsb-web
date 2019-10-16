@@ -1,0 +1,26 @@
+{
+	"conturs": {
+		"test": [
+			{
+				"baseurl": "http://bankruptcytest.devel.ifx/",
+				"AU": {
+					"login": "Anisimov",
+					"password": "ZTd9Pn"
+				},
+				"OTUR": {
+					"login": "interfax_ot_ur",
+					"password": "123456"
+				}
+			}
+		],
+		"dev": [
+			{
+				"baseurl": "http://bankruptcydev.devel.ifx/",
+				"OTUR": {
+					"login": "interfax_ot_ur",
+					"password": "123456"
+				}
+			}
+		]
+	}
+}

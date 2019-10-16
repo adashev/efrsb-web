@@ -25,14 +25,9 @@ public class SignMessagePage extends HelperBase {
 
   public void signMessage() throws InterruptedException {
     sign();
-    gotoMessagesListPage();
+    payFromPersonalAccount(); //добавлено на время теста
   }
 
-  public void signMessageAndReturnMessList() throws InterruptedException {
-    sign();
-    gotoMessagesListPage();
-    wd.get("http://bankruptcytest.devel.ifx/BackOffice/ArbitrManager/MessagesList.aspx");
-  }
 
   public void signAndPayMessage() throws InterruptedException {
     sign();
@@ -71,7 +66,7 @@ public class SignMessagePage extends HelperBase {
 
   @Step("щелкнуть на ссылке 'Перейти в список сообщений'")
   public void gotoMessagesListPage() throws InterruptedException {
-    Thread.sleep(200);
+    Thread.sleep(150);
     click(gotoMessagesList);
   }
 
