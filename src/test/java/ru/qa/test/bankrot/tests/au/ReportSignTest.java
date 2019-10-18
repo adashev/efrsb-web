@@ -13,6 +13,8 @@ public class ReportSignTest extends TestBase{
     app.getHelperBase().gotoReportList();
     app.getReportListPage().clickAddReport();
     app.getNewReportPage().selectReportOptions();
+    app.getCreateReportPage().fillBasicReportData(app.getHelperBase().formCurDate);
+
 //    app.getMessagesListPage().clickAddMessage();
 
 

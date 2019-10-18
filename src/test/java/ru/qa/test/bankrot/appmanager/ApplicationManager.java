@@ -16,6 +16,7 @@ import ru.qa.test.bankrot.pages.messages.CreateMessagePage;
 import ru.qa.test.bankrot.pages.messages.MessagesListPage;
 import ru.qa.test.bankrot.pages.messages.NewMessagePage;
 import ru.qa.test.bankrot.pages.messages.SignMessagePage;
+import ru.qa.test.bankrot.pages.report.CreateReportPage;
 import ru.qa.test.bankrot.pages.report.NewReportPage;
 import ru.qa.test.bankrot.pages.report.ReportListPage;
 
@@ -42,6 +43,7 @@ public class ApplicationManager {
   public SignMessagePage signMessagePage;
   public ReportListPage reportListPage;
   public NewReportPage newReportPage;
+  public CreateReportPage createReportPage;
   public String certificateName;
   public static String urlUserSection;
   public static String baseUrl;
@@ -125,6 +127,8 @@ public class ApplicationManager {
     signMessagePage = new SignMessagePage(wd, wait, actions, certificateName);
     reportListPage = new ReportListPage(wd, wait, actions);
     newReportPage = new NewReportPage(wd, wait, actions);
+    createReportPage = new CreateReportPage(wd, wait, actions);
+
   }
 
   public HelperBase getHelperBase() {return helperBase;}
@@ -134,6 +138,7 @@ public class ApplicationManager {
   public SignMessagePage getSignMessagePage() {return signMessagePage;}
   public ReportListPage getReportListPage() {return reportListPage;}
   public NewReportPage getNewReportPage() {return newReportPage;}
+  public CreateReportPage getCreateReportPage() {return createReportPage;}
 
   public byte[] takeScreenshot() {
     try {

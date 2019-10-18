@@ -10,7 +10,7 @@ public class MessageSignTest extends TestBase {
   @Description("Тест создания и подписания Иного сообщения")
   public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageOptionsAndGoNext(0);
+    app.getNewMessagePage().selectTypeMessage("Иное сообщение");
     app.getCreateMessagePage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
     app.getCreateMessagePage().clickSignMessage();
     app.getSignMessagePage().signMessage();
@@ -20,7 +20,7 @@ public class MessageSignTest extends TestBase {
   @Description("Тест создания и подписания cообщения 'Аннулирование ранее опубликованного сообщения'")
   public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageOptionsAndGoNext(1);
+    app.getNewMessagePage().selectTypeMessage("Аннулирование ранее опубликованного сообщения");
     app.getCreateMessagePage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
     app.getCreateMessagePage().selectMessageFromTheList("для аннулирования");
     app.getCreateMessagePage().clickSignMessage();

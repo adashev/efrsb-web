@@ -19,8 +19,8 @@ public class CreateMessagePage extends HelperBase {
   private String uMess = baseName+"messageListView_ctrl0_ObjectProxy_ctrl0_";
   private String transferOwnship = uMess+"TransferOwnershipRealEstateMessage"+ objP +"_ctrl0_";
   private String insuranceOrg = "View1_ctrl0_InsuranceOrganizationUc_txtInsuranceOrg";
-  private By corrAddress = By.id(baseName+"messageListView_ctrl0_ucPublisherInfo_tbCorrAddress");
-// +" UnsignedMessageListView_ctrl0_ucPublisherInfo_tbCorrAddress"
+  // By.id(baseName+"messageListView_ctrl0_ucPublisherInfo_tbCorrAddress");
+// +"UnsignedMessageListView_ctrl0_ucPublisherInfo_tbCorrAddress"
   private By messageTypeHeader = By.id(baseName+"h1MessageTypeHeader");
   private HashSet<String> missingText;
   private By periodDisqualif = By
@@ -43,7 +43,6 @@ public class CreateMessagePage extends HelperBase {
 
   public void createAndSaveMessage(String messageType) throws InterruptedException {
     checkMessageTypeHeader(messageType);
-    setCorrAddress();
     if("Аннулирование ранее опубликованного сообщения".equals(getElementsText(messageTypeHeader))){
       hideTextMessage();
     } else {
@@ -56,7 +55,6 @@ public class CreateMessagePage extends HelperBase {
 
   public void fillBasicData(String messType, String date) {
     checkMessageTypeHeader(messType);
-    setCorrAddress();
     inputCurrentDate(date);
     if("Аннулирование ранее опубликованного сообщения".equals(getElementsText(messageTypeHeader))){
       hideTextMessage();
@@ -68,15 +66,6 @@ public class CreateMessagePage extends HelperBase {
   @Step("проверить заголовок открывшейся карточки сообщения. Ожидается текст \"{messageType}\"")
   public void checkMessageTypeHeader(String messageType){
     assertEquals(getElementsText(messageTypeHeader), messageType);
-  }
-
-  @Step("заполнить поле 'Адрес для корреспонденции'")
-  public void setCorrAddress() {
-    if(wd.findElements(corrAddress).size() > 0){
-      click(corrAddress);
-      wd.findElement(corrAddress).clear();
-      wd.findElement(corrAddress).sendKeys("А.к1");
-    }
   }
 
   @Step("выставить признак 'Скрыть текст аннулируемого сообщения'")
@@ -372,6 +361,16 @@ public class CreateMessagePage extends HelperBase {
   public void fillDataForViewExecRestructuringPlan() {
     type(By.id(uMess+"ViewExecRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
 //_ctrl0_txtPlaceOfAcquaintance
+  }
+
+  @Step(" Заполнить поле Дата решения")
+  public void setDecisionDate() {
+    inputTime();
+  }
+
+  @Step(" Заполнить поле Текст")
+  public void fillTextField() {
+    inputText();
   }
 }
 

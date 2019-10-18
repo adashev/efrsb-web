@@ -33,7 +33,8 @@ public class HelperBase {
   public String auctionNotif = "Возможно, в сообщении указана не вся необходимая по Закону информация или указанная информация не точна:\n" + "Сообщение о проведении торгов должно быть опубликовано минимум за 30 дней до даты начала торгов.\n" + "Если Вы уверены, что вся необходимая информация в сообщении указана, сообщение может быть сохранено и опубликовано в текущем виде.";
   private By heading = By.xpath("//legend[contains(., 'Должник')]");
   private By numberCourtCase = By.xpath(contentPlace + "InsolventPicker_LegalCasesDropDownList']/option[2]");
-                                      //_MessageTypeSelector_
+  private By corrAddress = By.cssSelector("input[data-element='corrAddress']");
+  //_MessageTypeSelector_
 
   public HelperBase(WebDriver wd, WebDriverWait wait, Actions actions) {
     this.wd = wd;
@@ -126,9 +127,9 @@ public class HelperBase {
     listElements = wd.findElements(inputDate);
     listSize = listElements.size();
     for(int i = 0; i < listSize; i++) {
-      if(listElements.get(i).isDisplayed()){
+      if(listElements.get(i).isDisplayed() && listElements.get(i).isEnabled()){
         listElements.get(i).click();
-        listElements.get(i).clear();
+//        listElements.get(i).clear();
         listElements.get(i).sendKeys(date);
       }
     }
@@ -223,18 +224,14 @@ public class HelperBase {
  //contentPlace = ".//*[@id='ctl00_ctl00_ctplhMain_CentralContentPlaceHolder";
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
     click(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"));
-    /*if("message".equals(entity)){
-      typeSelector = "_MessageTypeSelector_";
-    } else if("report".equals(entity)){
-      typeSelector = "_ucNewAuReport_uc";
+  }
+
+  @Step("заполнить поле 'Адрес для корреспонденции'")
+  public void setAddressForCorrespondence() {
+    if(wd.findElements(corrAddress).size() > 0){
+      click(corrAddress);
+      wd.findElement(corrAddress).clear();
+      wd.findElement(corrAddress).sendKeys("А.к1");
     }
-    try {
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(contentPlace+typeSelector+"SelectImageButton']")));
-      actions.moveToElement(wd.findElement(By.xpath(contentPlace+typeSelector+"SelectImageButton']"))).build().perform();
-      click(By.xpath(contentPlace+typeSelector+"SelectImageButton']"));
-    } catch (WebDriverException e) {
-      Thread.sleep(500);
-      click(By.xpath(contentPlace+typeSelector+"SelectImageButton']"));
-    }*/
   }
 }

@@ -4,11 +4,6 @@
     <test name="CreateAndSignMessagesTests" >
         <classes>
             <class name="ru.qa.test.bankrot.tests.au.MessageSignTest"/>
-            <class name="ru.qa.test.bankrot.tests.au.MessageSignTest1"/>
-            <class name="ru.qa.test.bankrot.tests.au.MessageSignTest2"/>
-            <class name="ru.qa.test.bankrot.tests.au.MessageSignTest3"/>
-            <class name="ru.qa.test.bankrot.tests.au.MessageSignTest4"/>
-            <class name="ru.qa.test.bankrot.tests.au.MessageSignTest5"/>
             <class name="ru.qa.test.bankrot.tests.au.ReportSignTest"/>
             <class name="ru.qa.test.bankrot.tests.MessageDeletionTest"/>
         </classes>
