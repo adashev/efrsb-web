@@ -15,36 +15,11 @@ public class NewMessagePage extends HelperBase {
 //  private String xpathMessageTypeTree = ".//*[@id='ctl00_cplhContent_MessageTypeTree']";
   private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='ChooseInsolvent();']");
   private By typeMessageButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='SelectMessageType();']");
-  /*public List<WebElement> listGroups; // список групп сообщений
-  public List<WebElement> listMessage; // список сообщений*/
 
   public NewMessagePage(WebDriver wd, WebDriverWait wait, Actions actions) {
     super(wd, wait, actions);
   }
 
-  /*public void selectTypeMessage1(String messType) throws InterruptedException {
-    isOptionsPage();
-    startCreateMessAndSelectGroup(messType);//задание параметров сообщения и выбор группы
-    clickNextButton();
-  }*/
-
-  /*public void selectMessageOptions() throws InterruptedException {
-    isOptionsPage();
-    startCreateMessAndSelectGroup("null");//задание параметров сообщения и выбор группы
-  }*/
-
-  /*public void startCreateMessAndSelectGroup(String messType) throws InterruptedException {
-    startCreateMessage();
-    selectGroup(messType);
-  }*/
-
-  /*public void startCreateMessage() {
-//  gotoDirectoryDebtors(); // вызываем справочник должников
-    selectLastDebtor("message"); // выбираем должника
-    selectCourtCase("message"); // выбор Номера дела
-    gotoDirectoryTypeMessage();// вызываем справочник типов сообщений. В справочнике мы сможем подсчитать группы сообщений и сообщений
-    createListGroups();
-  }*/
 
   @Step("открыть справочник должников")
   public void gotoDirectoryDebtors() {
