@@ -3,9 +3,9 @@
 <suite name="Suite1" verbose="1" >
     <test name="CreateAndSignMessagesTests" >
         <classes>
-            <class name="ru.qa.test.bankrot.tests.au.MessageSignTest"/>
-            <class name="ru.qa.test.bankrot.tests.au.ReportSignTest"/>
-            <class name="ru.qa.test.bankrot.tests.MessageDeletionTest"/>
+            <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
+<!--            <class name="ru.qa.test.bankrot.tests.au.ReportSignTest"/>-->
+<!--            <class name="ru.qa.test.bankrot.tests.MessageDeletionTest"/>-->
         </classes>
     </test>
 </suite>

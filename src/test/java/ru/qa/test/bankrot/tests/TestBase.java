@@ -26,7 +26,7 @@ public class TestBase {
   @AfterMethod
   public void returnMessagesList() throws InterruptedException { //вернуться на страницу со списком сообщений
     Thread.sleep(20);
-    wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.urlUserSection));
+    wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.section));
   }
 
   @AfterTest(description = "Закрыть браузер")

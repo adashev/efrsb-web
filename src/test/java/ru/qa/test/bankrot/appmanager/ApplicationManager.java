@@ -1,5 +1,7 @@
 package ru.qa.test.bankrot.appmanager;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +14,8 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.qa.test.bankrot.model.Account;
+import ru.qa.test.bankrot.model.User;
 import ru.qa.test.bankrot.pages.messages.CreateMessagePage;
 import ru.qa.test.bankrot.pages.messages.MessagesListPage;
 import ru.qa.test.bankrot.pages.messages.NewMessagePage;
@@ -25,6 +29,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 
 public class ApplicationManager {
@@ -45,9 +50,15 @@ public class ApplicationManager {
   public NewReportPage newReportPage;
   public CreateReportPage createReportPage;
   public String certificateName;
-  public static String urlUserSection;
+//  public static String urlUserSection;
+//  public static String baseUrl;
+  // ниже 4 для jSON:
+  public static String login;
+  public static String password;
   public static String baseUrl;
-
+  public static String certificate;
+  public static String section;
+//  public static User arm;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -57,18 +68,29 @@ public class ApplicationManager {
   }
 
   public void init() throws IOException {
-    String target = System.getProperty("target", "local"); //6.10
-    propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));
-
     String contur = System.getProperty("contur", "release");
-    propertiesContour.load(new FileReader(new File(String.format("config/conturs/%s.properties", contur))));
-    certificateName = propertiesContour.getProperty("certificate");
-    baseUrl = propertiesContour.getProperty("baseUrl");
+    String user = System.getProperty("user", "au");
+    System.out.println("from comline: " +contur + "  " + user);
 
-    String user = System.getProperty("user", "AU");
-    propertiesUser.load(new FileReader(new File(String.format("config/users/%s.properties", user))));
-    urlUserSection = propertiesUser.getProperty("url.section");
+    ObjectMapper objectMapper = new ObjectMapper();
+    List<Account> accounts = objectMapper.readValue(new File("config/accounts.json"), new TypeReference<List<Account>>(){});
+    for(Account account : accounts){
+      if(contur.equals(account.getConturname())) {
+        baseUrl = account.getBaseurl();
+        certificate = account.getCertificate();
+        List<User> users = account.getUsers();
+        for(User userObject : users){
+          if(user.equals(userObject.getName())){
+            login = userObject.getLogin();
+            password = userObject.getPassword();
+            section = userObject.getSection();
+          }
+        }
+      }
+    }
 
+    String target = System.getProperty("target", "local"); // пока оставляю property
+    propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("unexpectedAlertBehaviour", "accept");
     //   firefox.exe -ProfileManager
@@ -114,8 +136,8 @@ public class ApplicationManager {
     actions = new Actions(wd);
     wd.manage().window().maximize();
     sessionHelper = new SessionHelper(wd, wait, actions);
-    sessionHelper.openBaseUrl(propertiesContour.getProperty("baseUrl"));//baseUrl в IE должен быть вкл. в "Надежные сайты"
-    sessionHelper.login(propertiesUser.getProperty("login"), propertiesUser.getProperty("password"));
+    sessionHelper.openBaseUrl(baseUrl); //json
+    sessionHelper.login(login, password); //json
     sessionHelper.closeStartNotification();
   }
 
@@ -124,7 +146,7 @@ public class ApplicationManager {
     messagesListPage = new MessagesListPage(wd, wait, actions);
     newMessagePage = new NewMessagePage(wd, wait, actions);
     createMessagePage = new CreateMessagePage(wd, wait, actions, browser);
-    signMessagePage = new SignMessagePage(wd, wait, actions, certificateName);
+    signMessagePage = new SignMessagePage(wd, wait, actions, certificate);
     reportListPage = new ReportListPage(wd, wait, actions);
     newReportPage = new NewReportPage(wd, wait, actions);
     createReportPage = new CreateReportPage(wd, wait, actions);

@@ -12,7 +12,7 @@ public class MessageSignTest extends TestBase {
     app.getMessagesListPage().clickAddMessage();
     app.getNewMessagePage().selectTypeMessage("Иное сообщение");
     app.getCreateMessagePage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().clickSignMessage();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
   }
 
@@ -23,7 +23,7 @@ public class MessageSignTest extends TestBase {
     app.getNewMessagePage().selectTypeMessage("Аннулирование ранее опубликованного сообщения");
     app.getCreateMessagePage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
     app.getCreateMessagePage().selectMessageFromTheList("для аннулирования");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
   }
 }

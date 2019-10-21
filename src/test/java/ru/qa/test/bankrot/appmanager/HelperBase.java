@@ -123,13 +123,15 @@ public class HelperBase {
   }
 
   @Step("заполнить поля с датами")
-  public void inputCurrentDate(String date) {
+  public void inputCurrentDate(String date) throws InterruptedException {
+    wait.until(ExpectedConditions.elementToBeClickable(inputDate));
+    Thread.sleep(400);
     listElements = wd.findElements(inputDate);
     listSize = listElements.size();
     for(int i = 0; i < listSize; i++) {
-      if(listElements.get(i).isDisplayed() && listElements.get(i).isEnabled()){
+      if(listElements.get(i).isDisplayed()){
         listElements.get(i).click();
-//        listElements.get(i).clear();
+        listElements.get(i).clear();
         listElements.get(i).sendKeys(date);
       }
     }
@@ -198,6 +200,7 @@ public class HelperBase {
 
   @Step("выбрать должника из списка 'Последние должники'")
   public void selectLastDebtor(String entity) {
+    isOptionsPage();
     if("message".equals(entity)){
       typeSelector = "_MessageTypeSelector_";
     } else if("report".equals(entity)){
@@ -221,7 +224,6 @@ public class HelperBase {
   public void clickNextButton() throws InterruptedException {
     Thread.sleep(60);
     wait.until((d) -> wd.switchTo().defaultContent());
- //contentPlace = ".//*[@id='ctl00_ctl00_ctplhMain_CentralContentPlaceHolder";
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
     click(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"));
   }

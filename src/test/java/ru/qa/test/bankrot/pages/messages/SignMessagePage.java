@@ -18,14 +18,15 @@ public class SignMessagePage extends HelperBase {
   private By certificateLocator;
 
 
-  public SignMessagePage(WebDriver wd, WebDriverWait wait, Actions actions, String certificateName) {
+  public SignMessagePage(WebDriver wd, WebDriverWait wait, Actions actions, String certificate) {
     super(wd, wait, actions);
-    this.certificateLocator = By.xpath("//h4[contains(., "+certificateName+")]");
+    this.certificateLocator = By.xpath("//h4[contains(., "+ certificate +")]");
   }
 
+  @Step("Подписать сообщение")
   public void signMessage() throws InterruptedException {
     sign();
-    payFromPersonalAccount(); //добавлено на время теста
+//    payFromPersonalAccount();
   }
 
 
@@ -49,7 +50,7 @@ public class SignMessagePage extends HelperBase {
 
   @Step("выбрать сертификат")
   public void selectCertificate() throws InterruptedException {
-    Thread.sleep(2000);
+    Thread.sleep(3500);
     wait.until(ExpectedConditions.visibilityOfElementLocated(certificateLocator));
     click(certificateLocator);
   }
@@ -70,7 +71,7 @@ public class SignMessagePage extends HelperBase {
     click(gotoMessagesList);
   }
 
-  @Step("оплатить публикацию сообщения с лицевого счета")
+  @Step("Оплатить публикацию сообщения с лицевого счета")
   public void payFromPersonalAccount() throws InterruptedException {
     click(By.linkText("Оплатить публикацию с лицевого счета"));
     wd.switchTo().frame(0);

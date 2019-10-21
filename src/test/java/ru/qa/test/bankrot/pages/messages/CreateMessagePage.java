@@ -53,7 +53,7 @@ public class CreateMessagePage extends HelperBase {
     clickSaveMessAndCloseAlert();
   }
 
-  public void fillBasicData(String messType, String date) {
+  public void fillBasicData(String messType, String date) throws InterruptedException {
     checkMessageTypeHeader(messType);
     inputCurrentDate(date);
     if("Аннулирование ранее опубликованного сообщения".equals(getElementsText(messageTypeHeader))){
@@ -68,7 +68,7 @@ public class CreateMessagePage extends HelperBase {
     assertEquals(getElementsText(messageTypeHeader), messageType);
   }
 
-  @Step("выставить признак 'Скрыть текст аннулируемого сообщения'")
+  @Step("Заполнить поле 'Скрыть текст аннулируемого сообщения'")
   public void hideTextMessage() {
     dropdownSelect(uMess +"Annul"+ objP +"_ctrl0_ddlLockStatus", "Скрыть");
   }
@@ -164,8 +164,8 @@ public class CreateMessagePage extends HelperBase {
     click(By.id(baseName +"btnTempSaveClick"));
   }
 
-  @Step("нажать кнопку 'К подписи'")
-  public void clickSignMessage() {
+  @Step("Сохранить сообщение")
+  public void saveMessage() {
     click(By.id(baseName +"btnToSign"));
   }
 
@@ -364,13 +364,23 @@ public class CreateMessagePage extends HelperBase {
   }
 
   @Step(" Заполнить поле Дата решения")
-  public void setDecisionDate() {
-    inputTime();
+  public void setDecisionDate() throws InterruptedException {
+    inputCurrentDate(formCurDate);
   }
 
   @Step(" Заполнить поле Текст")
   public void fillTextField() {
     inputText();
+  }
+
+  @Step(" Заполнить поле Дата получения требований кредитора")
+  public void setDateOfReceiptOfCreditorClaims() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+
+  }
+
+  public void selectMessageForAnnulment() throws InterruptedException {
+    selectMessageFromTheList("для аннулирования");
   }
 }
 

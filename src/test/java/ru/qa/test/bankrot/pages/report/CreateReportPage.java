@@ -10,7 +10,7 @@ public class CreateReportPage extends HelperBase {
     super(wd, wait, actions);
   }
 
-  public void fillBasicReportData(String date) {
+  public void fillBasicReportData(String date) throws InterruptedException {
 //    setCorrAddress();
     inputCurrentDate(date);
     inputText();

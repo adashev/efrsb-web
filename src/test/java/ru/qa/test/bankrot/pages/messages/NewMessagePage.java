@@ -12,40 +12,39 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 public class NewMessagePage extends HelperBase {
-  private String xpathMessageTypeTree = ".//*[@id='ctl00_cplhContent_MessageTypeTree']";
-  private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick=\"ChooseInsolvent();\"]");
-  private By typeMessageButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick=\"SelectMessageType();\"]");
-  public List<WebElement> listGroups; // список групп сообщений
-  public List<WebElement> listMessage; // список сообщений
+//  private String xpathMessageTypeTree = ".//*[@id='ctl00_cplhContent_MessageTypeTree']";
+  private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='ChooseInsolvent();']");
+  private By typeMessageButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='SelectMessageType();']");
+  /*public List<WebElement> listGroups; // список групп сообщений
+  public List<WebElement> listMessage; // список сообщений*/
 
   public NewMessagePage(WebDriver wd, WebDriverWait wait, Actions actions) {
     super(wd, wait, actions);
   }
 
-  public void selectTypeMessage(String messType) throws InterruptedException {
+  /*public void selectTypeMessage1(String messType) throws InterruptedException {
     isOptionsPage();
     startCreateMessAndSelectGroup(messType);//задание параметров сообщения и выбор группы
     clickNextButton();
-  }
+  }*/
 
-  public void selectMessageOptions() throws InterruptedException {
+  /*public void selectMessageOptions() throws InterruptedException {
     isOptionsPage();
     startCreateMessAndSelectGroup("null");//задание параметров сообщения и выбор группы
+  }*/
 
-  }
-
-  public void startCreateMessAndSelectGroup(String messType) throws InterruptedException {
+  /*public void startCreateMessAndSelectGroup(String messType) throws InterruptedException {
     startCreateMessage();
     selectGroup(messType);
-  }
+  }*/
 
-  public void startCreateMessage() {
+  /*public void startCreateMessage() {
 //  gotoDirectoryDebtors(); // вызываем справочник должников
     selectLastDebtor("message"); // выбираем должника
     selectCourtCase("message"); // выбор Номера дела
     gotoDirectoryTypeMessage();// вызываем справочник типов сообщений. В справочнике мы сможем подсчитать группы сообщений и сообщений
     createListGroups();
-  }
+  }*/
 
   @Step("открыть справочник должников")
   public void gotoDirectoryDebtors() {
@@ -62,64 +61,48 @@ public class NewMessagePage extends HelperBase {
     wait.until((d) -> wd.switchTo().defaultContent());
   }
 
-  @Step("в окне выбора типа сообщения выбрать требуемый тип")
+  /*@Step("в окне выбора типа сообщения выбрать требуемый тип")
   public void gotoDirectoryTypeMessage() {//щелкаем на кнопке вызова справочника типов сообщ.
     click(typeMessageButton);
     //дожидаемся перехода во фрейм справочника:
     wait.until((d) -> wd.switchTo().frame(wd.findElement(By.cssSelector("td.rwWindowContent > iframe"))));
-  }
+  }*/
 
-  public void createListGroups()  {
+  /*public void createListGroups()  {
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathMessageTypeTree+"/ul/li[3]/div/span[2]")));
     listGroups = wd.findElements(By.xpath(xpathMessageTypeTree+"/ul/li/div/span[2]"));// создаем список типов сообщений
-  }
+  }*/
 
-  public void selectGroup(String messType) throws InterruptedException {
+  public void selectTypeMessage(String messType) throws InterruptedException {
+    click(typeMessageButton);//кликаем кнопку вызова справочника типов сообщ.
+    //дожидаемся перехода во фрейм справочника:
+    wait.until((d) -> wd.switchTo().frame(wd.findElement(By.cssSelector("td.rwWindowContent > iframe"))));
     Thread.sleep(50);
     String curPath = String.format(".//span[contains(.,  '%s')]", messType);
     if(wd.findElements(By.xpath(".//ul[@class='rtUL']//li//div//"+curPath)).size()>0) {
       click(By.xpath(curPath+"/../../../..//div[@class='rtMid']/span[@class='rtIn']"));
     }
-    /*if(wd.findElements(By.xpath(curPath+"/../../../..//div[@class='rtMid']/span[@class='rtPlus']")).size()>0){
-
-    }*/
     click(By.xpath(curPath));
-  /*click(By
-.xpath(".//span[contains(.,  'Опровержение по решению суда опубликованных ранее сведений')]/../../../..//div[@class='rtMid']/span[@class='rtIn']"));
-    click(By.xpath(".//span[contains(.,  'Опровержение по решению суда опубликованных ранее сведений')]"));*/
-    System.out.println();
-
-
-//-------------------------------------------------------------------------------------------
-    /*createListMessages(numberGroup);//создали/воссоздали список сообщений текущей группы
-    wait.until(ExpectedConditions.elementToBeClickable(listGroups.get(numberGroup)));
-    boolean b = "Иное сообщение".equals(listGroups.get(numberGroup).getText());
-    listGroups.get(numberGroup).click();
-    Thread.sleep(150);
-    if(b){
-      Alert alert = wd.switchTo().alert();
-      String text = alert.getText();
-      assertEquals(text, "Данный тип сообщения предназначен только для публикации не типизированных ЕФРСБ сведений, и для него невозможно будет указать связь с последующими сообщениями или опубликовать связанную информацию.");
-      alert.accept();
-      wait.until((d) -> wd.switchTo().defaultContent());
-    }*/
+    if("Иное сообщение".equals(messType)) {
+      closeAlert("Данный тип сообщения предназначен только для публикации не типизированных ЕФРСБ сведений, и для него невозможно будет указать связь с последующими сообщениями или опубликовать связанную информацию.");
+    }
   }
 
-  public void selectMessageAndGoNext() throws InterruptedException {
+  /*public void selectMessageAndGoNext() throws InterruptedException {
     selectMessageOptions();
     selectMessage();
     clickNextButton();
-  }
+  }*/
 
-  public void selectMessage(){
+  /*public void selectMessage(){
     createListMessages(99);//создали/воссоздали список сообщений текущей группы
     wait.until(ExpectedConditions.elementToBeClickable(listMessage.get(99)));
     listMessage.get(99).click();
-  }
+  }*/
 
-  public void createListMessages(int i)  { //создаем список сообщений текущей (i-й) группы
+  /*public void createListMessages(int i)  { //создаем список сообщений текущей (i-й) группы
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathMessageTypeTree+"/ul/li["+(i+1)+"]/div/span[2]")));
     listMessage = wd.findElements(By.xpath(xpathMessageTypeTree+"/ul/li["+(i+1)+"]/ul/li/div/span[2]"));
-  }
+  }*/
 
 }

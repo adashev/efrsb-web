@@ -1,0 +1,34 @@
+[
+  {
+    "conturname": "release",
+    "baseurl": "http://bankruptcy-release.devel.ifx/",
+    "certificate": "'ООО БОШ'",
+    "users": [
+      {
+        "name": "au",
+        "login": "interfax_au",
+        "password": "123456",
+        "section": "ArbitrManager"
+      },
+      {
+        "name": "otur",
+        "login": "interfax_ot",
+        "password": "123456",
+        "section": "TradeOrganizer"
+      }
+    ]
+  },
+  {
+    "conturname": "test",
+    "baseurl": "http://bankruptcytest.devel.ifx/",
+    "certificate": "'ООО БОШ'",
+    "users": [
+      {
+        "name": "au",
+        "login": "Anisimov4",
+        "password": "ZTd9Pn",
+        "section": "ArbitrManager"
+      }
+    ]
+  }
+]

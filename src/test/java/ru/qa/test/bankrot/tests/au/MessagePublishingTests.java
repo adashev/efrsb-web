@@ -1,12 +1,11 @@
 package ru.qa.test.bankrot.tests.au;
 
 import io.qameta.allure.Description;
-import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.Test;
 import ru.qa.test.bankrot.tests.TestBase;
 
 
-public class MessageSignTest extends TestBase {
+public class MessagePublishingTests extends TestBase {
   private String nameForRightUnsoldAsset =
    "Объявление о наличии непроданного имущества и праве собственника имущества должника – унитарного предприятия, учредителей (участников) должника получить такое имущество";
   private String nameForSaleOrderPledgedProperty =
@@ -16,55 +15,67 @@ public class MessageSignTest extends TestBase {
  @Description("Тест создания и подписания Сообщения о судебном акте")
  public void testMessageArbitralDecree() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectLastDebtor("message");
-    app.getNewMessagePage().selectCourtCase("message");
+    app.getHelperBase().selectLastDebtor("message");
+    app.getHelperBase().selectCourtCase("message");
     app.getNewMessagePage().selectTypeMessage("Сообщение о судебном акте");
-    app.getNewMessagePage().clickNextButton();
-    app.getNewMessagePage().setAddressForCorrespondence();
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
     app.getCreateMessagePage().selectTypeArbitralDecree();
     app.getCreateMessagePage().setDecisionDate();
     app.getCreateMessagePage().fillTextField();
-    System.out.println();
-    app.getCreateMessagePage().fillBasicData("Сообщение о судебном акте", app.getHelperBase().formCurDate);
-
-//  app.getCreateMessagePage().clickSaveMessAndCloseAlert();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 2)
   @Description("Тест создания и подписания Уведомления о получении требований кредитора")
   public void testReceivingCreditorDemand() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
+    app.getHelperBase().selectLastDebtor("message");
+    app.getHelperBase().selectCourtCase("message");
     app.getNewMessagePage().selectTypeMessage("Уведомление о получении требований кредитора");
-    app.getCreateMessagePage()
-       .fillBasicData("Уведомление о получении требований кредитора", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().setDateOfReceiptOfCreditorClaims();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
-
   @Test(priority = 3)
   @Description("Тест создания и подписания Иного сообщения")
   public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
+    app.getHelperBase().selectLastDebtor("message");
+    app.getHelperBase().selectCourtCase("message");
     app.getNewMessagePage().selectTypeMessage("Иное сообщение");
-    app.getCreateMessagePage().fillBasicData("Иное сообщение", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 4)
   @Description("Тест создания и подписания cообщения 'Аннулирование ранее опубликованного сообщения'")
   public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
+    app.getHelperBase().selectLastDebtor("message");
+    app.getHelperBase().selectCourtCase("message");
     app.getNewMessagePage().selectTypeMessage("Аннулирование ранее опубликованного сообщения");
-    app.getCreateMessagePage().fillBasicData("Аннулирование ранее опубликованного сообщения", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().selectMessageFromTheList("для аннулирования");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForAnnulment();
+    app.getCreateMessagePage().hideTextMessage();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 5)
+  /*@Test(priority = 5)
   @Description("Тест создания и подписания cообщения 'Опровержение по решению суда опубликованных ранее сведений'")
   public void testRebuttalMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -661,7 +672,7 @@ public class MessageSignTest extends TestBase {
   }
 
 
-
+*/
 
 }
 

@@ -107,35 +107,6 @@ dependencies {
 
 }
 
-/*run {
-    systemProperties['login']
-    systemProperties['password']
-}*/
-
-
-/*task test1(type: Test) {
-    run
-    String login
-    String password
-    useTestNG() {
-        suites 'src/test/resources/testng-messageSign-AU.xml'
-    }
-    if (project.hasProperty('role')){
-        systemProperty 'role', "${role}"
-    }
-    if("AU".equals(System.getProperty("role"))) {
-        doLast {
-            def jsonFile = file('config/config.json')
-            def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
-            login = parsedJson.test.AU.login
-            password = parsedJson.test.AU.password
-            systemProperty 'login', login
-            systemProperty 'password', password
-        }
-    }
-}*/
-
-
 task testMessagesAU(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng-messageSign-AU.xml'
@@ -155,9 +126,11 @@ task testMessagesAU(type: Test) {
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-testMessagesAU.doFirst {  jvmArgs "-javaagent:${configurations.agent.singleFile}" }
+testMessagesAU.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
 
-task testMessages_OTUR(type: Test) {
+task testMessagesOTUR(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng-messageSign-OTUR.xml'
     }
@@ -176,7 +149,7 @@ task testMessages_OTUR(type: Test) {
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
-testMessages_OTUR.doFirst {  jvmArgs "-javaagent:${configurations.agent.singleFile}" }
+testMessagesOTUR.doFirst {  jvmArgs "-javaagent:${configurations.agent.singleFile}" }
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
