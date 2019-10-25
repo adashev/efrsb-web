@@ -34,6 +34,8 @@ public class HelperBase {
   private By heading = By.xpath("//legend[contains(., 'Должник')]");
   private By numberCourtCase = By.xpath(contentPlace + "InsolventPicker_LegalCasesDropDownList']/option[2]");
   private By corrAddress = By.cssSelector("input[data-element='corrAddress']");
+  //  private String xpathMessageTypeTree = ".//*[@id='ctl00_cplhContent_MessageTypeTree']";
+    private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='ChooseInsolvent();']");
   //_MessageTypeSelector_
 
   public HelperBase(WebDriver wd, WebDriverWait wait, Actions actions) {
@@ -115,9 +117,8 @@ public class HelperBase {
     listSize = listElements.size();
     for(int i = 0; i < listSize; i++) {
       if(listElements.get(i).isDisplayed()){
-        listElements.get(i).click();
-        listElements.get(i).clear();
-        listElements.get(i).sendKeys("ткт");
+          listElements.get(i).click();
+          listElements.get(i).sendKeys("_текст");
       }
     }
   }
@@ -125,7 +126,7 @@ public class HelperBase {
   @Step("заполнить поля с датами")
   public void inputCurrentDate(String date) throws InterruptedException {
     wait.until(ExpectedConditions.elementToBeClickable(inputDate));
-    Thread.sleep(400);
+    Thread.sleep(600);
     listElements = wd.findElements(inputDate);
     listSize = listElements.size();
     for(int i = 0; i < listSize; i++) {
@@ -155,9 +156,10 @@ public class HelperBase {
   public void selectMessageFromTheList(String target) throws InterruptedException {
     click(By.cssSelector("img[title='Обзор']"));
     wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+    Thread.sleep(300);
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0){
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
-      Thread.sleep(500);
+      Thread.sleep(400);
       wd.switchTo().defaultContent();
     } else {
       listIsEmpty(target);
@@ -222,9 +224,15 @@ public class HelperBase {
 
   @Step("нажать на кнопку 'Далее'")
   public void clickNextButton() throws InterruptedException {
-    Thread.sleep(60);
+    Thread.sleep(80);
     wait.until((d) -> wd.switchTo().defaultContent());
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
+    if (wd.findElements(By.cssSelector("iframe")).size() > 0) {
+      actions.moveToElement(wd.findElement(By.cssSelector("iframe"))).click().perform();
+    }
+    if (wd.findElements(By.className("TelerikModalOverlay")).size() > 0) {
+      actions.moveToElement(wd.findElement(By.className("TelerikModalOverlay"))).click().perform();
+    }
     click(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"));
   }
 
@@ -235,5 +243,16 @@ public class HelperBase {
       wd.findElement(corrAddress).clear();
       wd.findElement(corrAddress).sendKeys("А.к1");
     }
+  }
+
+  @Step("Выбрать Должника")
+  public void selectDebtor() { //выбираем должника-ЮЛ в открывшемся окне справочника
+    actions.moveToElement(wd.findElement(directoryDebtorsButton)).build().perform();
+    click(directoryDebtorsButton);
+    wait.until((d) -> wd.switchTo().frame(wd.findElement(By.cssSelector("td.rwWindowContent > iframe"))));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[2]/tbody/tr[3]")));
+    wait.until((d) -> !wd.findElement(By.xpath("//table[2]/tbody/tr[3]/td[1]")).getText().equals(""));//ждем загрузки данных в таблицу
+    click(By.xpath("//table[2]/tbody/tr[3]/td[1]"));
+    wait.until((d) -> wd.switchTo().defaultContent());
   }
 }

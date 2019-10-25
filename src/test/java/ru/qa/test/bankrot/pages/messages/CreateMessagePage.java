@@ -79,7 +79,7 @@ public class CreateMessagePage extends HelperBase {
      +"ArbitralDecreeForm_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_DecisionTypeView_ctrl0_DecreeType", "о введении наблюдения");
   }
 
-  @Step("задать срок дисквалификации")
+  @Step("Заполнить поля группы Срок дисквалификации")
   public void setPeriodOfDisqualification() {
     type(periodDisqualif, "2");
   }
@@ -97,44 +97,43 @@ public class CreateMessagePage extends HelperBase {
     inputTime();
   }
 
-  @Step("ввести данные о месте проведения и времени начала собрания")
-  public void fillMeetingParticipantsBuildAttributes() {
+  @Step("Заполнить поле Место проведения")
+  public void inputLocationMeetingParticipantsBuild() {
     type(By.id(uMess +"MeetingParticipantsBuilding"+ objP +"_ctrl0_tbMeetingSite"), "ул. Место пров., д.1");
-    inputTime();
   }
 
-  public void fillTransferOwnershipRealEstateAttributes() {
-    fillRightsAcquirerData();
-    addConstructionInProgress();
+  /*public void fillTransferOwnershipRealEstateAttributes() {
+//    fillRightsAcquirerData();
+//    addConstructionInProgress();
     addLandPlot();
-  }
+  }*/
 
-  @Step("ввести данные о приобретателе прав на объект строительства и земельный участок")
+ /* @Step("ввести данные о приобретателе прав на объект строительства и земельный участок")
   public void fillRightsAcquirerData() {
     type(By.id(transferOwnship +"txtAcquirerName"), "Наим. приобр.");
     type(By.id(transferOwnship +"txtAcquirerAddress"), "Адр. приобр., д5");
     type(By.id(transferOwnship +"txtAcquirerOgrn"), "1145958053009");
     type(By.id(transferOwnship +"txtAcquirerInn"), "5904645570");
-  }
+  }*/
 
-  @Step("добавить объект незавершенного строительства")
+  /*@Step("добавить объект незавершенного строительства")
   public void addConstructionInProgress() {
     addFormAttribut("10051");
     click(By.id(transferOwnship +"uncompletedBuildingProjectList_btnAdd"));
-  }
+  }*/
 
   @Step("добавить земельный участок")
   public void addLandPlot() {
     click(By.id(transferOwnship +"LandPlitsList_btnAdd"));
   }
 
-  @Step("ввести данные о управляющей страховой организации")
+  /*@Step("ввести данные о управляющей страховой организации")
   public void fillManagingInsuranceOrgData() {
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Name"), "Наим. страховой орг.");
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Address"), "Адр. приобр-ля, д5");
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Inn"), "5904645570");
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Ogrn"), "1145958053009");
-  }
+  }*/
 
   @Step("ввести данные о кредитной организации, в которой открыт банковский счет должника")
   public void fillDataForCreditOrg() {
@@ -363,24 +362,145 @@ public class CreateMessagePage extends HelperBase {
 //_ctrl0_txtPlaceOfAcquaintance
   }
 
-  @Step(" Заполнить поле Дата решения")
+  @Step("Заполнить поле Дата решения")
   public void setDecisionDate() throws InterruptedException {
     inputCurrentDate(formCurDate);
   }
 
-  @Step(" Заполнить поле Текст")
+  @Step("Заполнить поле Текст")
   public void fillTextField() {
     inputText();
   }
 
-  @Step(" Заполнить поле Дата получения требований кредитора")
+  @Step("Заполнить поле Дата получения требований кредитора")
   public void setDateOfReceiptOfCreditorClaims() throws InterruptedException {
     inputCurrentDate(formCurDate);
 
   }
 
+  @Step("Заполнить поле Подлежит аннулированию")
   public void selectMessageForAnnulment() throws InterruptedException {
     selectMessageFromTheList("для аннулирования");
+  }
+
+  @Step("Заполнить поле Сообщение с опровергаемыми сведениями")
+  public void selectMessageForRebuttal() throws InterruptedException {
+    selectMessageFromTheList("для опровержения");
+  }
+
+  @Step("Заполнить поле Место проведения")
+  public void inputLocation() {
+    type(By.id(uMess+"Meeting"+objP+"_ctrl0_MeetingSite"), "ул. Место проведен., д.1");
+  }
+
+  @Step("Заполнить поле Место регистрации")
+  public void inputPlaceOfRegistration() {
+    type(By.id(uMess+"Meeting"+objP+"_ctrl0_RegistrationSite"), "ул. Место регистр., д.2");
+  }
+
+  @Step("Заполнить поле Дата начала собрания")
+  public void setMeetingStartDate() {
+    type(By.id(uMess+"Meeting"+objP+"_ctrl0_MeetingDateBegin_radDatePicker_dateInput"), addDays(1));
+  }
+
+  @Step("Заполнить поле Дата и время начала заседания")
+  public void setDateAndTimeOfMeeting() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+    inputTime();
+
+  }
+
+  @Step("Заполнить поле Место проведения")
+  public void inputLocationCommittee() {
+    type(By.id(uMess +"Committee"+ objP +"View1_ctrl0_MeetingSite"), "ул. Место пров., д.5");
+  }
+
+  @Step("Заполнить поле Дата и время начала собрания")
+  public void setDateAndTimeOfMeetingParticipantsBuilding() throws InterruptedException {
+    inputCurrentDate(addDays(15));
+    inputTime();
+  }
+
+  @Step("Заполнить поле Повестка собрания участников строительства")
+  public void inputConstructionMeetingAgenda() {
+    type(By.id(uMess+"MeetingParticipantsBuilding"+objP+"_ctrl0_tbNotice"), "повестка собрания");
+  }//ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_ucCreateMessage_messageListView_ctrl0_ObjectProxy_ctrl0_MeetingParticipantsBuilding_ObjectProxy_ctrl0_ObjectProxy_ctrl0_tbNotice
+
+  @Step("Заполнить поле Порядок ознакомления с материалами")
+  public void inputProcedureForAcquaintanceWithMaterials() {
+    type(By.id(uMess+"MeetingParticipantsBuilding"+objP+"_ctrl0_tbMaterialsFamiliarizationOrder"), "порядок ознакомления");
+  }
+
+  @Step("Заполнить поле Порядок регистрации участников собрания")
+  public void inputProcedureForRegisteringMeeting() {
+    type(By.id(uMess+"MeetingParticipantsBuilding"+objP+"_ctrl0_tbMembersRegistrationOrder"), "порядок регистрации");
+  }
+
+  @Step("Заполнить поле Последствия не предъявления требований")
+  public void ConsequencesOfnotMakingClaims() {
+    type(By.id(uMess+"PartBuildMonetaryClaim"+objP+"_ctrl0_tbConsequences"), "последствия не предъявления треб.");
+  }
+
+  @Step("Заполнить поле Дата вынесения определения суда о передаче имущества и обязательств застройщика")
+  public void setDateOfCourtRuling() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Дата государственной регистрации перехода прав")
+  public void setDateOfStateRegistration() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Наименование приобретателя")
+  public void inputNameOfAcquirer() {
+    type(By.id(transferOwnship +"txtAcquirerName"), "Наим. приобр.");
+  }
+
+  @Step("Заполнить поле Адрес приобретателя")
+  public void inputBuyerAddress() {
+    type(By.id(transferOwnship +"txtAcquirerAddress"), "Адр. приобр., д5");
+  }
+
+  @Step("Заполнить поле ОГРН")
+  public void inputOgrnOfAcquirer() {
+    type(By.id(transferOwnship +"txtAcquirerOgrn"), "1145958053009");
+  }
+
+  @Step("Заполнить поле ИНН")
+  public void inputInnOfAcquirer() {
+    type(By.id(transferOwnship +"txtAcquirerInn"), "5904645570");
+  }
+
+  @Step("Заполнить блок Объект незавершенного строительства")
+  public void inputBlockConstructionInProgress() {
+    type(By.id(transferOwnship+"uncompletedBuildingProjectList_txtAddress"), "cтроит. адрес, д.16");
+//    transferOwnship = uMess+"TransferOwnershipRealEstateMessage"+ objP +"_ctrl0_";
+//_uncompletedBuildingProjectList_txtAddress
+    addFormAttribut("10051");
+    click(By.id(transferOwnship +"uncompletedBuildingProjectList_btnAdd"));
+  }
+
+  @Step("Заполнить блок Земельный участок")
+  public void inputBlockLandPlot() {
+    click(By.id(transferOwnship +"LandPlitsList_btnAdd"));
+  }
+
+  @Step("Заполнить поле Основания передачи страхового портфеля")
+  public void inputGroundsForTransferringInsurancePortfolio() {
+    type(By.id(uMess+"TransferInsurancePortfolio"+objP+"View1_ctrl0_txtPortfolioTransferReason"), "осн. перед. страх. портфеля");
+  }
+
+  @Step("Заполнить поле Сведения об ограничении/приостановлении полномочий исполнительного органа должника")
+  public void inputAuthorizationRestrictionInfoExecutiveBodyOfDebtor() {
+    type(By.id(uMess+"TransferInsurancePortfolio"+objP+"View1_ctrl0_txtAuthorityLimitationInfo"), "сведения об огран. полномочий");
+  }
+
+  @Step("Заполнить блок Управляющая страховая организация")
+  public void inputBlockManagingInsuranceOrganization() {
+    type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Name"), "Наим. страховой орг.");
+    type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Address"), "Адр. приобр-ля, д5");
+    type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Inn"), "5904645570");
+    type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Ogrn"), "1145958053009");
   }
 }
 

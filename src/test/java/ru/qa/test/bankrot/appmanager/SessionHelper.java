@@ -2,6 +2,7 @@ package ru.qa.test.bankrot.appmanager;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -24,11 +25,16 @@ public class SessionHelper extends HelperBase {
   public void login(String login, String password) {
     type(By.id("ctl00_PrivateOffice1_tbLogin"), login);
     type(By.id("ctl00_PrivateOffice1_tbPassword"), password);
-    click(By.id("ctl00_PrivateOffice1_ibPrivateOfficeEnter"));
+    wd.findElement(By.id("ctl00_PrivateOffice1_tbPassword")).sendKeys(Keys.ENTER);
+
+//    click(By.cssSelector("[title='Войти']"));
   }
 
   @Step("закрыть увемление о версиях поддерживаемых браузеров")
   public void closeStartNotification() {//закрыть увемл-е о прекращении поддержки старых браузеров
+    if (wd.findElements(By.className("TelerikModalOverlay")).size() > 0) {
+      actions.moveToElement(wd.findElement(By.className("TelerikModalOverlay"))).click().perform();
+    }
     click(closeNotification);
   }
 

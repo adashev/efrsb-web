@@ -84,6 +84,7 @@ public class ApplicationManager {
             login = userObject.getLogin();
             password = userObject.getPassword();
             section = userObject.getSection();
+            break;
           }
         }
       }

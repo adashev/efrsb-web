@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.codepine.api:testrail-api-java-client:2.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.codepine.api/testrail-api-java-client/2.0.1/ea68e3ec2c18d1d28e8f9fb8ead9bf01b31dda14/testrail-api-java-client-2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.codepine.api/testrail-api-java-client/2.0.1/ff279b37c2d33a0223262e904a2130fae354ef00/testrail-api-java-client-2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
