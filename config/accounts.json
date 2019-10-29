@@ -2,12 +2,12 @@
   {
     "conturname": "release",
     "baseurl": "http://bankruptcy-release.devel.ifx/",
-    "certificate": "'ООО БОШ'",
+    "certificate": "ООО БОШ",
     "users": [
       {
         "name": "au",
-        "login": "interfax_au",
-        "password": "123456",
+        "login": "Anisimov4",
+        "password": "t4jFHm",
         "section": "ArbitrManager"
       },
       {

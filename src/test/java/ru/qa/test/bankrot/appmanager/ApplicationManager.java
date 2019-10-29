@@ -50,15 +50,11 @@ public class ApplicationManager {
   public NewReportPage newReportPage;
   public CreateReportPage createReportPage;
   public String certificateName;
-//  public static String urlUserSection;
-//  public static String baseUrl;
-  // ниже 4 для jSON:
   public static String login;
   public static String password;
   public static String baseUrl;
   public static String certificate;
   public static String section;
-//  public static User arm;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -129,6 +125,10 @@ public class ApplicationManager {
       capabilities.setBrowserName(browser);
       capabilities.setCapability("enableVNC", true);
       capabilities.setCapability("enableVideo", false);
+      capabilities.setVersion("selenoid_chrome_77.0_csp");
+      optionsChrome.addArguments("--load-extension=/var/blitz");
+      capabilities.setCapability(ChromeOptions.CAPABILITY, optionsChrome);
+
       wd = new RemoteWebDriver(URI.create(propertiesTarget.getProperty("selenium.server")).toURL(), capabilities);
     } else {
       System.out.println("selenium-server not defined");

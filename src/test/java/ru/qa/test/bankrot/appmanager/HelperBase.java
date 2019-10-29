@@ -87,6 +87,13 @@ public class HelperBase {
     wait.until((d) -> wd.switchTo().defaultContent());
   }
 
+  public void closeAlert() throws InterruptedException {
+    Thread.sleep(70);
+    Alert alert = wait.until((d) -> wd.switchTo().alert());
+    alert.accept();
+    wait.until((d) -> wd.switchTo().defaultContent());
+  }
+
   @Step("закрыть алерт об успешной оплате публикации")
   public void closeAlertPay() throws InterruptedException {
     Thread.sleep(70);
@@ -125,8 +132,8 @@ public class HelperBase {
 
   @Step("заполнить поля с датами")
   public void inputCurrentDate(String date) throws InterruptedException {
-    wait.until(ExpectedConditions.elementToBeClickable(inputDate));
-    Thread.sleep(600);
+    Thread.sleep(300);
+    wait.until(ExpectedConditions.presenceOfElementLocated(inputDate));
     listElements = wd.findElements(inputDate);
     listSize = listElements.size();
     for(int i = 0; i < listSize; i++) {
@@ -176,8 +183,6 @@ public class HelperBase {
   public void selectMessageFromListWithConfirm(String target) throws InterruptedException {
     click(By.cssSelector("img[title='Обзор']"));
     wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
-    /*wd.switchTo().frame(0);
-    Thread.sleep(300);*/
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0) {
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
     } else {
@@ -224,16 +229,23 @@ public class HelperBase {
 
   @Step("нажать на кнопку 'Далее'")
   public void clickNextButton() throws InterruptedException {
-    Thread.sleep(80);
     wait.until((d) -> wd.switchTo().defaultContent());
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
+    Thread.sleep(200);
+    wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
+    Thread.sleep(200);
+    actions.moveToElement(wd.findElement(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"))).click().perform();
+
+ //----------------------------------------------------------------------------------------------------
+   /* wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]")));
+    Thread.sleep(150);
     if (wd.findElements(By.cssSelector("iframe")).size() > 0) {
       actions.moveToElement(wd.findElement(By.cssSelector("iframe"))).click().perform();
     }
+    Thread.sleep(150);
     if (wd.findElements(By.className("TelerikModalOverlay")).size() > 0) {
       actions.moveToElement(wd.findElement(By.className("TelerikModalOverlay"))).click().perform();
     }
-    click(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"));
+    click(By.cssSelector("input[src=\"../img/buttons/btn_further.gif\"]"));*/
   }
 
   @Step("заполнить поле 'Адрес для корреспонденции'")
@@ -250,9 +262,9 @@ public class HelperBase {
     actions.moveToElement(wd.findElement(directoryDebtorsButton)).build().perform();
     click(directoryDebtorsButton);
     wait.until((d) -> wd.switchTo().frame(wd.findElement(By.cssSelector("td.rwWindowContent > iframe"))));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[2]/tbody/tr[3]")));
-    wait.until((d) -> !wd.findElement(By.xpath("//table[2]/tbody/tr[3]/td[1]")).getText().equals(""));//ждем загрузки данных в таблицу
-    click(By.xpath("//table[2]/tbody/tr[3]/td[1]"));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[2]/tbody/tr[2]")));
+    wait.until((d) -> !wd.findElement(By.xpath("//table[2]/tbody/tr[2]/td[1]")).getText().equals(""));//ждем загрузки данных в таблицу
+    click(By.xpath("//table[2]/tbody/tr[2]/td[1]"));
     wait.until((d) -> wd.switchTo().defaultContent());
   }
 }

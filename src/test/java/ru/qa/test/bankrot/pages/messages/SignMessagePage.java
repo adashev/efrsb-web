@@ -20,13 +20,12 @@ public class SignMessagePage extends HelperBase {
 
   public SignMessagePage(WebDriver wd, WebDriverWait wait, Actions actions, String certificate) {
     super(wd, wait, actions);
-    this.certificateLocator = By.xpath("//h4[contains(., "+ certificate +")]");
+    this.certificateLocator = By.xpath(String.format("//h4[contains(., '%s')]", certificate) );
   }
 
   @Step("Подписать сообщение")
   public void signMessage() throws InterruptedException {
     sign();
-//    payFromPersonalAccount();
   }
 
 

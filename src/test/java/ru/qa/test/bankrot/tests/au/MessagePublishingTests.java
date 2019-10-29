@@ -7,13 +7,13 @@ import ru.qa.test.bankrot.tests.TestBase;
 
 public class MessagePublishingTests extends TestBase {
   private String nameForRightUnsoldAsset =
-   "Объявление о наличии непроданного имущества и праве собственника имущества должника – унитарного предприятия, учредителей (участников) должника получить такое имущество";
+      "Объявление о наличии непроданного имущества и праве собственника имущества должника – унитарного предприятия, учредителей (участников) должника получить такое имущество";
   private String nameForSaleOrderPledgedProperty =
-    "Об определении начальной продажной цены, утверждении порядка и условий проведения торгов по реализации предмета залога, порядка и условий обеспечения сохранности предмета залога";
+      "Об определении начальной продажной цены, утверждении порядка и условий проведения торгов по реализации предмета залога, порядка и условий обеспечения сохранности предмета залога";
 
- @Test(priority = 1)
- @Description("Опубликовать \"Сообщение о судебном акте\"")
- public void testMessageArbitralDecree() throws InterruptedException {
+  @Test(priority = 1)
+  @Description("Опубликовать \"Сообщение о судебном акте\"")
+  public void testMessageArbitralDecree() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getHelperBase().selectDebtor();
     app.getHelperBase().selectCourtCase("message");
@@ -43,6 +43,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
   }
+
   @Test(priority = 3)
   @Description("Опубликовать \"Иное сообщение\"")
   public void testMessageOther() throws InterruptedException {
@@ -120,7 +121,7 @@ public class MessagePublishingTests extends TestBase {
     app.getCreateMessagePage().fillTextField();
     app.getCreateMessagePage().saveMessage();
     app.getHelperBase()
-     .closeAlert("Сообщение должно быть опубликовано не менее чем за 14 дней до даты проведения собрания кредиторов");
+        .closeAlert("Сообщение должно быть опубликовано не менее чем за 14 дней до даты проведения собрания кредиторов");
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
   }
@@ -140,7 +141,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
- @Test(priority = 9)
+  @Test(priority = 9)
   @Description("Опубликовать \"Уведомление о проведении комитета кредиторов\"")
   public void testCommitteeMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -258,7 +259,7 @@ public class MessagePublishingTests extends TestBase {
     app.getCreateMessagePage().fillTextField();
     app.getCreateMessagePage().saveMessage();
     app.getHelperBase()
-    .closeAlert("\n"+"Дата государственной регистрации перехода прав указана меньше Даты вынесения определения суда о передаче имущества и обязательств застройщика");
+        .closeAlert("\n" + "Дата государственной регистрации перехода прав указана меньше Даты вынесения определения суда о передаче имущества и обязательств застройщика");
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
   }
@@ -311,210 +312,293 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  /* @Test(priority = 19)
-  @Description("Тест создания и подписания Сведений о кредитной организации, в которой открыт специальный банковский счет должника")
+  @Test(priority = 19)
+  @Description("Опубликовать \"Сведения о кредитной организации, в которой открыт специальный банковский счет должника\"")
   public void testBankOpenAccountDebtor() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage()
-            .fillBasicData("Сведения о кредитной организации, в которой открыт специальный банковский счет должника", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().fillDataForCreditOrg();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сведения о кредитной организации, в которой открыт специальный банковский счет должника");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().inputNameOfCreditOrganization();
+    app.getCreateMessagePage().inputInnOfCreditOrganization();
+    app.getCreateMessagePage().inputOgrnOfCreditOrganization();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 20)
-  @Description("Тест создания и подписания Объявления о проведении торгов")
+  @Description("Опубликовать \"Объявление о проведении торгов\"")
   public void testAuctionMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Объявление о проведении торгов", app.getHelperBase().formCurDate);
-    if(app.browser.equals(BrowserType.FIREFOX)){
-      app.getCreateMessagePage().copyLot();
-    } else {
-      app.getCreateMessagePage().fillAuctionLot();
-    }
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Объявление о проведении торгов");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
     app.getCreateMessagePage().fillLocation();
-    app.getCreateMessagePage().clickSignMessage();
-    app.getHelperBase().closeAlert(app.getHelperBase().auctionNotif);
+    app.getCreateMessagePage().fillAuctionLot();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
+    app.getHelperBase().closeAlert();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 21)
-  @Description("Тест создания и подписания Сообщения о результатах торгов")
+  @Description("Опубликовать \"Сообщение о результатах торгов\"")
   public void testTradeResultMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщение о результатах торгов", app.getHelperBase().formCurDate);
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщение о результатах торгов");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
     app.getCreateMessagePage().fillDataForTradeResult();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
-//  app.getSignMessage().signAndPayMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 22)
-  @Description("Тест создания и подписания сообщения 'Об определении начальной продажной цены, утверждении порядка и условий проведения торгов по реализации предмета залога, порядка и условий обеспечения сохранности предмета залога'")
+  @Description("Опубликовать \"Об определении начальной продажной цены, утверждении порядка и условий проведения торгов по реализации предмета залога, порядка и условий обеспечения сохранности предмета залога\"")
   public void testSaleOrderPledgedProperty() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData(nameForSaleOrderPledgedProperty, app.getHelperBase().formCurDate);
-    if(app.browser.equals(BrowserType.CHROME)){
-      app.getCreateMessagePage().fillSaleOrderPledgedProperty();
-      app.getCreateMessagePage().clickSignMessage();
-      app.getSignMessagePage().signMessage();
-    } else {
-      app.getCreateMessagePage().clickSaveMessAndCloseAlert();
-    }
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Об определении начальной продажной цены, утверждении порядка и условий проведения торгов по реализации предмета залога, порядка и условий обеспечения сохранности предмета залога");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().fillSaleOrderPledgedProperty();
+    app.getCreateMessagePage().saveMessage();
+    app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 23)//, dependsOnMethods = {"testAuctionMessage"}
-  @Description("Тест создания и подписания Сообщения об отмене сообщения об объявлении торгов или сообщения о результатах торгов")
+  @Test(priority = 23)
+  @Description("Опубликовать \"Сообщение об отмене сообщения об объявлении торгов или сообщения о результатах торгов\"")
   public void testCancelAuctionTradeResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщение об отмене сообщения об объявлении торгов или сообщения о результатах торгов", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().selectMessageFromTheList("для отмены");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщение об отмене сообщения об объявлении торгов или сообщения о результатах торгов");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForCancelAuctionTradeResult();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 24) //, dependsOnMethods = {"testAuctionMessage"}
-  @Description("Тест создания и подписания Сообщения об изменении объявления о проведении торгов")
+  @Test(priority = 24)
+  @Description("Опубликовать \"Сообщение об изменении объявления о проведении торгов\"")
   public void testChangeAuction() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщение об изменении объявления о проведении торгов", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().selectMessageFromTheList("для изменения");
-    app.getCreateMessagePage().fillDataForChangeAuction();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщение об изменении объявления о проведении торгов");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForChangeAuction();
+    app.getCreateMessagePage().inputReasonForChange();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 25)
-  @Description("Тест создания и подписания Сведений о заключении договора купли-продажи")
+  @Description("Опубликовать \"Сведения о заключении договора купли-продажи\"")
   public void testSaleContractResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сведения о заключении договора купли-продажи", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на объявление о проведении торгов");
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сведения о заключении договора купли-продажи");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForSaleContractResult();
     app.getCreateMessagePage().fillDataForSaleContractResult();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 26)
-  @Description("Тест создания и подписания Объявления о наличии непроданного имущества и праве собственника имущества должника – ун. предприятия, учредителей должника получить такое имущество")
+  @Description("Опубликовать \"Объявление о наличии непроданного имущества и праве собственника имущества должника – унитарного предприятия, учредителей (участников) должника получить такое имущество\"")
   public void testRightUnsoldAsset() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData(nameForRightUnsoldAsset, app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Объявление о наличии непроданного имущества и праве собственника имущества должника – унитарного предприятия, учредителей (участников) должника получить такое имущество");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 27)
-  @Description("Тест создания и подписания Предложения о погашении требований кредиторов путем предоставления отступного")
+  @Description("Опубликовать \"Предложение о погашении требований кредиторов путем предоставления отступного\"")
   public void testProcedureGrantingIndemnity() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Предложение о погашении требований кредиторов путем предоставления отступного", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().fillDataForProcedureGrantingIndemn();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Предложение о погашении требований кредиторов путем предоставления отступного");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().inputPropertyOfferedAsCompensation();
+    app.getCreateMessagePage().inputPropertyAcquisitionProcedure();
+    app.getCreateMessagePage().inputDeadlineForSubmittingConsentStatements();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 28)
-  @Description("Тест создания и подписания Уведомления о проведении собрания работников, бывших работников должника")
+  @Description("Опубликовать \"Уведомление о проведении собрания работников, бывших работников должника\"")
   public void testMeetingWorker() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Уведомление о проведении собрания работников, бывших работников должника", app.getHelperBase().addDays(1));
-    app.getCreateMessagePage().fillDataForMeetingWorker();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Уведомление о проведении собрания работников, бывших работников должника");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().setDateOfHoldingMeeting();
+    app.getCreateMessagePage().inputMeetingPlace();
+    app.getCreateMessagePage().inputMeetingAgenda();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 29)
-  @Description("Тест создания и подписания Сведений о решениях, принятых собранием работников, бывших работников должника")
+  @Description("Опубликовать \"Сведения о решениях, принятых собранием работников, бывших работников должника\"")
   public void testMeetingWorkerResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сведения о решениях, принятых собранием работников, бывших работников должника", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().fillDataForMeetingWorkerResult();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сведения о решениях, принятых собранием работников, бывших работников должника");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().setDateOfMeeting();
+    app.getCreateMessagePage().inputNumberOfEmployeesPresent();
+    app.getCreateMessagePage().inputSumOfRequirementsOfSecondStage();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 30)
-  @Description("Тест создания и подписания Заявления о признании сделки должника недействительной")
+  @Description("Опубликовать \"Заявление о признании сделки должника недействительной\"")
   public void testDealInvalidMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Заявление о признании сделки должника недействительной", app.getHelperBase().formCurDate);
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Заявление о признании сделки должника недействительной");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().setDateOfFilingAnApplication();
     app.getCreateMessagePage().fillDataForDealInvalid();
-    app.getCreateMessagePage().clickSignMessage();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 31)
-  @Description("Тест создания и подписания Судебного акта по результатам рассм. заявления об оспаривании сделки должника")
+  @Description("Опубликовать \"Судебный акт по результатам рассмотрения заявления об оспаривании сделки должника\"")
   public void testActDealInvalid2() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Судебный акт по результатам рассмотрения заявления об оспаривании сделки должника", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().selectMessageFromListWithConfirm("для ссылки на заявление о признании сделки недействительной");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Судебный акт по результатам рассмотрения заявления об оспаривании сделки должника");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForActDealInvalid();
+    app.getCreateMessagePage().setDateOfReceiptOfInformationOnCourtDecision();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 32)
-  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассм. заявления об оспаривании сделки должника")
+  @Description("Опубликовать \"Судебный акт по результатам пересмотра рассмотрения заявления об оспаривании сделки должника\"")
   public void testActReviewDealInvalid2() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления об оспаривании сделки должника", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().selectMessageFromListWithConfirm("для ссылки на cудебный акт по результатам рассмотрения заявления");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Судебный акт по результатам пересмотра рассмотрения заявления об оспаривании сделки должника");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForActReviewDealInvalid();
+    app.getCreateMessagePage().setDateOfReceiptOfInfoOnCourtDecision();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 33)
-  @Description("Тест создания и подписания Заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков")
+  @Description("Опубликовать \"Заявление о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков\"")
   public void testDeclarationPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage()
-            .fillBasicData("Заявление о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().addDeclarationPerson("Damages");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Заявление о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().inputDebtorControllingPerson();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 34)
-  @Description("Тест создания и подписания Судебного акта по результатам рассм. заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков")
+  @Description("Опубликовать \"Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков\"")
   public void testActPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage()
-            .fillBasicData("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", "none");
-    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForActPersonDamages();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
   @Test(priority = 35)
-  @Description("Тест создания и подписания Судебного акта по результатам пересмотра рассм. заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков")
+  @Description("Опубликовать \"Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков\"")
   public void testActReviewPersonDamages() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage()
-            .fillBasicData("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков", "none");
-    app.getCreateMessagePage().selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц, а также иных лиц, к ответственности в виде возмещения убытков");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForActReviewPersonDamages();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 36)
+  /*    @Test(priority = 36)
   @Description("Тест создания и подписания Заявления о привлечении контролирующих должника лиц к субсидиарной ответственности")
   public void testDeclarationPersonSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();

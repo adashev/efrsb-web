@@ -135,12 +135,12 @@ public class CreateMessagePage extends HelperBase {
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Ogrn"), "1145958053009");
   }*/
 
-  @Step("ввести данные о кредитной организации, в которой открыт банковский счет должника")
+ /* @Step("ввести данные о кредитной организации, в которой открыт банковский счет должника")
   public void fillDataForCreditOrg() {
     type(By.id(uMess +"BankOpenAccountDebtor"+ objP +"_ctrl0_tbName"), "Наим.  орг.");
     type(By.id(uMess +"BankOpenAccountDebtor"+ objP +"_ctrl0_tnInn"), "5904645570");
     type(By.id(uMess +"BankOpenAccountDebtor"+ objP +"_ctrl0_tbOgrn"), "1145958053009");
-  }
+  }*/
 
   public void addFormAttribut(String text) {
     listElements = wd.findElements(By.cssSelector(".AddForm>table>tbody>tr>td>input[type='text']"));
@@ -172,23 +172,19 @@ public class CreateMessagePage extends HelperBase {
     fillAuctionLot();
   }*/
 
-  @Step("ввести данные о месте проведения торгов")
+  @Step("Заполнить поле Место проведения")
   public void fillLocation(){
     click(By.id(uMess +"Auction"+ objP +"2_ctrl0_ucAuctionContent_rblAuctionLocation_1"));
     type(By.id(uMess +"Auction"+ objP +"2_ctrl0_ucAuctionContent_txtAuctionLocation"), "Г.Торг");
   }
 
-  @Step("ввести данные по лоту")
+  @Step("Добавить 1 лот")
   public void fillAuctionLot() throws InterruptedException{
     click(By.xpath(String.format(".//*[@id='%supContent']/table/tbody/tr[2]//fieldset/input", baseName)));
     wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
     type(By.id("ctl00_cplhContent_AuctionLot1_OrderTextBox"), "1");
     type(By.id("ctl00_cplhContent_AuctionLot1_TextTextBox"), "Описание");
-    if(browser.equals(BrowserType.FIREFOX)){
-      selectPropertyClassifierJS();
-    } else {
-      selectPropertyClassifier();
-    }
+    selectPropertyClassifier();
     type(By.id("ctl00_cplhContent_AuctionLot1_StartPriceTextBox"), "9 500");
     type(By.id("ctl00_cplhContent_AuctionLot1_StepTextBox"), "5");
     type(By.id("ctl00_cplhContent_AuctionLot1_AdvanceTextBox"),"500");
@@ -196,14 +192,15 @@ public class CreateMessagePage extends HelperBase {
     wd.switchTo().defaultContent();
   }
 
+  @Step("Добавить 1 лот")
   public void fillDataForTradeResult() throws InterruptedException {
-    copyLot();
+    /*copyLot();
     click(By.xpath(".//*[@id='LotsClientTable']/tr[2]/td[1]"));
-    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
+    wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));*/
 //    wd.switchTo().frame(0);
-    /*click(By.cssSelector("td:nth-child(1) > .blockStyle > input"));
+    click(By.cssSelector("td:nth-child(1) > .blockStyle > input"));
     fillInfoAboutLot();
-    selectPropertyClassifier();*/
+    selectPropertyClassifier();
     fillTradeResultData();
     fillWinnerData();
     click(By.cssSelector("input[type=image]"));
@@ -247,10 +244,10 @@ public class CreateMessagePage extends HelperBase {
     type(By.id(tradeRes +"txtFirmInn"), "5904645570");
   }
 
+  @Step("Добавить 1 лот")
   public void fillSaleOrderPledgedProperty() throws InterruptedException {
     click(By.cssSelector("td:nth-child(1) > .blockStyle > input"));
     wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe")));
-//    wd.switchTo().frame(0);
     type(By.id("ctl00_cplhContent_ucLot_OrderTextBox"), "1");
     type(By.id("ctl00_cplhContent_ucLot_TextTextBox"), "описан лота");
     selectPropertyClassifier();
@@ -260,15 +257,13 @@ public class CreateMessagePage extends HelperBase {
 
   @Step("выбрать классификатор имущества")
   public void selectPropertyClassifier() throws InterruptedException {
-    if(browser.equals(BrowserType.FIREFOX)){
-      selectPropertyClassifierJS();
-    } else {
       wd.findElement(By.cssSelector("td:nth-child(2) > img")).click();
+      Thread.sleep(200);
       switchFrame(0);
       wd.findElement(By.cssSelector(".rtFirst > .rtUL > .rtLI:nth-child(2) .rtChk")).click();
       wd.findElement(By.id("ctl00_cplhContent_imgbtnSelect")).click();
+      Thread.sleep(400);
       switchFrame(0);
-    }
   }
 
   @Step("выбрать классификатор имущества")
@@ -306,12 +301,13 @@ public class CreateMessagePage extends HelperBase {
     type(By.id(uMess+"ChangeAuctionMessage"+objP+"_ctrl0_ucAuctionContent_txtAuctionLocation"), "изменяем Место провед.");
   }
 
-  @Step("ввести сведения о заключении договора" )
-  public void fillDataForSaleContractResult() {
+  @Step("Заполнить блок Добавление сведений о заключении договора, либо об отказе или уклонении от заключенного договора")
+  public void fillDataForSaleContractResult() throws InterruptedException {
     wait
   .until(ExpectedConditions.visibilityOfElementLocated(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"btnAddSaleContract")));
     type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtLotNumber"), "4");
     type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtContractNumber"),"5");
+    inputCurrentDate(formCurDate);
     type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtPropertyPurchasePrice"),"9500");
     type(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"txtPurchaserName"), "Наим. покупат.");
     click(By.id(uMess+"SaleContractResultMessageNew"+obj+slC+"btnAddSaleContract"));
@@ -334,7 +330,7 @@ public class CreateMessagePage extends HelperBase {
     type(By.id(uMess+"MeetingWorkerResultMessage"+objP+"_ctrl0_txtRequirementSumm"), "8900");
   }
 
-  @Step("добавить участника сделки")
+  @Step("добавить 1 участника сделки")
   public void fillDataForDealInvalid() {
     type(By.id(uMess+"DealInvalidMessage"+objP+"_ctrl0_DealParticipants_txtRussianCitizenCode"), "1145958053009");
     type(By.id(uMess+"DealInvalidMessage"+objP+"_ctrl0_DealParticipants_txtName"), "Наим. участника");
@@ -474,8 +470,6 @@ public class CreateMessagePage extends HelperBase {
   @Step("Заполнить блок Объект незавершенного строительства")
   public void inputBlockConstructionInProgress() {
     type(By.id(transferOwnship+"uncompletedBuildingProjectList_txtAddress"), "cтроит. адрес, д.16");
-//    transferOwnship = uMess+"TransferOwnershipRealEstateMessage"+ objP +"_ctrl0_";
-//_uncompletedBuildingProjectList_txtAddress
     addFormAttribut("10051");
     click(By.id(transferOwnship +"uncompletedBuildingProjectList_btnAdd"));
   }
@@ -501,6 +495,128 @@ public class CreateMessagePage extends HelperBase {
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Address"), "Адр. приобр-ля, д5");
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Inn"), "5904645570");
     type(By.id(uMess +"TransferInsurancePortfolio"+ objP + insuranceOrg +"Ogrn"), "1145958053009");
+  }
+
+  @Step("Заполнить поле Наименование")
+  public void inputNameOfCreditOrganization() {
+    type(By.id(uMess +"BankOpenAccountDebtor"+ objP +"_ctrl0_tbName"), "Наим.  орг.");
+  }
+
+  @Step("Заполнить поле ИНН")
+  public void inputInnOfCreditOrganization() {
+    type(By.id(uMess +"BankOpenAccountDebtor"+ objP +"_ctrl0_tnInn"), "5904645570");
+  }
+
+  @Step("Заполнить поле ОГРН")
+  public void inputOgrnOfCreditOrganization() {
+    type(By.id(uMess +"BankOpenAccountDebtor"+ objP +"_ctrl0_tbOgrn"), "1145958053009");
+  }
+
+  @Step("Заполнить поле Отменить сообщение")
+  public void selectMessageForCancelAuctionTradeResult() throws InterruptedException {
+    selectMessageFromTheList("для отмены");
+  }
+
+  @Step("Заполнить поле Изменить сообщение")
+  public void selectMessageForChangeAuction() throws InterruptedException {
+    selectMessageFromTheList("для изменения");
+  }
+
+  @Step("Заполнить поле Причина изменения")
+  public void inputReasonForChange() throws InterruptedException {
+    Thread.sleep(700);
+    type(By.id(uMess+"ChangeAuctionMessage"+objP+"_ctrl0_ChangeReason"), "Причина изм.");
+  }
+
+  @Step("Заполнить поле Объявление о проведении торгов")
+  public void selectMessageForSaleContractResult() throws InterruptedException {
+   selectMessageFromTheList("для ссылки на объявление о проведении торгов");
+  }
+
+  @Step("Заполнить поле Имущество, предлагаемое в качестве отступного")
+  public void inputPropertyOfferedAsCompensation() {
+    type(By.id(uMess+"ProcedureGrantingIndemnity"+objP+"_ctrl0_tbPropertyIndemnityOffer"), "имущ-во, предл. в кач. отступного");
+  }
+
+  @Step("Заполнить поле Порядок ознакомления с имуществом")
+  public void inputPropertyAcquisitionProcedure() {
+    type(By.id(uMess+"ProcedureGrantingIndemnity"+objP+"_ctrl0_tbPropertyFamiliarizationProcedure"), "порядок ознак. с имущ-ом");
+
+  }
+
+  @Step("Заполнить поле Срок направления заявлений о согласии")
+  public void inputDeadlineForSubmittingConsentStatements() {
+    type(By.id(uMess+"ProcedureGrantingIndemnity"+objP+"_ctrl0_tbConsestApplicationPeriod"), "cрок направ. заявлений");
+  }
+
+  @Step("Заполнить поле Дата и время проведения")
+  public void setDateOfHoldingMeeting() throws InterruptedException {
+    inputCurrentDate(addDays(1));
+  }
+
+  @Step("Заполнить поле Место проведения")
+  public void inputMeetingPlace() {
+    type(By.id(uMess+"MeetingWorkerMessage"+objP+"_ctrl0_txtMeetingSite"), "место пров.");
+  }
+
+  @Step("Заполнить поле Повестка дня собрания")
+  public void inputMeetingAgenda() {
+    type(By.id(uMess+"MeetingWorkerMessage"+objP+"_ctrl0_txtNotice"), "повестка дня");
+  }
+
+  @Step("Заполнить поле Дата проведения собрания")
+  public void setDateOfMeeting() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Количество присутствовавших работников")
+  public void inputNumberOfEmployeesPresent() {
+    type(By.id(uMess+"MeetingWorkerResultMessage"+objP+"_ctrl0_txtWorkersCount"), "8");
+  }
+
+  @Step("Заполнить поле Сумма требований второй очереди")
+  public void inputSumOfRequirementsOfSecondStage() {
+    type(By.id(uMess+"MeetingWorkerResultMessage"+objP+"_ctrl0_txtRequirementSumm"), "8900");
+  }
+
+  @Step("Заполнить поле Дата подачи заявления")
+  public void setDateOfFilingAnApplication() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Выбор заявления о признании сделки недействительной")
+  public void selectMessageForActDealInvalid() throws InterruptedException {
+    selectMessageFromListWithConfirm("для ссылки на заявление о признании сделки недействительной");
+  }
+
+  @Step("Заполнить поле Дата получения сведений о решении суда")
+  public void setDateOfReceiptOfInformationOnCourtDecision() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Дата получения сведений о решении суда")
+  public void setDateOfReceiptOfInfoOnCourtDecision() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Судебный акт по результатам рассмотрения заявления")
+  public void selectMessageForActReviewDealInvalid() throws InterruptedException {
+    selectMessageFromListWithConfirm("для ссылки на cудебный акт по результатам рассмотрения заявления");
+  }
+
+  @Step("Добавить 1 контролирующее должника лицо")
+  public void inputDebtorControllingPerson() {
+    addDeclarationPerson("Damages");
+  }
+
+  @Step("Заполнить поле Заявление о привлечении контролирующих лиц")
+  public void selectMessageForActPersonDamages() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
+  }
+
+  @Step("Заполнить поле Судебный акт по результатам рассмотрения заявления")
+  public void selectMessageForActReviewPersonDamages() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
   }
 }
 
