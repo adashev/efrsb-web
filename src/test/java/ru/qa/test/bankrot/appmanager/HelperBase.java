@@ -26,7 +26,6 @@ public class HelperBase {
   private Calendar cal;
   public WebElement el;
   public List<WebElement> listElements;
-  public int listSize;
   private String typeSelector;
   private By textArea = By.tagName("textarea");
   private By inputDate = By.cssSelector("[data-item='dateInput']");
@@ -121,8 +120,7 @@ public class HelperBase {
   @Step("заполнить текстовые поля")
   public void inputText() {
     listElements = wd.findElements(textArea);
-    listSize = listElements.size();
-    for(int i = 0; i < listSize; i++) {
+    for(int i = 0; i < listElements.size(); i++) {
       if(listElements.get(i).isDisplayed()){
           listElements.get(i).click();
           listElements.get(i).sendKeys("_текст");
@@ -132,11 +130,10 @@ public class HelperBase {
 
   @Step("заполнить поля с датами")
   public void inputCurrentDate(String date) throws InterruptedException {
-    Thread.sleep(300);
+    Thread.sleep(400);
     wait.until(ExpectedConditions.presenceOfElementLocated(inputDate));
     listElements = wd.findElements(inputDate);
-    listSize = listElements.size();
-    for(int i = 0; i < listSize; i++) {
+    for(int i = 0; i < listElements.size(); i++) {
       if(listElements.get(i).isDisplayed()){
         listElements.get(i).click();
         listElements.get(i).clear();
@@ -148,9 +145,8 @@ public class HelperBase {
   @Step("задать требуемое время")
   public void inputTime() {
     listElements = wd.findElements(By.cssSelector("[class='riTextBox riEnabled']"));
-    listSize = listElements.size();
     int hour = 8;
-    for(int i = 0; i < listSize; i++) {
+    for(int i = 0; i < listElements.size(); i++) {
       if(listElements.get(i).isDisplayed()){
         listElements.get(i).click();
         listElements.get(i).sendKeys(Integer.toString(hour));

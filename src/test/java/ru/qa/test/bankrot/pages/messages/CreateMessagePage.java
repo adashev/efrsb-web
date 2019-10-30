@@ -144,8 +144,7 @@ public class CreateMessagePage extends HelperBase {
 
   public void addFormAttribut(String text) {
     listElements = wd.findElements(By.cssSelector(".AddForm>table>tbody>tr>td>input[type='text']"));
-    listSize = listElements.size();
-    for(int i = 0; i < listSize; i++) {
+    for(int i = 0; i < listElements.size(); i++) {
       if(listElements.get(i).isDisplayed()){
         listElements.get(i).click();
         listElements.get(i).sendKeys(text);
@@ -617,6 +616,53 @@ public class CreateMessagePage extends HelperBase {
   @Step("Заполнить поле Судебный акт по результатам рассмотрения заявления")
   public void selectMessageForActReviewPersonDamages() throws InterruptedException {
     selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
+  }
+
+  @Step("Добавить 1 контролирующее должника лицо")
+  public void inputDebtorControllingPersonSubsidiary() {
+    addDeclarationPerson("Subsidiary");
+  }
+
+  @Step("Заполнить поле Заявление о привлечении контролирующих лиц")
+  public void selectMessageForActPersonSubsidiary() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на судебный акт по результатам рассмотрения заявления");
+  }
+
+  @Step("Заполнить поле Судебный акт по результатам рассмотрения заявления ")
+  public void selectMessageForActReviewPersonSubsidiary() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на судебный акт по результатам пересмотра рассмотрения");
+  }
+
+  @Step("Заполнить поле Сообщение о субсидиарной ответственности")
+  public void selectMessageForCreditorChoiceRightSubsidiary() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на сообщение о субсидиарной ответственности");
+  }
+
+  @Step("Заполнить поле Дата принятия акта о доказанности наличия основания или о субсидиарной ответственности")
+  public void setDateAdoptionOfAnAct() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Заявление о привлечении контролирующих лиц")
+  public void selectMessageForAccessionDeclarationSubsidiary() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на заявление о привлечении контролирующих лиц");
+  }
+
+  @Step("Заполнить блок Акт о назначении временной администрации")
+  public void inputAppointmentActInterimAdministration() throws InterruptedException {
+    type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbActName"), "название акта");
+    type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbDecisionNumber"), "8");
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Дата назначения временной администрации")
+  public void setDateOfAppointmentInterimAdministration() throws InterruptedException {
+    inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Срок действия временной администрации")
+  public void inputValidityInterimAdministration() {
+    type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbAdministrationPeriod"), "1 г.");
   }
 }
 

@@ -11,7 +11,7 @@
         "section": "ArbitrManager"
       },
       {
-        "name": "otur",
+        "name": "otfl",
         "login": "interfax_ot",
         "password": "123456",
         "section": "TradeOrganizer"

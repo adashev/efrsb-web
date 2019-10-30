@@ -1,4 +1,4 @@
-package ru.qa.test.bankrot.tests.otur;
+package ru.qa.test.bankrot.tests.otfl;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;

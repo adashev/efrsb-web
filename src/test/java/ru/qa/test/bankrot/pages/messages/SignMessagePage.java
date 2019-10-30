@@ -72,6 +72,7 @@ public class SignMessagePage extends HelperBase {
 
   @Step("Оплатить публикацию сообщения с лицевого счета")
   public void payFromPersonalAccount() throws InterruptedException {
+    Thread.sleep(300);
     click(By.linkText("Оплатить публикацию с лицевого счета"));
     wd.switchTo().frame(0);
     click(By.id("ctl00_cplhContent_ucMessagePayment_btnNext"));

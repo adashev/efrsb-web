@@ -98,7 +98,8 @@ dependencies {
     compile project(':testng')
     compile 'org.seleniumhq.selenium:selenium-java:3.9.1'
     agent "org.aspectj:aspectjweaver:1.8.10"
-    implementation 'org.testng:testng:6.14.3'
+//  implementation 'org.testng:testng:6.14.3'
+    implementation 'org.testng:testng:7.0.0'
     implementation 'io.qameta.allure:allure-testng:2.12.1'
     implementation 'org.slf4j:jcl-over-slf4j:1.7.28'
     implementation 'org.slf4j:slf4j-api:1.7.28'
@@ -110,7 +111,7 @@ dependencies {
 
 task testMessagesAU(type: Test) {
     useTestNG(){
-        suites 'src/test/resources/testng-messageSign-AU.xml'
+        suites 'src/test/resources/testng-messagePublishing-AU.xml'
     }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"
@@ -133,7 +134,7 @@ testMessagesAU.doFirst {
 
 task testMessagesOTUR(type: Test) {
     useTestNG(){
-        suites 'src/test/resources/testng-messageSign-OTUR.xml'
+        suites 'src/test/resources/testng-messagePublishing-OTUR.xml'
     }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"

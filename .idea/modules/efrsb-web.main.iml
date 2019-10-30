@@ -10,7 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="efrsb-web.testng.main" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-java:3.9.1" level="project" />
-    <orderEntry type="library" name="Gradle: org.testng:testng:6.14.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.testng:testng:7.0.0" level="project" />
     <orderEntry type="library" name="Gradle: io.qameta.allure:allure-testng:2.12.1" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.28" level="project" />
     <orderEntry type="library" name="Gradle: io.qameta.allure:allure-java-commons:2.12.1" level="project" />
@@ -49,7 +49,6 @@
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.9.1" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.13.0" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.72" level="project" />
-    <orderEntry type="library" name="Gradle: org.apache-extras.beanshell:bsh:2.0b6" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.10" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.10" level="project" />
     <orderEntry type="library" name="Gradle: log4j:log4j:1.2.17" level="project" />
