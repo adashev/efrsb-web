@@ -36,10 +36,10 @@ public class ApplicationManager {
   public final Properties propertiesTarget;
   public final Properties propertiesUser;
   public final Properties propertiesContour;
-  public static WebDriver wd; //static
-  public static WebDriverWait wait;
-  public static Actions actions;
-  public static String browser;
+  public WebDriver wd; //static
+  public WebDriverWait wait;
+  public Actions actions;
+  public String browser;
   public SessionHelper sessionHelper;
   public HelperBase helperBase;
   public MessagesListPage messagesListPage;
@@ -49,12 +49,11 @@ public class ApplicationManager {
   public ReportListPage reportListPage;
   public NewReportPage newReportPage;
   public CreateReportPage createReportPage;
-  public String certificateName;
-  public static String login;
-  public static String password;
-  public static String baseUrl;
-  public static String certificate;
-  public static String section;
+  public String login;
+  public String password;
+  public String baseUrl;
+  public String certificate;
+  public String section;
 
   public ApplicationManager(String browser) {
     this.browser = browser;

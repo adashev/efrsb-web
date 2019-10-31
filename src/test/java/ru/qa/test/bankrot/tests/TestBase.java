@@ -5,7 +5,6 @@ import org.testng.ITestContext;
 import org.testng.annotations.*;
 import ru.qa.test.bankrot.appmanager.ApplicationManager;
 
-import static ru.qa.test.bankrot.appmanager.ApplicationManager.wd;
 
 @Listeners({MyTestListener.class})
 public class TestBase {
@@ -26,7 +25,7 @@ public class TestBase {
   @AfterMethod(alwaysRun = true)
   public void returnMessagesList() throws InterruptedException { //вернуться на страницу со списком сообщений
     Thread.sleep(30);
-    wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.section));
+    app.wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.section));
   }
 
   @AfterTest(alwaysRun = true, description = "Закрыть браузер")

@@ -2,7 +2,7 @@
   {
     "conturname": "release",
     "baseurl": "http://bankruptcy-release.devel.ifx/",
-    "certificate": "ООО БОШ",
+    "certificate": "ООО ГопСтоп Сервис",
     "users": [
       {
         "name": "au",
