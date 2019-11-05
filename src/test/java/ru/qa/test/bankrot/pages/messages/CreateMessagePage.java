@@ -6,14 +6,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
-
 import java.io.File;
 import java.util.HashSet;
 import static org.testng.Assert.assertEquals;
+import static com.codeborne.selenide.Selenide.*;
+
 
 public class CreateMessagePage extends HelperBase {
   private String baseName = "ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_ucCreateMessage_";
@@ -31,28 +31,30 @@ public class CreateMessagePage extends HelperBase {
   private String slC = "_ctrl0_SaleContractResultMessage_SaleContractList_";
   private String obj ="_ObjectProxy_ctrl0_ObjectMessageProxy";
   private String sprv = "View1_ctrl0_BankruptSupervisoryPersonList_txt";
-  private File Attachment;
+  private File attachment;
 
 
   public CreateMessagePage(WebDriver wd, WebDriverWait wait, Actions actions, String browser) {
     super(wd, wait, actions);
-//    this.browser = browser;
     missingText = new HashSet();
     missingText.add("Сообщение об изменении объявления о проведении торгов");
     missingText.add("Уведомление о проведении собрания участников строительства");
     missingText.add("Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства");
-    Attachment = new File("src/test/resources/Attachment.txt");
+    attachment = new File("src/test/resources/Attachment.txt");
   }
 
 
-  public void attachFile() throws InterruptedException {
+  public void attachFile() {
+    /*WebElement fileInput = wd.findElement(By.cssSelector("input[type='file']"));
+    fileInput.sendKeys("src/test/resources/Attachment.txt");
+    wd.findElement(By.cssSelector("input[type='button']")).click();*/
+    wd.findElement(By.cssSelector("input[type='file']")).sendKeys(attachment.getAbsolutePath());
    /* Thread.sleep(1500);
     wd.findElement(By.xpath("//span/input[3]")).click();
     wd.findElement(By.id("ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_ucCreateMessage_ucDocumentListUploader_ucFileListUpload_uploaderfile0")).sendKeys(Attachment.getAbsolutePath());
 */
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.className("ruFileWrap ruStyled")));
-    System.out.println();
-    wd.findElement(By.className("ruFileWrap ruStyled")).sendKeys(Attachment.getAbsolutePath());
+    /*wait.until(ExpectedConditions.presenceOfElementLocated(By.className("ruFileWrap ruStyled")));
+    wd.findElement(By.className("ruFileWrap ruStyled")).sendKeys(attachment.getAbsolutePath());*/
   }
 
 
@@ -683,6 +685,11 @@ public class CreateMessagePage extends HelperBase {
   @Step("Заполнить поле Основания назначения временной администрации")
   public void inputGroundsForAppointmentInterimAdministration() {
     type(By.id(uMess+"AppointAdministration"+"_ObjectProxy_ctrl0_MessageContentProxy_ctrl0_tbReason"), "основания назн.");
+  }
+
+  @Step("Заполнить поле Сведения о корректируемой смете")
+  public void selectMessageForChangeEstimatesCurrentExpenses() throws InterruptedException {
+    selectMessageFromTheList("для ссылки на сведения о корректируемой смете");
   }
 }
 
