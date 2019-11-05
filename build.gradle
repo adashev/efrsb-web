@@ -112,7 +112,7 @@ dependencies {
 
 task testMessagesAU(type: Test) {
     useTestNG(){
-        suites 'src/test/resources/testng-messagePublishing-AU.xml' //testng-apm-au-parall
+        suites 'src/test/resources/testng-messagePublishing-AU.xml'// testng-apm-au-parall
     }
     if (project.hasProperty('browser')){
         systemProperty 'browser', "${browser}"

@@ -8,13 +8,20 @@ import ru.qa.test.bankrot.appmanager.ApplicationManager;
 
 @Listeners({MyTestListener.class})
 public class TestBase {
-  protected final ApplicationManager app = new ApplicationManager(System
-          .getProperty("browser", BrowserType.CHROME));
-                      // CHROME  FIREFOX
+  protected ApplicationManager app;
+
   @BeforeTest(alwaysRun = true)
-  public void setUp(ITestContext context) throws Exception {//, description = "Инициализация браузера и авторизация в АРМ"
+  @Parameters("user")  // PARAM-PARALL
+  public void setUp(@Optional("au") String user, ITestContext context) throws Exception {//, description = "Инициализация браузера и авторизация в АРМ"
+    app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME), user);
     app.init();
-    context.setAttribute("app", app);
+
+    /*if(user.equals(app.user)){
+      app.init();
+      context.setAttribute("app", app);
+    } else {
+      System.out.println("oops");
+    }*/
   }
 
   @BeforeClass(alwaysRun = true)
@@ -28,7 +35,7 @@ public class TestBase {
     app.wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.section));
   }
 
-  @AfterTest(alwaysRun = true, description = "Закрыть браузер")
+  @AfterTest(alwaysRun = true, description = "Закрыть браузер")  // PARAM-PARALL
   public void tearDown() {
     app.stop();
   }

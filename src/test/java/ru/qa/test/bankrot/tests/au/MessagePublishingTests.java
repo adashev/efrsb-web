@@ -44,7 +44,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"otfl"}, priority = 3)
+  @Test(groups = {"au", "otfl"}, priority = 3)
   @Description("Опубликовать \"Иное сообщение\"")
   public void testMessageOther() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -59,7 +59,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 4)
+  @Test(groups = {"au", "otfl"}, priority = 4)
   @Description("Опубликовать \"Аннулирование ранее опубликованного сообщения\"")
   public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -330,7 +330,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 20)
+  @Test(groups = {"au", "otfl"}, priority = 20)
   @Description("Опубликовать \"Объявление о проведении торгов\"")
   public void testAuctionMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -348,7 +348,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 21)
+  @Test(groups = {"au", "otfl"}, priority = 21)
   @Description("Опубликовать \"Сообщение о результатах торгов\"")
   public void testTradeResultMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -380,7 +380,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 23)
+  @Test(groups = {"au", "otfl"}, priority = 23)
   @Description("Опубликовать \"Сообщение об отмене сообщения об объявлении торгов или сообщения о результатах торгов\"")
   public void testCancelAuctionTradeResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -396,7 +396,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 24)
+  @Test(groups = {"au", "otfl"}, priority = 24)
   @Description("Опубликовать \"Сообщение об изменении объявления о проведении торгов\"")
   public void testChangeAuction() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -413,7 +413,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 25)
+  @Test(groups = {"au", "otfl"}, priority = 25)
   @Description("Опубликовать \"Сведения о заключении договора купли-продажи\"")
   public void testSaleContractResult() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -776,46 +776,68 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
- @Test(priority = 47)
-  @Description("Тест создания и подписания Сведений о порядке и сроках расчетов с кредиторами")
+  @Test(groups = {"au"}, priority = 47)
+  @Description("Опубликовать \"Сведения о порядке и сроках расчетов с кредиторами\"")
   public void testOrderAndTimingCalculations() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-
-
-    app.getCreateMessagePage().fillBasicData("Сведения о порядке и сроках расчетов с кредиторами", "none");
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сведения о порядке и сроках расчетов с кредиторами");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
+    app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  /* @Test(priority = 48)
-  @Description("Тест создания и подписания Информации о ходе конкурсного производства")
+  @Test(groups = {"au"}, priority = 48)
+  @Description("Опубликовать \"Информация о ходе конкурсного производства\"")
   public void testInformationAboutBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Информация о ходе конкурсного производства", "none");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Информация о ходе конкурсного производства");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 49)
-  @Description("Тест создания и подписания Сведений об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации")
+  @Test(groups = {"au"}, priority = 49)
+  @Description("Опубликовать \"Сведения об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации\"")
   public void testEstimatesAndUnsoldAssets() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сведения об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации", "none");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сведения об исполнении сметы текущих расходов и стоимости нереализованного имущества кредитной организации");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 50)
-  @Description("Тест создания и подписания Сообщения о начале расчетов")
+  @Test(groups = {"au"}, priority = 50)
+  @Description("Опубликовать \"Сообщения о начале расчетов\"")
   public void testStartSettlement() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщения о начале расчетов", app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщения о начале расчетов");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().setSettlementDate();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 51)
+ /*   @Test(priority = 51)
   @Description("Тест создания и подписания Сведений о ходе инвентаризации имущества должника")
   public void testProcessInventoryDebtor() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();

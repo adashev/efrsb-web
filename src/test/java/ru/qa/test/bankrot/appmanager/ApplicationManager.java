@@ -54,17 +54,17 @@ public class ApplicationManager {
   public String baseUrl;
   public String certificate;
   public String section;
+  public String user;
 
-  public ApplicationManager(String browser) {
+  public ApplicationManager(String browser, String user) throws IOException {
     this.browser = browser;
     propertiesTarget = new Properties(); //6.10
     propertiesUser = new Properties();
     propertiesContour = new Properties();
-  }
 
-  public void init() throws IOException {
     String contur = System.getProperty("contur", "release");
-    String user = System.getProperty("user", "au");
+     //  user = System.getProperty("user", "au");
+    System.out.println(user);
     System.out.println("from comline: " +contur + "  " + user);
 
     ObjectMapper objectMapper = new ObjectMapper();
@@ -84,7 +84,9 @@ public class ApplicationManager {
         }
       }
     }
+  }
 
+  public void init() throws IOException {
     String target = System.getProperty("target", "local"); // пока оставляю property
     propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));
     DesiredCapabilities capabilities = new DesiredCapabilities();

@@ -12,7 +12,6 @@ import ru.qa.test.bankrot.appmanager.HelperBase;
 import java.io.File;
 import java.util.HashSet;
 import static org.testng.Assert.assertEquals;
-import static com.codeborne.selenide.Selenide.*;
 
 
 public class CreateMessagePage extends HelperBase {
@@ -43,20 +42,10 @@ public class CreateMessagePage extends HelperBase {
     attachment = new File("src/test/resources/Attachment.txt");
   }
 
-
+  @Step("прикрепить файл документа")
   public void attachFile() {
-    /*WebElement fileInput = wd.findElement(By.cssSelector("input[type='file']"));
-    fileInput.sendKeys("src/test/resources/Attachment.txt");
-    wd.findElement(By.cssSelector("input[type='button']")).click();*/
     wd.findElement(By.cssSelector("input[type='file']")).sendKeys(attachment.getAbsolutePath());
-   /* Thread.sleep(1500);
-    wd.findElement(By.xpath("//span/input[3]")).click();
-    wd.findElement(By.id("ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_ucCreateMessage_ucDocumentListUploader_ucFileListUpload_uploaderfile0")).sendKeys(Attachment.getAbsolutePath());
-*/
-    /*wait.until(ExpectedConditions.presenceOfElementLocated(By.className("ruFileWrap ruStyled")));
-    wd.findElement(By.className("ruFileWrap ruStyled")).sendKeys(attachment.getAbsolutePath());*/
   }
-
 
   public void createAndSaveMessage(String messageType) throws InterruptedException {
     checkMessageTypeHeader(messageType);
@@ -690,6 +679,11 @@ public class CreateMessagePage extends HelperBase {
   @Step("Заполнить поле Сведения о корректируемой смете")
   public void selectMessageForChangeEstimatesCurrentExpenses() throws InterruptedException {
     selectMessageFromTheList("для ссылки на сведения о корректируемой смете");
+  }
+
+  @Step("Заполнить поле Дата начала расчетов")
+  public void setSettlementDate() throws InterruptedException {
+    inputCurrentDate(formCurDate);
   }
 }
 

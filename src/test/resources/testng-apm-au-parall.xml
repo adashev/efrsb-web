@@ -4,7 +4,7 @@
     <test name="MessagePublishing" parallel="classes">
         <groups>
             <run>
-                <include name="au"></include>
+                <include name="otfl"></include>
             </run>
         </groups>
         <classes>
@@ -14,7 +14,7 @@
     <test name="ReportPublishing" parallel="classes">
         <groups>
             <run>
-                <include name="au"></include>
+                <include name="otfl"></include>
             </run>
         </groups>
         <classes>
