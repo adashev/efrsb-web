@@ -647,7 +647,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 39)
+  /*@Test(groups = {"au"}, priority = 39)
   @Description("Опубликовать \"Сообщение о праве кредитора выбрать способ распоряжения правом требования о привлечении к субсидиарной ответственности\"")
   public void testCreditorChoiceRightSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -867,7 +867,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
   }
-
+*/
   /* @Test(priority = 53)
   @Description("Тест создания и подписания Сведений о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации")
   public void testViewExecRestructuringPlan() throws InterruptedException {

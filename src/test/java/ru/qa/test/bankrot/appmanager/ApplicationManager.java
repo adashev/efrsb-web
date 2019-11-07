@@ -137,7 +137,7 @@ public class ApplicationManager {
     wd.manage().window().maximize();
     sessionHelper = new SessionHelper(wd, wait, actions);
     sessionHelper.openBaseUrl(baseUrl); //json
-    sessionHelper.login(login, password); //json
+    sessionHelper.login(login, password, user); //json
     sessionHelper.closeStartNotification();
   }
 

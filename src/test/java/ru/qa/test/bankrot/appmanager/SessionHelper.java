@@ -21,8 +21,8 @@ public class SessionHelper extends HelperBase {
     wd.get(baseUrl);
   }
 
-  @Step("выполнить авторизацию" )
-  public void login(String login, String password) {
+  @Step("выполнить авторизацию в АРМ {user}")
+  public void login(String login, String password, String user) {
     type(By.id("ctl00_PrivateOffice1_tbLogin"), login);
     type(By.id("ctl00_PrivateOffice1_tbPassword"), password);
     wd.findElement(By.id("ctl00_PrivateOffice1_tbPassword")).sendKeys(Keys.ENTER);

@@ -13,7 +13,6 @@ public class TestBase {
 
   @BeforeTest(alwaysRun = true)
   @Parameters("user")
-  @Description("Авторизоваться в АРМ {user}")
   public void setUp(@Optional("au") String user, ITestContext context) throws Exception {//, description = "Инициализация браузера и авторизация в АРМ"
     app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME), user);
     app.init();
