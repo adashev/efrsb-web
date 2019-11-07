@@ -45,8 +45,8 @@ public class CreateMessagePage extends HelperBase {
 
   @Step("прикрепить файл документа")
   public void attachFile() {
-    System.out.println(attachment.getAbsolutePath());
-    wd.findElement(By.cssSelector("input[type='file']")).sendKeys(attachment.getAbsolutePath());
+    /*System.out.println(attachment.getAbsolutePath());
+    wd.findElement(By.cssSelector("input[type='file']")).sendKeys(attachment.getAbsolutePath());*/
   }
 
   public void createAndSaveMessage(String messageType) throws InterruptedException {

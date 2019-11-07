@@ -23,7 +23,7 @@ public class MessagePublishingTests extends TestBase {
     app.getCreateMessagePage().selectTypeArbitralDecree();
     app.getCreateMessagePage().setDecisionDate();
     app.getCreateMessagePage().fillTextField();
-    app.getCreateMessagePage().attachFile(); // файл
+    app.getCreateMessagePage().attachFile();
     app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
@@ -754,7 +754,7 @@ public class MessagePublishingTests extends TestBase {
     app.getHelperBase().clickNextButton();
     app.getHelperBase().setAddressForCorrespondence();
     app.getCreateMessagePage().fillTextField();
-    app.getCreateMessagePage().attachFile(); // файл
+    app.getCreateMessagePage().attachFile();
     app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
