@@ -15,6 +15,12 @@
         "login": "interfax_ot",
         "password": "123456",
         "section": "TradeOrganizer"
+      },
+      {
+        "name": "otul",
+        "login": "interfax_ot_ur",
+        "password": "123456",
+        "section": "TradeOrganizer"
       }
     ]
   },

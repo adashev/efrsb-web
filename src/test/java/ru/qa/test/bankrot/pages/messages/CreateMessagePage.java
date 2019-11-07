@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.appmanager.HelperBase;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import static org.testng.Assert.assertEquals;
 
@@ -44,6 +45,7 @@ public class CreateMessagePage extends HelperBase {
 
   @Step("прикрепить файл документа")
   public void attachFile() {
+    System.out.println(attachment.getAbsolutePath());
     wd.findElement(By.cssSelector("input[type='file']")).sendKeys(attachment.getAbsolutePath());
   }
 
@@ -684,6 +686,11 @@ public class CreateMessagePage extends HelperBase {
   @Step("Заполнить поле Дата начала расчетов")
   public void setSettlementDate() throws InterruptedException {
     inputCurrentDate(formCurDate);
+  }
+
+  @Step("Заполнить поле Место ознакомления ")
+  public void inputPlaceOfFamiliarization() {
+    type(By.id(uMess+"ViewDraftRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
   }
 }
 

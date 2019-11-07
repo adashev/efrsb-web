@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.qa.test.bankrot.tests.TestBase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class HelperBase {
+public class HelperBase extends TestBase {
   public WebDriverWait wait;
   public WebDriver wd;
   public Actions actions;
@@ -33,9 +34,7 @@ public class HelperBase {
   private By heading = By.xpath("//legend[contains(., 'Должник')]");
   private By numberCourtCase = By.xpath(contentPlace + "InsolventPicker_LegalCasesDropDownList']/option[2]");
   private By corrAddress = By.cssSelector("input[data-element='corrAddress']");
-  //  private String xpathMessageTypeTree = ".//*[@id='ctl00_cplhContent_MessageTypeTree']";
-    private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='ChooseInsolvent();']");
-  //_MessageTypeSelector_
+  private By directoryDebtorsButton = By.cssSelector(".selectable>tbody>tr>td>img[onclick='ChooseInsolvent();']");
 
   public HelperBase(WebDriver wd, WebDriverWait wait, Actions actions) {
     this.wd = wd;

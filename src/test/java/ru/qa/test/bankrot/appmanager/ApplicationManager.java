@@ -58,14 +58,12 @@ public class ApplicationManager {
 
   public ApplicationManager(String browser, String user) throws IOException {
     this.browser = browser;
+    this.user = user;
     propertiesTarget = new Properties(); //6.10
     propertiesUser = new Properties();
     propertiesContour = new Properties();
-
     String contur = System.getProperty("contur", "release");
-     //  user = System.getProperty("user", "au");
-    System.out.println(user);
-    System.out.println("from comline: " +contur + "  " + user);
+
 
     ObjectMapper objectMapper = new ObjectMapper();
     List<Account> accounts = objectMapper.readValue(new File("config/accounts.json"), new TypeReference<List<Account>>(){});
@@ -134,7 +132,7 @@ public class ApplicationManager {
     } else {
       System.out.println("selenium-server not defined");
     }
-    wait = new WebDriverWait(wd, 14); // waitTime вместо константы в рамках 6.10
+    wait = new WebDriverWait(wd, 14);
     actions = new Actions(wd);
     wd.manage().window().maximize();
     sessionHelper = new SessionHelper(wd, wait, actions);
@@ -146,7 +144,7 @@ public class ApplicationManager {
   public void refreshPageObjects(){
     helperBase = new HelperBase(wd, wait, actions);
     messagesListPage = new MessagesListPage(wd, wait, actions);
-    newMessagePage = new NewMessagePage(wd, wait, actions);
+    newMessagePage = new NewMessagePage(wd, wait, actions, user);
     createMessagePage = new CreateMessagePage(wd, wait, actions, browser);
     signMessagePage = new SignMessagePage(wd, wait, actions, certificate);
     reportListPage = new ReportListPage(wd, wait, actions);

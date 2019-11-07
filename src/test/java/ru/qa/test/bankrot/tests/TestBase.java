@@ -11,17 +11,10 @@ public class TestBase {
   protected ApplicationManager app;
 
   @BeforeTest(alwaysRun = true)
-  @Parameters("user")  // PARAM-PARALL
+  @Parameters("user")
   public void setUp(@Optional("au") String user, ITestContext context) throws Exception {//, description = "Инициализация браузера и авторизация в АРМ"
     app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME), user);
     app.init();
-
-    /*if(user.equals(app.user)){
-      app.init();
-      context.setAttribute("app", app);
-    } else {
-      System.out.println("oops");
-    }*/
   }
 
   @BeforeClass(alwaysRun = true)
