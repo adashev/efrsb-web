@@ -1,5 +1,6 @@
 package ru.qa.test.bankrot.tests;
 
+import io.qameta.allure.Description;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
@@ -12,6 +13,7 @@ public class TestBase {
 
   @BeforeTest(alwaysRun = true)
   @Parameters("user")
+  @Description("Авторизоваться в АРМ {user}")
   public void setUp(@Optional("au") String user, ITestContext context) throws Exception {//, description = "Инициализация браузера и авторизация в АРМ"
     app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME), user);
     app.init();

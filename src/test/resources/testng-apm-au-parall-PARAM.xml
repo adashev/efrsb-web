@@ -12,6 +12,17 @@
             <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
         </classes>
     </test>
+    <test name="MessagePublishingAU1" parallel="classes">
+        <parameter name="user" value="au"></parameter>
+        <groups>
+            <run>
+                <include name="au1"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
+        </classes>
+    </test>
     <!--<test name="MessagePublishingOTFL" parallel="classes">
         <parameter name="user" value="otfl"></parameter>
         <groups>
