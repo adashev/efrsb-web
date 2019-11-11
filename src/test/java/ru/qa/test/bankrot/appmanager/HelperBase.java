@@ -215,12 +215,15 @@ public class HelperBase extends TestBase {
 
   @Step("выбрать судебное дело")
   public void selectCourtCase(String entity) {
-    if("message".equals(entity)){
+    /*if("message".equals(entity)){
       typeSelector = "_MessageTypeSelector_";
     } else if("report".equals(entity)){
       typeSelector = "_ucNewAuReport_uc";
-    }
-    click(By.xpath(contentPlace+typeSelector+"InsolventPicker_LegalCasesDropDownList']/option[2]"));
+    }*/
+    click(By.xpath(".//*[@class='ChooseLegalCase']/option[2]")); //new
+//    click(By.xpath(contentPlace+typeSelector+"InsolventPicker_LegalCasesDropDownList']/option[2]"));
+//в АУ .//*[@id='ctl00_ctl00_ctplhMain_CentralContentPlaceHolder_MessageTypeSelector_InsolventPicker_LegalCasesDropDownList']/option[2]
+// в СРО .//*[@id='ctl00_ctl00_ctplhMain_ctplhMain_MessageTypeSelector_InsolventPicker_LegalCasesDropDownList']/option[2]
   }
 
   @Step("нажать на кнопку 'Далее'")

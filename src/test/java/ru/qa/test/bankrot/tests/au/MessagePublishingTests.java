@@ -11,7 +11,7 @@ public class MessagePublishingTests extends TestBase {
   private String nameForSaleOrderPledgedProperty =
       "Об определении начальной продажной цены, утверждении порядка и условий проведения торгов по реализации предмета залога, порядка и условий обеспечения сохранности предмета залога";
 
-  @Test(groups = {"au"}, priority = 1)
+  @Test(groups = {"au", "sro_au"}, priority = 1)
   @Description("Опубликовать \"Сообщение о судебном акте\"")
   public void testMessageArbitralDecree() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -60,7 +60,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au", "otfl", "otul"}, priority = 4)
+  @Test(groups = {"au", "otfl", "otul", "sro_au"}, priority = 4)
   @Description("Опубликовать \"Аннулирование ранее опубликованного сообщения\"")
   public void testMessageAnnul() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -77,7 +77,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 5)
+  @Test(groups = {"au", "sro_au"}, priority = 5)
   @Description("Опубликовать \"Опровержение по решению суда опубликованных ранее сведений\"")
   public void testRebuttalMessage() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -93,7 +93,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au"}, priority = 6)
+  @Test(groups = {"au", "sro_au"}, priority = 6)
   @Description("Опубликовать \"Сообщение о дисквалификации арбитражного управляющего\"")
   public void testDisqualificArbitManager() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -615,7 +615,7 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au", "otfl", "otul"}, priority = 37)
+  @Test(groups = {"au", "otfl"}, priority = 37)
   @Description("Опубликовать \"Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности\"")
   public void testActPersonSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -631,7 +631,23 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(groups = {"au", "otfl", "otul"}, priority = 38)
+  @Test(groups = {"otul"}, priority = 100)
+  @Description("Опубликовать \"Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности\"")
+  public void testActPersonSubsidiaryOtul() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForActPersonSubsidiary();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
+    app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
+  }
+
+  @Test(groups = {"au", "otfl"}, priority = 38)
   @Description("Опубликовать \"Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности\"")
   public void testActReviewPersonSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -647,7 +663,23 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  /*@Test(groups = {"au"}, priority = 39)
+  @Test(groups = {"otul"}, priority = 101)
+  @Description("Опубликовать \"Судебный акт по результатам пересмотра рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности\"")
+  public void testActReviewPersonSubsidiaryOtul() throws InterruptedException {
+    app.getMessagesListPage().clickAddMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Судебный акт по результатам рассмотрения заявления о привлечении контролирующих должника лиц к субсидиарной ответственности");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForActReviewPersonSubsidiary();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
+    app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
+  }
+
+  @Test(groups = {"au"}, priority = 39)
   @Description("Опубликовать \"Сообщение о праве кредитора выбрать способ распоряжения правом требования о привлечении к субсидиарной ответственности\"")
   public void testCreditorChoiceRightSubsidiary() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -853,7 +885,7 @@ public class MessagePublishingTests extends TestBase {
   }
 
   @Test(groups = {"au"}, priority = 52)
-  @Description("Опубликовать \"Сведений о порядке и месте ознакомления с проектом плана реструктуризации\"")
+  @Description("Опубликовать \"Сведения о порядке и месте ознакомления с проектом плана реструктуризации\"")
   public void testViewDraftRestructuringPlan() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
     app.getHelperBase().selectDebtor();
@@ -867,30 +899,39 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().signMessage();
     app.getSignMessagePage().payFromPersonalAccount();
   }
-*/
-  /* @Test(priority = 53)
-  @Description("Тест создания и подписания Сведений о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации")
+
+  @Test(groups = {"au"}, priority = 53)
+  @Description("Опубликовать \"Сведения о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации\"")
   public void testViewExecRestructuringPlan() throws InterruptedException {
-    app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сведения о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации",
-            app.getHelperBase().formCurDate);
-    app.getCreateMessagePage().fillDataForViewExecRestructuringPlan();
-    app.getCreateMessagePage().clickSignMessage();
-    app.getSignMessagePage().signMessage();
+   app.getMessagesListPage().clickAddMessage();
+   app.getHelperBase().selectDebtor();
+   app.getHelperBase().selectCourtCase("message");
+   app.getNewMessagePage().selectTypeMessage("Сведения о порядке и месте ознакомления с отчетом о результатах исполнения плана реструктуризации");
+   app.getHelperBase().clickNextButton();
+   app.getHelperBase().setAddressForCorrespondence();
+   app.getCreateMessagePage().inputPlaceOfAcquaintanceWithReport();
+   app.getCreateMessagePage().fillTextField();
+   app.getCreateMessagePage().saveMessage();
+   app.getSignMessagePage().signMessage();
+   app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 54)
-  @Description("Тест создания и подписания Сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
+  @Test(groups = {"au"}, priority = 54)
+  @Description("Опубликовать \"Сообщение о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства\"")
   public void testDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщение о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщение о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 55)
+ /*  @Test(priority = 55)
   @Description("Тест создания и подписания Сообщения об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
   public void testCancelDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
@@ -911,10 +952,7 @@ public class MessagePublishingTests extends TestBase {
     app.getCreateMessagePage().clickSignMessage();
     app.getSignMessagePage().signMessage();
   }
-
-
 */
-
 }
 
 

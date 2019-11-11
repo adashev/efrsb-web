@@ -21,6 +21,12 @@
         "login": "interfax_ot_ur",
         "password": "123456",
         "section": "TradeOrganizer"
+      },
+      {
+        "name": "sro_au",
+        "login": "interfax_sro",
+        "password": "123456",
+        "section": "MainOperator"
       }
     ]
   },

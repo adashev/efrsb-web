@@ -692,6 +692,11 @@ public class CreateMessagePage extends HelperBase {
   public void inputPlaceOfFamiliarization() {
     type(By.id(uMess+"ViewDraftRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
   }
+
+  @Step("Заполнить поле Место ознакомления ")
+  public void inputPlaceOfAcquaintanceWithReport() {
+    type(By.id(uMess+"ViewExecRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
+  }
 }
 
 

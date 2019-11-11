@@ -1,14 +1,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
-    <test name="MessagePublishingTests" >
+    <test name="MessagePublishingAU" >
+        <parameter name="user" value="au"></parameter>
         <groups>
             <run>
                 <include name="au"></include>
             </run>
         </groups>
-        <packages>
-            <package name="ru.qa.test.bankrot.tests.au" />
-        </packages>
+        <classes>
+            <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
+        </classes>
     </test>
 </suite>

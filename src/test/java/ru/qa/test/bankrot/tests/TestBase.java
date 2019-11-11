@@ -14,6 +14,7 @@ public class TestBase {
   @BeforeTest(alwaysRun = true)
   @Parameters("user")
   public void setUp(@Optional("au") String user, ITestContext context) throws Exception {//, description = "Инициализация браузера и авторизация в АРМ"
+    Thread.sleep(6000);
     app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME), user);
     app.init();
   }
@@ -25,7 +26,8 @@ public class TestBase {
 
   @AfterMethod(alwaysRun = true)
   public void returnMessagesList() throws InterruptedException { //вернуться на страницу со списком сообщений
-    Thread.sleep(30);
+    Thread.sleep(200);
+    System.out.println(app.section);
     app.wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.section));
   }
 

@@ -1,22 +1,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" parallel="tests" thread-count="200">
-    <test name="MessagePublishingAU" parallel="tests">
-        <parameter name="user" value="au"></parameter>
+    <test name="MessagePublishingOTFL" parallel="tests">
+        <parameter name="user" value="otfl"></parameter>
         <groups>
             <run>
-                <include name="au"></include>
+                <include name="otfl"></include>
             </run>
         </groups>
         <classes>
             <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
         </classes>
     </test>
-    <test name="MessagePublishingOTFL" parallel="tests">
-        <parameter name="user" value="otfl"></parameter>
+    <test name="MessagePublishingAU" parallel="tests">
+        <parameter name="user" value="au"></parameter>
         <groups>
             <run>
-                <include name="otfl"></include>
+                <include name="au"></include>
             </run>
         </groups>
         <classes>

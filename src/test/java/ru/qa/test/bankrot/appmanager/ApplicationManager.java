@@ -64,16 +64,16 @@ public class ApplicationManager {
     propertiesContour = new Properties();
     String contur = System.getProperty("contur", "release");
 
-
     ObjectMapper objectMapper = new ObjectMapper();
-    List<Account> accounts = objectMapper.readValue(new File("config/accounts.json"), new TypeReference<List<Account>>(){});
-    for(Account account : accounts){
-      if(contur.equals(account.getConturname())) {
+    List<Account> accounts = objectMapper.readValue(new File("config/accounts.json"), new TypeReference<List<Account>>() {
+    });
+    for (Account account : accounts) {
+      if (contur.equals(account.getConturname())) {
         baseUrl = account.getBaseurl();
         certificate = account.getCertificate();
         List<User> users = account.getUsers();
-        for(User userObject : users){
-          if(user.equals(userObject.getName())){
+        for (User userObject : users) {
+          if (user.equals(userObject.getName())) {
             login = userObject.getLogin();
             password = userObject.getPassword();
             section = userObject.getSection();
@@ -105,7 +105,7 @@ public class ApplicationManager {
         wd = new InternetExplorerDriver();
       }
     } else if ("remote".equals(propertiesTarget.getProperty("server.type"))) {
-      if(browser.equals(BrowserType.FIREFOX)){
+      if (browser.equals(BrowserType.FIREFOX)) {
         final FirefoxProfile profile = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
         capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability(FirefoxDriver.PROFILE, profile);
@@ -122,12 +122,14 @@ public class ApplicationManager {
       }
     } else if ("selenoid".equals(propertiesTarget.getProperty("server.type"))) {
       capabilities.setBrowserName(browser);
-      capabilities.setCapability("enableVNC", true);
+      capabilities.setCapability("enableVNC", true); //
       capabilities.setCapability("enableVideo", false);
       capabilities.setVersion("selenoid_chrome_77.0_csp");
       optionsChrome.addArguments("--load-extension=/var/blitz");
       capabilities.setCapability(ChromeOptions.CAPABILITY, optionsChrome);
-
+      /*capabilities.setVersion("74.0");
+      capabilities.setCapability("enableVNC", true);
+      capabilities.setCapability("enableVideo", false);*/
       wd = new RemoteWebDriver(URI.create(propertiesTarget.getProperty("selenium.server")).toURL(), capabilities);
     } else {
       System.out.println("selenium-server not defined");
@@ -141,9 +143,9 @@ public class ApplicationManager {
     sessionHelper.closeStartNotification();
   }
 
-  public void refreshPageObjects(){
+  public void refreshPageObjects() {
     helperBase = new HelperBase(wd, wait, actions);
-    messagesListPage = new MessagesListPage(wd, wait, actions);
+    messagesListPage = new MessagesListPage(wd, wait, actions, user);
     newMessagePage = new NewMessagePage(wd, wait, actions, user);
     createMessagePage = new CreateMessagePage(wd, wait, actions, browser);
     signMessagePage = new SignMessagePage(wd, wait, actions, certificate);
@@ -153,23 +155,50 @@ public class ApplicationManager {
 
   }
 
-  public HelperBase getHelperBase() {return helperBase;}
-  public MessagesListPage getMessagesListPage() {  return messagesListPage;  }
-  public NewMessagePage getNewMessagePage() {  return newMessagePage; }
-  public CreateMessagePage getCreateMessagePage() {return createMessagePage;}
-  public SignMessagePage getSignMessagePage() {return signMessagePage;}
-  public ReportListPage getReportListPage() {return reportListPage;}
-  public NewReportPage getNewReportPage() {return newReportPage;}
-  public CreateReportPage getCreateReportPage() {return createReportPage;}
+  public HelperBase getHelperBase() {
+    return helperBase;
+  }
+
+  public MessagesListPage getMessagesListPage() {
+    return messagesListPage;
+  }
+
+  public NewMessagePage getNewMessagePage() {
+    return newMessagePage;
+  }
+
+  public CreateMessagePage getCreateMessagePage() {
+    return createMessagePage;
+  }
+
+  public SignMessagePage getSignMessagePage() {
+    return signMessagePage;
+  }
+
+  public ReportListPage getReportListPage() {
+    return reportListPage;
+  }
+
+  public NewReportPage getNewReportPage() {
+    return newReportPage;
+  }
+
+  public CreateReportPage getCreateReportPage() {
+    return createReportPage;
+  }
 
   public byte[] takeScreenshot() {
     try {
       Alert alert = wd.switchTo().alert();
       alert.accept();
-    } catch (NoAlertPresentException e) { e.printStackTrace(); }
+    } catch (NoAlertPresentException e) {
+      e.printStackTrace();
+    }
     return ((TakesScreenshot) wd).getScreenshotAs(OutputType.BYTES);
   }
 
-  public void stop() {   wd.quit(); }
+  public void stop() {
+    wd.quit();
+  }
 }
 
