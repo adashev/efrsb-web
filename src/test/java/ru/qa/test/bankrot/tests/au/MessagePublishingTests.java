@@ -931,28 +931,37 @@ public class MessagePublishingTests extends TestBase {
     app.getSignMessagePage().payFromPersonalAccount();
   }
 
- /*  @Test(priority = 55)
-  @Description("Тест создания и подписания Сообщения об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
+  @Test(groups = {"au"}, priority = 55)
+  @Description("Опубликовать \"Сообщение об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства\"")
   public void testCancelDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщение об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
-    app.getCreateMessagePage().selectMessageFromTheList("для отмены");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщение об отмене сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForCancelDeliberateBankruptcy();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
 
-  @Test(priority = 56)
-  @Description("Тест создания и подписания Сообщения об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства")
+  @Test(groups = {"au"}, priority = 56)
+  @Description("Опубликовать \"Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства\"")
   public void testChangeDeliberateBankruptcy() throws InterruptedException {
     app.getMessagesListPage().clickAddMessage();
-    app.getNewMessagePage().selectMessageAndGoNext();
-    app.getCreateMessagePage().fillBasicData("Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства","none");
-    app.getCreateMessagePage().selectMessageFromTheList("для изменения");
-    app.getCreateMessagePage().clickSignMessage();
+    app.getHelperBase().selectDebtor();
+    app.getHelperBase().selectCourtCase("message");
+    app.getNewMessagePage().selectTypeMessage("Сообщение об изменении сообщения о наличии или об отсутствии признаков преднамеренного или фиктивного банкротства");
+    app.getHelperBase().clickNextButton();
+    app.getHelperBase().setAddressForCorrespondence();
+    app.getCreateMessagePage().selectMessageForChangeDeliberateBankruptcy();
+    app.getCreateMessagePage().fillTextField();
+    app.getCreateMessagePage().saveMessage();
     app.getSignMessagePage().signMessage();
+    app.getSignMessagePage().payFromPersonalAccount();
   }
-*/
 }
 
 

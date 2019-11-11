@@ -693,9 +693,19 @@ public class CreateMessagePage extends HelperBase {
     type(By.id(uMess+"ViewDraftRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
   }
 
-  @Step("Заполнить поле Место ознакомления ")
+  @Step("Заполнить поле Место ознакомления")
   public void inputPlaceOfAcquaintanceWithReport() {
     type(By.id(uMess+"ViewExecRestructuringPlanMessage"+objP+"_ctrl0_txtPlaceOfAcquaintance"), "Место ознаком.");
+  }
+
+  @Step("Заполнить поле Отменить сообщение")
+  public void selectMessageForCancelDeliberateBankruptcy() throws InterruptedException {
+    selectMessageFromTheList("для отмены");
+  }
+
+  @Step("Заполнить поле Изменить сообщение")
+  public void selectMessageForChangeDeliberateBankruptcy() throws InterruptedException {
+    selectMessageFromTheList("для изменения");
   }
 }
 
