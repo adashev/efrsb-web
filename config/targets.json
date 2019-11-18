@@ -1,0 +1,17 @@
+[
+  {
+    "serverType": "local",
+    "serverURI": "",
+    "enableVNC": ""
+  },
+  {
+    "serverType": "remote",
+    "serverURI": "http://10.10.2.29:4444/wd/hub",
+    "enableVNC": ""
+  },
+  {
+    "serverType": "selenoid",
+    "serverURI": "http://sfacts-selenoid01.devel.ifx:4444/wd/hub",
+    "enableVNC": "true"
+  }
+]

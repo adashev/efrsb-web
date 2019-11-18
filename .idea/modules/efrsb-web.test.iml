@@ -65,10 +65,10 @@
     <orderEntry type="library" name="Gradle: io.qameta.allure:allure-model:2.12.1" level="project" />
     <orderEntry type="library" name="Gradle: org.aeonbits.owner:owner:1.0.10" level="project" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:1.4" level="project" />
-    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-library:1.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.tika:tika-core:1.20" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jooq:joor-java-8:0.9.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-library:1.3" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.jooq:joor-java-8:0.9.10" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.6" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="efrsb-web.main" />

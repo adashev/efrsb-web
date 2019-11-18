@@ -34,4 +34,15 @@
             <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
         </classes>
     </test>
+    <test name="MessagePublishingPAU" parallel="tests">
+        <parameter name="user" value="pau"></parameter>
+        <groups>
+            <run>
+                <include name="pau"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="ru.qa.test.bankrot.tests.au.MessagePublishingTests"/>
+        </classes>
+    </test>
 </suite>

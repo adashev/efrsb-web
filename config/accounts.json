@@ -11,6 +11,12 @@
         "section": "ArbitrManager"
       },
       {
+        "name": "pau",
+        "login": "interfax_au_assist",
+        "password": "123456",
+        "section": "ArbitrManager"
+      },
+      {
         "name": "otfl",
         "login": "interfax_ot",
         "password": "123456",

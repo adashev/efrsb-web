@@ -147,6 +147,26 @@ testMessagesAU.doFirst {
     jvmArgs "-javaagent:${configurations.agent.singleFile}"
 }
 
+task testMessagesPAU(type: Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng-arm-pau.xml'
+    }
+    if (project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')){
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('contur')){
+        systemProperty 'contur', "${contur}"
+    }
+    systemProperty 'allure.results.directory', 'build/allure-results'
+}
+
+testMessagesPAU.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
 task testMessagesOTFL(type: Test) {
     useTestNG(){
         suites 'src/test/resources/testng-arm-otfl.xml'

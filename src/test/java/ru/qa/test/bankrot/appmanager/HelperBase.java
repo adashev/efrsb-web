@@ -162,7 +162,7 @@ public class HelperBase extends TestBase {
     wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")));
     if(wd.findElements(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]")).size() > 0){
       click(By.xpath(".//*[@id='tblResults']/tbody/tr[2]/td[1]"));
-      Thread.sleep(300);
+      Thread.sleep(500);
       wd.switchTo().defaultContent();
     } else {
       listIsEmpty(target);

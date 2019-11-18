@@ -15,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qa.test.bankrot.model.Account;
+import ru.qa.test.bankrot.model.Target;
 import ru.qa.test.bankrot.model.User;
 import ru.qa.test.bankrot.pages.messages.CreateMessagePage;
 import ru.qa.test.bankrot.pages.messages.MessagesListPage;
@@ -56,6 +57,10 @@ public class ApplicationManager {
   public String section;
   public String user;
 
+  public String serverType;
+  public String serverURI;
+  public boolean enableVNC;
+
   public ApplicationManager(String browser, String user) throws IOException {
     this.browser = browser;
     this.user = user;
@@ -63,10 +68,10 @@ public class ApplicationManager {
     propertiesUser = new Properties();
     propertiesContour = new Properties();
     String contur = System.getProperty("contur", "release");
+    String target = System.getProperty("target", "local");
 
     ObjectMapper objectMapper = new ObjectMapper();
-    List<Account> accounts = objectMapper.readValue(new File("config/accounts.json"), new TypeReference<List<Account>>() {
-    });
+    List<Account> accounts = objectMapper.readValue(new File("config/accounts.json"), new TypeReference<List<Account>>(){ });
     for (Account account : accounts) {
       if (contur.equals(account.getConturname())) {
         baseUrl = account.getBaseurl();
@@ -82,18 +87,27 @@ public class ApplicationManager {
         }
       }
     }
+
+    List<Target> targets = objectMapper.readValue(new File("config/targets.json"), new TypeReference<List<Target>>(){ });
+    for (Target targ : targets) {
+      if (target.equals(targ.getServerType())) {
+        serverType = targ.getServerType();
+        serverURI = targ.getServerURI();
+        enableVNC = targ.getEnableVNC();
+        break;
+      }
+    }
   }
 
   public void init() throws IOException {
-    String target = System.getProperty("target", "local"); // пока оставляю property
-    propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));
+   /* String target = System.getProperty("target", "local"); // пока оставляю property
+    propertiesTarget.load(new FileReader(new File(String.format("config/targets/%s.properties", target))));*/
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("unexpectedAlertBehaviour", "accept");
     //   firefox.exe -ProfileManager
     ChromeOptions optionsChrome = new ChromeOptions();
     FirefoxOptions optionsFirefox = new FirefoxOptions();
-
-    if ("local".equals(propertiesTarget.getProperty("server.type"))) {
+    if ("local".equals(serverType)) {
       if (browser.equals(BrowserType.FIREFOX)) {
         final FirefoxProfile profile1 = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
         profile1.addExtension(new File("src/test/resources/blitz_smart_card_plugin-1.1.14-an+fx.xpi"));
@@ -104,25 +118,24 @@ public class ApplicationManager {
       } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
       }
-    } else if ("remote".equals(propertiesTarget.getProperty("server.type"))) {
+    } else if ("remote".equals(serverType)) {
       if (browser.equals(BrowserType.FIREFOX)) {
         final FirefoxProfile profile = new FirefoxProfile(new File("src/test/resources/uhw5g46i.test"));
         capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-        wd = new RemoteWebDriver(new URL(propertiesTarget.getProperty("selenium.server")), capabilities);
-//      wd = new RemoteWebDriver(URI.create(properties.getProperty("selenium.server")).toURL(), capabilities);
-      } else if (browser.equals(BrowserType.CHROME)) { //gradlew clean -Pbrowser=chrome -Ptarget=remote testMessage
+        wd = new RemoteWebDriver(new URL(serverURI), capabilities);
+
+      } else if (browser.equals(BrowserType.CHROME)) {
         optionsChrome.setCapability("browserName", "chrome");
         optionsChrome.setCapability("version", "");
         optionsChrome.addArguments("user-data-dir=C:/Users/User/AppData/Local/Google/Chrome/User Data/Default");
-        wd = new RemoteWebDriver(new URL(propertiesTarget.getProperty("selenium.server")), optionsChrome);
+        wd = new RemoteWebDriver(new URL(serverURI), optionsChrome);
       } else if (browser.equals(BrowserType.IE)) {
         capabilities.setBrowserName(browser);
-        wd = new RemoteWebDriver(new URL(propertiesTarget.getProperty("selenium.server")), capabilities);
+        wd = new RemoteWebDriver(new URL(serverURI), capabilities);
       }
-    } else if ("selenoid".equals(propertiesTarget.getProperty("server.type"))) {
-      capabilities.setBrowserName(browser);
-      capabilities.setCapability("enableVNC", true); //
+    } else if ("selenoid".equals(serverType)) {
+      capabilities.setCapability("enableVNC", enableVNC);
       capabilities.setCapability("enableVideo", false);
       capabilities.setVersion("selenoid_chrome_77.0_csp");
       optionsChrome.addArguments("--load-extension=/var/blitz");
@@ -130,7 +143,8 @@ public class ApplicationManager {
       /*capabilities.setVersion("74.0");
       capabilities.setCapability("enableVNC", true);
       capabilities.setCapability("enableVideo", false);*/
-      wd = new RemoteWebDriver(URI.create(propertiesTarget.getProperty("selenium.server")).toURL(), capabilities);
+      wd = new RemoteWebDriver(URI.create(serverURI).toURL(), capabilities);
+      //propertiesTarget.getProperty("selenium.server")
     } else {
       System.out.println("selenium-server not defined");
     }
@@ -152,7 +166,6 @@ public class ApplicationManager {
     reportListPage = new ReportListPage(wd, wait, actions);
     newReportPage = new NewReportPage(wd, wait, actions);
     createReportPage = new CreateReportPage(wd, wait, actions);
-
   }
 
   public HelperBase getHelperBase() {

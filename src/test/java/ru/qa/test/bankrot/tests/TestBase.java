@@ -31,7 +31,7 @@ public class TestBase {
     app.wd.get(String.format("%s/BackOffice/%s/MessagesList.aspx", app.baseUrl,  app.section));
   }
 
-  @AfterTest(alwaysRun = true, description = "Закрыть браузер")  // PARAM-PARALL
+  @AfterTest(alwaysRun = true, description = "Закрыть браузер")
   public void tearDown() {
     app.stop();
   }
