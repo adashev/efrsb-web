@@ -12,6 +12,6 @@
   {
     "serverType": "selenoid",
     "serverURI": "http://sfacts-selenoid01.devel.ifx:4444/wd/hub",
-    "enableVNC": "true"
+    "enableVNC": "false"
   }
 ]
